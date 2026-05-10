@@ -1,0 +1,21 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1.}Introducción}{1}{}%
+\contentsline {section}{\numberline {1.1}Búsqueda visual e híbrida}{1}{}%
+\contentsline {section}{\numberline {1.2}El modelo nnELM}{1}{}%
+\contentsline {section}{\numberline {1.3}EEG en búsqueda visual}{1}{}%
+\contentsline {section}{\numberline {1.4}Pregunta principal y objetivos}{1}{}%
+\contentsline {chapter}{\numberline {2.}Materiales y Métodos}{3}{}%
+\contentsline {section}{\numberline {2.1}Dataset HSEM}{3}{}%
+\contentsline {section}{\numberline {2.2}Pipeline de análisis de EEG}{3}{}%
+\contentsline {section}{\numberline {2.3}El modelo nnELM}{3}{}%
+\contentsline {section}{\numberline {2.4}Extracción de features del nnELM}{3}{}%
+\contentsline {section}{\numberline {2.5}Asignación de features a fijaciones}{3}{}%
+\contentsline {section}{\numberline {2.6}Modelo de regresión EEG}{3}{}%
+\contentsline {section}{\numberline {2.7}Metodología de evaluación}{3}{}%
+\contentsline {chapter}{\numberline {3.}Análisis de Features}{5}{}%
+\contentsline {section}{\numberline {3.1}Validación y análisis de las features}{5}{}%
+\contentsline {chapter}{\numberline {4.}Resultados}{7}{}%
+\contentsline {section}{\numberline {4.1}Resultados con features agregadas}{7}{}%
+\contentsline {section}{\numberline {4.2}Interpretación de resultados}{7}{}%
+\contentsline {chapter}{\numberline {5.}Discusión}{9}{}%
+\contentsline {chapter}{\numberline {6.}Conclusiones}{11}{}%
