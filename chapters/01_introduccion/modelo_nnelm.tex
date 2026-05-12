@@ -5,3 +5,9 @@
 % Presentar el nnELM en detalle: componentes principales, actualización
 % fijación-por-fijación del posterior bayesiano como mecanismo central,
 % y el criterio de decisión basado en minimización de entropía (ELM).
+
+La búsqueda visual puede entenderse cómo un problema de inferencia bajo incertidumbre:
+el observador no sabe dónde está el target y debe actualizar sus creencias a medida qué
+acumula evidencia visual. Este proceso puede modelarse a través del marco bayesiano:Nakemnik y Geisler \todo{chequear, poner año} propusieron el modelo Ideal Bayesian Searcher (IBS) \todo{cita}, en el qué cada fijación está basada en la decisión óptima de a donde mirar. El IBS determina el siguiente movimiento basándose en el conocimiento previo, un mapa de visibilidad y el estado actual de una probabilidad posterior que se actualiza después de cada fijación \todo{cita bujia}.
+
+Trabajos posteriores extendieron este marco hacia escenas naturales, incorporando redes neuronales profundas para estimar el prior inicial y la similitud visual con el target \todo{Bujia 2022}. El modelo nnELM (Neural Network Entropy Limit Minimization) \todo{agregar año y cita} profundizó estas extensiones reemplazando el criterio de optimalidad del IBS y extendiendo el marco a la búsqueda híbrida. En el nnELM, la decisión de hacia dónde mover la mirada sigue el criterio de minimización de entropía esperada (ELM): el modelo toma la decisión de mirar a la región que maximiza la reducción de incertidumbre sobre la ubicación del target. Para operar sobre escenas naturales, incorpora redes neuronales profundas: un mapa de saliencia de la escena inicializa el prior de la escena, y una red neuronal convolucional genera el mapa de similitud entre cada región con el target buscado \todo{citar a bujia?}. Para búsqueda híbrida, el modelo selecciona el movimiento ocular basándose en el mapa de menor entropía, entre los mapas posteriores de cada target.
