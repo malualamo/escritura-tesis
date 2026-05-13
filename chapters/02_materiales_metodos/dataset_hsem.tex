@@ -4,3 +4,51 @@
 % Describir el dataset HSEM (Hybrid Search with Eye Movements):
 % escenas naturales, 16 ítems por imagen, targets presentes en el 50%
 % de los trials, registro simultáneo de EEG y eye-tracking.
+
+\subsubsection{Dataset}
+
+\todo{PENDIENTE: Estaria bueno aca agregar un analisis del dataset. Cual es el minimo de fijaciones, maximo, cuantos usuarios encontraron el target. Cuantas imagenes hay por usuario, cual es el target encontrado por imagen, etc}
+
+El dataset utilizado en este trabajo fue recolectado por
+\todo{nombre} mediante el registro simultáneo de EEG y movimientos 
+oculares durante una tarea de búsqueda híbrida en escenas naturales.
+
+\subsubsection{Participantes}
+
+En el experimento participaron 42 sujetos: 16 de la Universidad de Buenos Aires (UBA; edad: 19--40 años, mediana = 25) y 26 de la University of Nottingham (UoN; edad: 18--36 años, mediana = 20). Todos los participantes reportaron visión normal o corregida a normal y desconocían los objetivos del 
+experimento. El protocolo fue aprobado por los comités de ética de ambas 
+instituciones, y todos los participantes firmaron un consentimiento 
+informado.
+
+\subsubsection{Estímulos y tarea}
+
+Se utilizaron 210 escenas naturales construidas superponiendo 16 ítems 
+(objetos, animales o personas) sobre fondos fotográficos. 
+Los ítems fueron extraídos de los datasets COCO \todo{cita} e ImageNet 
+\todo{cita}, redimensionados a un máximo de 80x80 píxeles, y dispuestos de forma semánticamente coherente con la escena. Las 
+imágenes resultantes tenían una resolución de 1280 × 1024 píxeles.
+
+Cada trial consistió en dos fases (Figura \ref{fig:paradigma}). En la 
+\textit{fase de memorización}, los participantes tuvieron que retener entre 1, 
+2 o 4 ítems (Memory Set Size, MSS $\in \{1, 2, 4\}$) durante 2, 3.5 o 5 
+segundos respectivamente. En la \textit{fase de búsqueda visual}, 
+dispusieron de hasta 10 segundos para indicar si alguno de los ítems 
+memorizados estaba presente en la escena. El target estuvo presente en el 
+50\% de los trials. El experimento se organizó en 7 bloques de 30 trials, 
+con una duración total aproximada de 50 minutos.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\textwidth]{chapters/02_materiales_metodos/images/fig1_dataset_ejemplo_imagen}
+    \caption{Ejemplo de scanpath obtenido del experimento.}
+    \label{fig:dataset_ejemplo_imagen}
+\end{figure}
+
+%\subsubsection{Adquisición de datos}
+
+% La señal de EEG fue registrada con un sistema BioSemi Active-Two a 1024 
+%Hz, con 128 canales en UBA y 64 en UoN (montaje estándar 10-20). Los 
+%movimientos oculares fueron registrados con un sistema EyeLink 1000 Plus 
+%a 500 Hz en modo monocular. La sincronización entre ambos sistemas se 
+%realizó mediante marcas temporales compartidas enviadas al inicio y fin de 
+%cada trial.

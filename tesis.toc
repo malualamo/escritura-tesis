@@ -6,16 +6,35 @@
 \contentsline {section}{\numberline {1.4}Pregunta principal y objetivos}{2}{}%
 \contentsline {chapter}{\numberline {2.}Materiales y Métodos}{3}{}%
 \contentsline {section}{\numberline {2.1}Dataset HSEM}{3}{}%
-\contentsline {section}{\numberline {2.2}Pipeline de análisis de EEG}{3}{}%
-\contentsline {section}{\numberline {2.3}El modelo nnELM}{3}{}%
-\contentsline {section}{\numberline {2.4}Extracción de features del nnELM}{3}{}%
-\contentsline {section}{\numberline {2.5}Asignación de features a fijaciones}{3}{}%
-\contentsline {section}{\numberline {2.6}Modelo de regresión EEG}{3}{}%
-\contentsline {section}{\numberline {2.7}Metodología de evaluación}{3}{}%
-\contentsline {chapter}{\numberline {3.}Análisis de Features}{5}{}%
-\contentsline {section}{\numberline {3.1}Validación y análisis de las features}{5}{}%
-\contentsline {chapter}{\numberline {4.}Resultados}{7}{}%
-\contentsline {section}{\numberline {4.1}Resultados con features agregadas}{7}{}%
-\contentsline {section}{\numberline {4.2}Interpretación de resultados}{7}{}%
-\contentsline {chapter}{\numberline {5.}Discusión}{9}{}%
-\contentsline {chapter}{\numberline {6.}Conclusiones}{11}{}%
+\contentsline {subsubsection}{Dataset}{3}{}%
+\contentsline {subsubsection}{Participantes}{3}{}%
+\contentsline {subsubsection}{Estímulos y tarea}{3}{}%
+\contentsline {section}{\numberline {2.2}Pipeline de análisis de EEG}{4}{}%
+\contentsline {section}{\numberline {2.3}El modelo nnELM}{4}{}%
+\contentsline {subsubsection}{Representación Espacial}{4}{}%
+\contentsline {subsubsection}{Prior inicial}{5}{}%
+\contentsline {subsubsection}{Mapa de similitud con el target}{5}{}%
+\contentsline {subsubsection}{Mapa de visibilidad}{5}{}%
+\contentsline {subsubsection}{Evidencia visual}{5}{}%
+\contentsline {subsubsection}{Actualización del posterior}{6}{}%
+\contentsline {subsubsection}{Criterio de selección: minimización de entropía esperada}{6}{}%
+\contentsline {subsubsection}{Extensión a búsqueda híbrida}{6}{}%
+\contentsline {section}{\numberline {2.4}Extracción de features del nnELM}{7}{}%
+\contentsline {subsection}{\numberline {2.4.1}Notación}{7}{}%
+\contentsline {subsection}{\numberline {2.4.2}Procedimiento}{8}{}%
+\contentsline {subsection}{\numberline {2.4.3}Features extraídas}{9}{}%
+\contentsline {subsubsection}{Información bottom-up}{9}{}%
+\contentsline {subsubsection}{Similitud con el target}{10}{}%
+\contentsline {subsubsection}{Estado interno del proceso bayesiano}{10}{}%
+\contentsline {subsubsection}{Calidad de la decisión}{12}{}%
+\contentsline {subsubsection}{Competencia entre candidatos}{13}{}%
+\contentsline {section}{\numberline {2.5}Generalización en celdas vs. pixel a pixel}{14}{}%
+\contentsline {section}{\numberline {2.6}Modelo de regresión EEG}{14}{}%
+\contentsline {section}{\numberline {2.7}Metodología de evaluación}{14}{}%
+\contentsline {chapter}{\numberline {3.}Análisis de Features}{15}{}%
+\contentsline {section}{\numberline {3.1}Validación y análisis de las features}{15}{}%
+\contentsline {chapter}{\numberline {4.}Resultados}{17}{}%
+\contentsline {section}{\numberline {4.1}Resultados con features agregadas}{17}{}%
+\contentsline {section}{\numberline {4.2}Interpretación de resultados}{17}{}%
+\contentsline {chapter}{\numberline {5.}Discusión}{19}{}%
+\contentsline {chapter}{\numberline {6.}Conclusiones}{21}{}%

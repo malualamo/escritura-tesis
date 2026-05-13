@@ -3,10 +3,26 @@
 %\documentclass[11pt,a4paper]{tesis}
 
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage[left=3cm,right=3cm,bottom=3.5cm,top=3.5cm]{geometry}
 \usepackage[colorinlistoftodos, textsize=small]{todonotes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\subsubsectionfont{\bfseries}
+\raggedbottom
+\usepackage{tcolorbox}
+\newtcolorbox[auto counter]{featuredef}{
+  colback=gray!4,
+  colframe=gray!45,
+  boxrule=0.4pt,
+  sharp corners,
+  left=8pt, right=8pt, top=6pt, bottom=2pt,
+  before skip=\medskipamount,
+  after skip=\medskipamount,
+}
 % Para deshabilitar todas las notas al entregar la tesis final, reemplazar por:
 % \usepackage[disable]{todonotes}
 

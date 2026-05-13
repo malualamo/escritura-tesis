@@ -11,3 +11,158 @@
 % - Mecanismo de decisión ELM (minimización de entropía)
 % Aclarar que el modelo opera sobre una grilla de celdas y genera como
 % salida el scanpath completo con todos los mapas intermedios en cada paso.
+
+
+El modelo nnELM \todo{cita Ruarte 2025} implementa un esquema de inferencia bayesiana iterativa: en cada fijación, integra nueva evidencia visual 
+para actualizar una distribución de probabilidad posterior sobre la 
+localización del target, y selecciona la siguiente fijación según un 
+criterio de minimización de entropía esperada. 
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{chapters/02_materiales_metodos/images/flujo_nnelm.png}
+      \caption{Flujo nnELM}
+      \label{fig:mi_figura}
+  \end{figure}
+
+\subsubsection{Representación Espacial}
+
+El modelo no opera directamente sobre los píxeles de la imagen sino 
+sobre una representación espacial discreta. Las imágenes son 
+redimensionadas a $768 \times 1024$ píxeles previo al procesamiento 
+y divididas en una grilla de $24 \times 32$ celdas de $32 \times 32$ 
+píxeles cada una. Todos los cómputos del modelo se realizan a esta 
+resolución de grilla, por lo que cada mapa interno tiene dimensiones 
+$24 \times 32$. Las coordenadas de fijación, registradas originalmente 
+en píxeles, se mapean a la celda correspondiente antes de ser 
+procesadas por el modelo.
+
+\subsubsection{Prior inicial}
+
+Antes de la primera fijación, el modelo inicializa la distribución 
+a priori sobre la localización del target mediante DeepGaze II 
+\todo{cita}, una red neuronal convolucional entrenada para predecir dónde mira el sujeto al observar una imagen sin un objetivo de búsqueda predeterminado. Este mapa de saliencia modela la atención de forma guíada por el estímulo (lo que se conoce como bottom-up): captura las caracterísiticas visuales de bajo y alto nivel que atraen la mirada basándose en propiedades intrínsecas de la escena. De esta manera, la prior funciona como una estimación inicial de las regiones más llamativas en un primer vistazo, sirviendo cómo punto de partida antes de que los mecanismos del modelo empiecen a guiar los movimientos en función del objetivo de la búsqueda.
+
+\subsubsection{Mapa de similitud con el target}
+
+El mapa de similitud ($\phi$) cuantifica el parecido entre cada 
+región de la imagen y el target buscado. Se construye dividiendo la 
+imagen en bloques de $224 \times 224$ píxeles que son procesados por 
+una red ResNeXt-101 32$\times$8d \todo{cita} preentrenada. El target 
+es reescalado a $128 \times 128$ píxeles y procesado por la misma red. 
+Luego, el mapa de características (\textit{feature map}) de la última 
+capa convolucional de cada bloque de imagen es convolucionado con el 
+mapa de características del target. 
+
+\subsubsection{Mapa de visibilidad}
+
+El ojo humano no percibe la escena con igual resolución en 
+todas las direcciones: la capacidad de detección es máxima en la fóvea 
+y decae progresivamente hacia la periferia. El mapa de visibilidad 
+($d$) modela esta propiedad asignando a cada región de la imagen un 
+valor que refleja cuánta información visual puede adquirirse desde el 
+punto de fijación actual $k(t)$.
+
+Formalmente, $d_{ik(t)}$ se define como una gaussiana 2D 
+$\mathcal{N}(\mu, \Sigma)$ centrada en $k(t)$, donde la matriz de 
+covarianza:
+
+\begin{equation}
+    \Sigma = \begin{pmatrix} 2600 & 0 \\ 0 & 4000 \end{pmatrix} 
+    \text{ px}^2
+\end{equation}
+
+\noindent fue estimada en \todo{cita Bujia 2022} a partir de 
+mediciones empíricas de la excentricidad visual de participantes 
+humanos en experimentos de búsqueda visual \todo{cita Najemnik 2005}. 
+Los valores más altos de $d$ cerca del centro de fijación y su 
+decaimiento hacia la periferia capturan el gradiente de resolución 
+del sistema visual.
+
+\subsubsection{Evidencia visual}
+
+La evidencia visual $W_{ik(t)}$ integra la similitud del target con 
+la visibilidad periférica y foveal. Sus valores se muestrean de una 
+distribución normal 2D:
+
+\begin{equation}
+    \widetilde{W}_{ik(t)} \sim \mathcal{N}\left(\widetilde{\mu}_{ik(t)},\, 
+    \widetilde{\sigma}^2_{ik(t)}\right)
+\end{equation}
+
+\noindent donde la media y la varianza están definidas como:
+
+\begin{equation}
+    \widetilde{\mu}_{ik(t)} = \mu_{ik(t)} \cdot \left(d_{ik(t)} + 
+    \frac{1}{2}\right) + \phi_i \cdot \left(\frac{3}{2} - d_{ik(t)}\right)
+\end{equation}
+
+\begin{equation}
+    \widetilde{\sigma}_{ik(t)} = \frac{1}{a \cdot d_{ik(t)} + b}
+\end{equation}
+
+\noindent con $\mu_{ik(t)} \in \{-0.5, 0.5\}$ según si el target 
+está o no presente en la ubicación $i$, $\phi_i \in [-0.5, 0.5]$ 
+el valor del mapa de similitud, y $a$, $b$ parámetros aprendidos. 
+La evidencia visual integra dos fuentes de información que reflejan 
+las propiedades del sistema visual humano: la región foveal, donde 
+la resolución es alta y permite identificar con precisión si el 
+target está presente, y la región periférica, donde la resolución 
+es menor pero permite detectar características generales de la escena 
+que guían hacia dónde mover la mirada. La operación $\max$ entre 
+ambos términos asegura que en cada fijación se aproveche la fuente 
+más informativa disponible.
+
+\subsubsection{Actualización del posterior}
+
+Tras cada fijación $t$ en la posición $k(t)$, el modelo actualiza 
+la distribución posterior sobre todas las posibles localizaciones 
+del target:
+
+\begin{equation}
+    p_i(T) = \frac{\text{prior}(i) \prod_{t=1}^{T} \exp\left(d^2_{ik(t)} 
+    W_{ik(t)}\right)}{\sum_{j=1}^{n} \text{prior}(j) \prod_{t=1}^{T} 
+    \exp\left(d^2_{jk(t)} W_{jk(t)}\right)}
+    \label{eq:posterior}
+\end{equation}
+
+\noindent donde $i$ y $j$ determinan la ubicación en la imagen y $n$ es 
+el número total de ubicaciones posibles. El posterior resultante se 
+convierte en el prior del siguiente paso.
+
+\subsubsection{Criterio de selección: minimización de entropía esperada}
+
+La siguiente fijación se selecciona según el criterio ELM 
+(\textit{Entropy Limit Minimization}) \todo{cita Najemnik}, que 
+elige la posición $k(T+1)$ que maximiza la reducción esperada de 
+entropía en el posterior:
+
+\begin{equation}
+    \mathbb{E}[\Delta H(T+1) \mid k(T+1)] = \frac{1}{2} \sum_{i=1}^{n} 
+    p_i(T)\, d^2_{ik(T+1)}
+    \label{eq:elm}
+\end{equation}
+
+En cada paso, el modelo selecciona la región que minimiza esta 
+cantidad, dirigiendo la mirada hacia las ubicaciones que más reducen 
+la incertidumbre sobre la localización del target.
+
+\subsubsection{Extensión a búsqueda híbrida}
+
+En la búsqueda híbrida, el observador debe buscar simultáneamente 
+cualquiera de los $M$ targets almacenados en memoria 
+(MSS $\in \{1, 2, 4\}$). Para abordar esto, el modelo computa un 
+posterior independiente $p_i^{(m)}(T)$ para cada target $m$ del 
+memory set. La selección de la siguiente fijación se realiza 
+aplicando el criterio ELM sobre el posterior de menor entropía 
+entre todos los targets:
+
+\begin{equation}
+    m^* = \arg\min_{m} H\left(p^{(m)}(T)\right)
+\end{equation}
+
+\noindent donde $H(\cdot)$ denota la entropía de Shannon. Esta 
+estrategia, denominada \textit{MinEntropy}, prioriza el target sobre 
+el cual el modelo tiene mayor certeza acumulada, y fue la que 
+demostró mejor desempeño en comparación con estrategias alternativas 
+\todo{cita Ruarte 2025}.

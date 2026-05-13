@@ -8,3 +8,553 @@
 % 4. Calidad de la decisión (entropía, ganancia de información, gap EIG)
 % 5. Competencia entre candidatos (ratio y densidad en mapa de EIG)
 % Para cada feature: definición, implementación y valor interpretativo.
+
+La motivación detrás de este procedimiento es extraer, a partir del modelo nnELM,
+variables internas que capturen distintas dimensiones del proceso de
+búsqueda visual en cada fijación. Estas variables se incorporan
+posteriormente como predictores en el modelo de regresión EEG de
+Care et al.~\todo{cita}, con el fin de evaluar si las representaciones
+computacionales del modelo tienen correlatos en la actividad cerebral
+registrada durante la tarea de búsqueda híbrida.
+
+\subsection{Notación}
+
+Se emplea la siguiente notación para describir
+las features extraídas del modelo nnELM.
+
+\subsubsection*{Índices}
+\begin{itemize}
+    \item $t$ — índice de fijación dentro de un trial
+    \item $i, j$ — índice de celda en la grilla
+    \item $s$ — índice de sujeto
+    \item $n$ — índice de imagen
+\end{itemize}
+
+\subsubsection*{Coordenadas de fijación}
+
+La posición de fijación $k(t)$ empleada en la notación del modelo
+se representa explícitamente como un par de coordenadas en la grilla:
+
+\begin{equation}
+    k(t) = (g_y, g_x), \quad g_y \in \{0, \ldots, 23\},\;
+    g_x \in \{0, \ldots, 31\}
+\end{equation}
+
+Adicionalmente, se distinguen las siguientes representaciones de
+la posición de fijación:
+\begin{itemize}
+    \item $(g_y, g_x)$ — coordenadas en la grilla del modelo
+    \item $(x_k, y_k)$ — coordenadas en píxeles de pantalla
+    \item $(x_m, y_m)$ — coordenadas mapeadas a la resolución
+    del mapa de saliencia
+\end{itemize}
+
+\subsubsection*{Mapas}
+\begin{itemize}
+    \item $S$ — mapa de saliencia
+    \item $\phi$ — mapa de similitud con el target
+    \item $d$ — mapa de visibilidad
+    \item $W_{ik(t)}$ — evidencia visual
+    \item $p_i(T)$ — distribución posterior tras $T$ fijaciones
+    \item $E$ — mapa de entropías esperadas
+\end{itemize}
+
+\subsubsection*{Bloque de píxeles}
+
+Se define $B_{k(t)}$ como el conjunto de píxeles correspondientes
+a la celda $k(t) = (g_y, g_x)$ en un mapa dado, donde $c = 32$ px
+es el tamaño de celda:
+
+\begin{equation}
+    B_{k(t)} = \{(y, x) : c \cdot g_y \leq y < c \cdot (g_y + 1),\;
+    c \cdot g_x \leq x < c \cdot (g_x + 1)\}
+\end{equation}
+
+\subsection{Procedimiento}
+
+El modelo nnELM fue ejecutado sobre los scanpaths del dataset para
+cada combinación de sujeto, imagen y target. Durante la ejecución,
+se seleccionaron y almacenaron los mapas internos generados en cada
+fijación $t$ que resultaban relevantes para caracterizar el estado
+del proceso de búsqueda.
+
+Los mapas se clasifican en \textbf{estáticos}, cuando se computan
+una única vez por combinación sujeto--imagen--target y permanecen
+constantes a lo largo del scanpath, y \textbf{dinámicos}, cuando
+se actualizan en cada fijación $t$ a medida que el modelo acumula
+evidencia visual.
+
+\begin{itemize}
+    \item \textbf{Mapa de saliencia} (estático): distribución de
+    atención visual bottom-up sobre la escena generada por DeepGaze
+    II. Opera como prior inicial $p_i(0)$ del modelo.
+
+    \item \textbf{Mapa de similitud con el target} $\phi$ (estático):
+    cuantifica el parecido entre cada región de la imagen y el target
+    buscado, generado por la red ResNeXt.
+
+    \item \textbf{Mapa de visibilidad} $d$ (estático): gaussiana 2D
+    que modela el decaimiento de la resolución visual con la
+    excentricidad respecto al punto de fijación. Al ser un kernel
+    fijo, se precalculó independientemente de la dinámica de búsqueda.
+
+    \item \textbf{Evidencia visual} $W_{ik(t)}$ (dinámico): valor
+    muestreado de la distribución normal cuya media y varianza
+    dependen de $\phi$ y $d$ en la posición de fijación actual.
+
+    \item \textbf{Posterior} $p_i(T)$ (dinámico): distribución de
+    probabilidad sobre todas las posibles localizaciones del target,
+    actualizada tras cada fijación.
+
+    \item \textbf{Mapa de entropías esperadas} (dinámico): para cada
+    posible próxima fijación $k(T+1)$, almacena el valor de
+    $\mathbb{E}[\Delta H(T+1) \mid k(T+1)]$. Es a partir de este mapa
+    que el modelo selecciona la siguiente fijación óptima.
+
+    \item \textbf{Coordenadas de fijación} $(x_k, y_k)$ (dinámico):
+    posición de la fijación actual en píxeles.
+\end{itemize}
+
+A partir de estos mapas se calcularon las siguientes features,
+organizadas en cuatro categorías según su interpretación.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{chapters/02_materiales_metodos/images/ejemplo_mapas}
+    \caption{Ejemplo de los mapas internos generados por el modelo nnELM en cada fijación.}
+    \label{fig:ejemplo_mapas}
+\end{figure}
+
+\subsection{Features extraídas}
+
+% ---------------------------------------------------------------
+\subsubsection{Información bottom-up}
+% ---------------------------------------------------------------
+
+Estas features capturan las características visuales de bajo nivel
+de la escena en el punto de fijación, independientemente del target
+buscado. Se derivan del mapa de saliencia generado por DeepGaze II.
+
+Sea $S$ el mapa de saliencia de la escena y $k(t) = (g_y, g_x)$
+la celda correspondiente a la fijación $t$. El bloque de píxeles
+asociado a la celda es:
+\begin{equation}
+    B_{k(t)} = \{(y, x) : c \cdot g_y \leq y < c \cdot (g_y + 1),\;
+    c \cdot g_x \leq x < c \cdot (g_x + 1)\}
+\end{equation}
+con $c = 32$ px. A partir de $B_{k(t)}$ se calculan:
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{saliencia\_media}
+
+\textbf{Descripción:} Media de $S$ sobre los píxeles de la celda $k(t)$.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{saliencia\_media} := \frac{1}{|B_{k(t)}|}
+    \sum_{(y,x) \in B_{k(t)}} S[y, x]
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{saliencia\_mediana}
+
+\textbf{Descripción:} Mediana de $S$ sobre los píxeles de la celda $k(t)$.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{saliencia\_mediana} := \text{mediana}\{S[y, x] : (y, x) \in B_{k(t)}\}
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{saliencia\_pixel}
+
+\textbf{Descripción:} Valor de $S$ en el píxel $(x_m, y_m)$ obtenido
+mapeando las coordenadas de pantalla $(x_k, y_k)$ a la resolución del mapa.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{saliencia\_pixel} := S[y_m, x_m]
+\end{equation}
+\end{featuredef}
+
+% ---------------------------------------------------------------
+\subsubsection{Similitud con el target}
+% ---------------------------------------------------------------
+
+Sea $\phi$ el mapa de similitud con el target. Las features se
+calculan de forma análoga a las de información bottom-up,
+reemplazando $S$ por $\phi$:
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{similitud\_media}
+
+\textbf{Descripción:} Media de $\phi$ sobre los píxeles de la celda $k(t)$.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{similitud\_media} := \frac{1}{|B_{k(t)}|}
+    \sum_{(y,x) \in B_{k(t)}} \phi[y, x]
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{similitud\_mediana}
+
+\textbf{Descripción:} Mediana de $\phi$ sobre los píxeles de la celda $k(t)$.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{similitud\_mediana} := \text{mediana}\{\phi[y, x] : (y, x) \in B_{k(t)}\}
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{similitud\_pixel}
+
+\textbf{Descripción:} Valor de $\phi$ en el píxel exacto de fijación.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{similitud\_pixel} := \phi[y_m, x_m]
+\end{equation}
+\end{featuredef}
+
+% ---------------------------------------------------------------
+\subsubsection{Estado interno del proceso bayesiano}
+% ---------------------------------------------------------------
+
+Estas features reflejan el estado de la inferencia bayesiana en la
+fijación $t$: cuánta evidencia se ha acumulado, cómo se distribuye
+la certeza sobre la localización del target, y la tensión entre
+información foveal y periférica.
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{evidencia\_visual}
+
+\textbf{Descripción:} Sea $W$ el mapa de evidencia visual de dimensiones
+$T \times 24 \times 32$, donde $W[t]$ contiene la evidencia visual en el paso $t$.
+La feature se obtiene evaluando $W$ en las coordenadas de grilla de la fijación actual.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{evidencia\_visual} := W[t,\, g_y,\, g_x]
+\end{equation}
+\end{featuredef}
+
+Sea $W_t = W[t]$ la evidencia visual en la fijación $t$, $d^2_{k(t)}$
+el mapa de visibilidad foveal y $d'_{k(t)}$ el mapa de visibilidad
+periférica, ambos centrados en $k(t) = (g_y, g_x)$. Se define la
+matriz de competencia foveal-periférica como:
+\begin{equation}
+    C_t = \max\left(W_t \cdot d^2_{k(t)},\; W_t \cdot d'_{k(t)}\right)
+\end{equation}
+donde la operación $\max$ se aplica elemento a elemento.
+A partir de $C_t$ se calculan:
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{competencia\_fp\_var}
+
+\textbf{Descripción:} Varianza espacial de la matriz de competencia
+foveal-periférica $C_t$.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{competencia\_fp\_var} := \text{Var}(C_t)
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{competencia\_fp\_media}
+
+\textbf{Descripción:} Media espacial de la matriz de competencia
+foveal-periférica $C_t$.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{competencia\_fp\_media} := \frac{1}{24 \cdot 32}
+    \sum_{i,j} C_t[i, j]
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{competencia\_fp\_max}
+
+\textbf{Descripción:} Valor máximo de la matriz de competencia
+foveal-periférica $C_t$.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{competencia\_fp\_max} := \max_{i,j} C_t[i, j]
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{posterior}
+
+\textbf{Descripción:} Sea $p[t]$ la distribución posterior en la fijación
+$t$, de dimensiones $24 \times 32$. La feature se obtiene evaluando $p[t]$ en las
+coordenadas de grilla de la fijación actual.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{posterior} := p[t,\, g_y,\, g_x]
+\end{equation}
+\end{featuredef}
+
+Las dos features de entropía del prior son estáticas: se computan
+una única vez por combinación sujeto--imagen--target y se asignan
+a todas las fijaciones del trial.
+
+Sea $\tilde{S}$ el mapa de saliencia normalizado a resolución de
+grilla ($24 \times 32$), definido como:
+\begin{equation}
+    \tilde{S} = \frac{S}{\sum_{i,j} S[i,j]}
+\end{equation}
+y sea $p[0]$ la distribución posterior en $t = 0$, normalizada como:
+\begin{equation}
+    \tilde{p}[0] = \frac{p[0]}{\sum_{i,j} p[0][i,j]}
+\end{equation}
+Las features se calculan como la entropía de Shannon de cada distribución:
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{entropia\_prior\_saliencia}
+
+\textbf{Descripción:} Entropía de Shannon del mapa de saliencia
+normalizado $\tilde{S}$. Feature estática.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{entropia\_prior\_saliencia} :=
+    -\sum_{i,j} \tilde{S}[i,j] \log \tilde{S}[i,j]
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{entropia\_prior\_modelo}
+
+\textbf{Descripción:} Entropía de Shannon del prior del modelo
+$\tilde{p}[0]$. Feature estática.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{entropia\_prior\_modelo} :=
+    -\sum_{i,j} \tilde{p}[0][i,j] \log \tilde{p}[0][i,j]
+\end{equation}
+\end{featuredef}
+
+En ambos casos se añade un término de estabilidad numérica
+$\varepsilon = 10^{-12}$ dentro del logaritmo para evitar
+indeterminaciones cuando algún valor es cero.
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{entropia\_posterior}
+
+\textbf{Descripción:} Entropía de Shannon del posterior en la fijación
+$t$, calculada celda a celda sobre toda la grilla.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{entropia\_posterior} := H(p[t]) =
+    -\sum_{i,j} p[t][i,j] \log p[t][i,j]
+\end{equation}
+donde se añade $\varepsilon = 10^{-12}$ dentro del logaritmo por
+estabilidad numérica.
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{ganancia\_informacion}
+
+\textbf{Descripción:} Divergencia KL entre el posterior en la fijación
+$t$ y el posterior en la fijación anterior $t-1$.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{ganancia\_informacion} := D_{KL}(p[t] \| p[t-1]) =
+    \sum_{i,j} p[t][i,j] \log \frac{p[t][i,j]}{p[t-1][i,j]}
+\end{equation}
+donde se añade $\varepsilon = 10^{-12}$ en numerador y denominador
+por estabilidad numérica.
+\end{featuredef}
+
+% ---------------------------------------------------------------
+\subsubsection{Calidad de la decisión}
+% ---------------------------------------------------------------
+
+Estas features comparan la fijación realizada por el sujeto con la
+decisión óptima según el modelo nnELM, cuantificando en qué medida
+el comportamiento humano se aparta de la estrategia de minimización
+de entropía.
+
+Sea $E[t]$ el mapa de ganancia de información esperada en la
+fijación $t$, donde $E[t][i,j]$ representa la ganancia de
+información esperada si la siguiente fijación fuera la celda
+$(i,j)$:
+\begin{equation}
+    E[t][i,j] = H(p[t]) - \mathbb{E}[H(p[t+1]) \mid k(t+1) = (i,j)]
+\end{equation}
+Maximizar $E[t]$ es equivalente a minimizar la entropía esperada del
+posterior, que es el criterio ELM descripto en la
+sección~\ref{sec:modelo_gonzalo}.
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{eig\_optimo}
+
+\textbf{Descripción:} Ganancia de información esperada de la fijación
+óptima según el modelo, independientemente de lo que haya decidido el sujeto.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{eig\_optimo} := \max_{i,j} E[t][i,j]
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{eig\_en\_fijacion}
+
+\textbf{Descripción:} Ganancia de información esperada en la celda
+$k(t+1) = (g_y^{t+1}, g_x^{t+1})$ hacia donde efectivamente se desplazó el
+sujeto en la siguiente fijación.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{eig\_en\_fijacion} := E[t][g_y^{t+1}, g_x^{t+1}]
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{gap\_entropia}
+
+\textbf{Descripción:} Diferencia entre la ganancia óptima y la ganancia
+obtenida por el sujeto. Cuantifica la suboptimalidad de la decisión humana respecto
+al criterio ELM.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{gap\_entropia} := \texttt{eig\_optimo} -
+    \texttt{eig\_en\_fijacion}
+\end{equation}
+\end{featuredef}
+
+Las features \texttt{eig\_en\_fijacion} y \texttt{gap\_entropia} no
+están definidas para la última fijación de cada trial, dado que no
+existe fijación $t+1$.
+
+Sea $(g_y^*, g_x^*)$ la celda óptima según el modelo en la fijación
+$t$, definida como:
+\begin{equation}
+    (g_y^*, g_x^*) = \arg\max_{i,j} E[t][i,j]
+\end{equation}
+Las features de distancia comparan esta celda con la fijación
+efectivamente realizada por el sujeto en $t+1$:
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{modelo\_fix\_y}, \texttt{modelo\_fix\_x}
+
+\textbf{Descripción:} Coordenadas de la celda óptima $(g_y^*, g_x^*)$
+según el modelo.
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{distancia\_grilla}
+
+\textbf{Descripción:} Distancia euclídea en celdas entre la fijación
+óptima del modelo y la fijación efectiva del sujeto en $t+1$.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{distancia\_grilla} := \sqrt{(g_y^{t+1} - g_y^*)^2 +
+    (g_x^{t+1} - g_x^*)^2}
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{distancia\_pixels}
+
+\textbf{Descripción:} Distancia equivalente en píxeles, obtenida
+multiplicando por el tamaño de celda $c = 32$ px.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{distancia\_pixels} := c \cdot \texttt{distancia\_grilla}
+\end{equation}
+\end{featuredef}
+
+Las features \texttt{distancia\_grilla} y \texttt{distancia\_pixels}
+no están definidas para la última fijación de cada trial.
+
+% ---------------------------------------------------------------
+\subsubsection{Competencia entre candidatos}
+% ---------------------------------------------------------------
+
+Sean $E^{(1)}[t]$ y $E^{(2)}[t]$ el mayor y segundo mayor valor
+del mapa $E[t]$, respectivamente:
+\begin{equation}
+    E^{(1)}[t] = \max_{i,j} E[t][i,j], \qquad
+    E^{(2)}[t] = \max_{i,j \neq \arg\max} E[t][i,j]
+\end{equation}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{competencia\_ratio\_mayor}
+
+\textbf{Descripción:} Valor máximo del mapa de EIG.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{competencia\_ratio\_mayor} := E^{(1)}[t]
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{competencia\_ratio\_segundo\_mayor}
+
+\textbf{Descripción:} Segundo valor más alto del mapa de EIG.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{competencia\_ratio\_segundo\_mayor} := E^{(2)}[t]
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{competencia\_ratio}
+
+\textbf{Descripción:} Cociente entre el segundo y el primer mayor valor
+del mapa EIG. No está definida cuando $E^{(1)}[t] = 0$.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{competencia\_ratio} := \frac{E^{(2)}[t]}{E^{(1)}[t]}
+\end{equation}
+\end{featuredef}
+
+Sea $N = 24 \times 32 = 768$ el número total de celdas de la grilla.
+Se define el conjunto de celdas candidatas en la fijación $t$ como
+aquellas cuyo valor en el mapa EIG supera el $95\%$ del valor máximo:
+\begin{equation}
+    \mathcal{K}_t = \{(i,j) : E[t][i,j] \geq 0.95 \cdot E^{(1)}[t]\}
+\end{equation}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{competencia\_densidad}
+
+\textbf{Descripción:} Cardinalidad del conjunto de celdas candidatas.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{competencia\_densidad} := |\mathcal{K}_t|
+\end{equation}
+\end{featuredef}
+
+\begin{featuredef}
+\textbf{Feature \thetcbcounter:} \texttt{competencia\_densidad\_norm}
+
+\textbf{Descripción:} Proporción de celdas candidatas sobre el total
+de la grilla.
+
+\textbf{Ecuación:}
+\begin{equation}
+    \texttt{competencia\_densidad\_norm} := \frac{|\mathcal{K}_t|}{N}
+\end{equation}
+\end{featuredef}
