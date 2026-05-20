@@ -28,13 +28,20 @@
 \contentsline {subsubsection}{Estado interno del proceso bayesiano}{10}{}%
 \contentsline {subsubsection}{Calidad de la decisión}{12}{}%
 \contentsline {subsubsection}{Competencia entre candidatos}{13}{}%
-\contentsline {section}{\numberline {2.5}Generalización en celdas vs. pixel a pixel}{14}{}%
-\contentsline {section}{\numberline {2.6}Modelo de regresión EEG}{14}{}%
-\contentsline {section}{\numberline {2.7}Metodología de evaluación}{14}{}%
-\contentsline {chapter}{\numberline {3.}Análisis de Features}{15}{}%
-\contentsline {section}{\numberline {3.1}Validación y análisis de las features}{15}{}%
-\contentsline {chapter}{\numberline {4.}Resultados}{17}{}%
-\contentsline {section}{\numberline {4.1}Resultados con features agregadas}{17}{}%
-\contentsline {section}{\numberline {4.2}Interpretación de resultados}{17}{}%
-\contentsline {chapter}{\numberline {5.}Discusión}{19}{}%
-\contentsline {chapter}{\numberline {6.}Conclusiones}{21}{}%
+\contentsline {section}{\numberline {2.5}Generalización en celdas vs. pixel a pixel}{15}{}%
+\contentsline {section}{\numberline {2.6}Modelo de regresión EEG}{15}{}%
+\contentsline {section}{\numberline {2.7}Metodología de evaluación}{15}{}%
+\contentsline {chapter}{\numberline {3.}Análisis de Features}{17}{}%
+\contentsline {section}{\numberline {3.1}Validación computacional de las features}{17}{}%
+\contentsline {section}{\numberline {3.2}Análisis distribucional}{17}{}%
+\contentsline {subsection}{\numberline {3.2.1}Información bottom-up}{17}{}%
+\contentsline {subsection}{\numberline {3.2.2}Similitud con el target}{17}{}%
+\contentsline {subsection}{\numberline {3.2.3}Estado interno del proceso bayesiano}{18}{}%
+\contentsline {subsection}{\numberline {3.2.4}Calidad de la decisión}{18}{}%
+\contentsline {subsection}{\numberline {3.2.5}Competencia entre candidatos}{19}{}%
+\contentsline {section}{\numberline {3.3}Coherencia con el proceso de búsqueda}{19}{}%
+\contentsline {chapter}{\numberline {4.}Resultados}{21}{}%
+\contentsline {section}{\numberline {4.1}Resultados con features agregadas}{21}{}%
+\contentsline {section}{\numberline {4.2}Interpretación de resultados}{21}{}%
+\contentsline {chapter}{\numberline {5.}Discusión}{23}{}%
+\contentsline {chapter}{\numberline {6.}Conclusiones}{25}{}%

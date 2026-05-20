@@ -1,0 +1,177 @@
+\section{Análisis distribucional}
+\label{sec:analisis_distribucional}
+
+% Distribuciones de cada feature con estadísticos descriptivos
+% (media, mediana, IQR, outliers).
+%
+% Para cada feature: histograma o boxplot, media, mediana, desviación
+% estándar, percentiles 5 y 95. Identificar features con distribución
+% degenerada (e.g. masa puntual, valores constantes por trial).
+%
+% Analizar por separado features estáticas vs. dinámicas y, dentro
+% de las dinámicas, la evolución a lo largo del trial (posición de
+% fijación 1, 2, ..., k).
+%
+% Señalar features candidatas a transformación (log, normalización)
+% antes del modelado.
+
+A continuación se presenta el análisis distribucional de las features 
+extraídas del modelo nnELM, calculadas sobre las 61.252 fijaciones del 
+dataset. Para cada grupo de features se reportan estadísticos descriptivos 
+y la evolución del valor promedio a lo largo del trial, diferenciando entre 
+trials en los que el sujeto encontró el target y trials en los que no. Las 
+features \texttt{H\_prior\_sal} y \texttt{H\_prior\_mod} son estáticas 
+(constantes por trial) y se analizan por separado. Las features 
+\texttt{gan\_informacion}, \texttt{eig\_fij}, \texttt{gap\_entr}, 
+\texttt{dist\_gri} y \texttt{dist\_pix} presentan $N = 56.751$ observaciones 
+dado que requieren el mapa de entropías esperadas del paso $t+1$, que no 
+existe para la última fijación de cada trial.
+
+\subsection{Información bottom-up}
+
+\begin{table}[H]
+\centering
+\caption{Estadísticos descriptivos de las features de información bottom-up.}
+\label{tab:dist_bottomup}
+\small
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lrrr}
+\toprule
+ & \texttt{saliencia\_media} & \texttt{saliencia\_mediana} & \texttt{saliencia\_pixel} \\
+\midrule
+count & 61252 & 61252 & 61252 \\
+mean  & 0.1046 & 0.1004 & 0.0449 \\
+std   & 0.1408 & 0.1391 & 0.0954 \\
+min   & 0.0000 & 0.0000 & 0.0000 \\
+25\%  & 0.0164 & 0.0157 & 0.0000 \\
+50\%  & 0.0507 & 0.0471 & 0.0078 \\
+75\%  & 0.1309 & 0.1255 & 0.0431 \\
+max   & 0.9010 & 0.9059 & 1.0000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Similitud con el target}
+
+\begin{table}[H]
+\centering
+\caption{Estadísticos descriptivos de las features de similitud con el target.}
+\label{tab:dist_similitud}
+\small
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lrrr}
+\toprule
+ & \texttt{similitud\_media} & \texttt{similitud\_mediana} & \texttt{similitud\_pixel} \\
+\midrule
+count & 61252 & 61252 & 61252 \\
+mean  & 0.0910 & 0.0835 & 0.0334 \\
+std   & 0.1172 & 0.1157 & 0.0715 \\
+min   & 0.0000 & 0.0000 & 0.0000 \\
+25\%  & 0.0133 & 0.0118 & 0.0039 \\
+50\%  & 0.0452 & 0.0373 & 0.0078 \\
+75\%  & 0.1251 & 0.1098 & 0.0314 \\
+max   & 0.8268 & 0.8353 & 0.9490 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Estado interno del proceso bayesiano}
+
+\begin{table}[H]
+\centering
+\caption{Estadísticos descriptivos de las features dinámicas del estado interno (parte I).}
+\label{tab:dist_bayesiano_a}
+\small
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lrrrrr}
+\toprule
+ & \texttt{evidencia} & \texttt{comp\_fp\_var} & \texttt{comp\_fp\_media} & \texttt{comp\_fp\_max} & \texttt{posterior} \\
+\midrule
+count & 61252    & 61252   & 61252    & 61252         & 61252        \\
+mean  & $-3.36$  & 4.60    & $-0.195$ & 4.83          & 0.0152       \\
+std   & 2.28     & 1.58    & 0.0835   & 10.3          & 0.0939       \\
+min   & $-8.91$  & 0.231   & $-0.342$ & ${\approx}0$  & ${\approx}0$ \\
+25\%  & $-4.69$  & 3.50    & $-0.243$ & 0.0307        & 0.00000506   \\
+50\%  & $-3.76$  & 4.50    & $-0.217$ & 0.484         & 0.0000230    \\
+75\%  & $-2.71$  & 5.59    & $-0.183$ & 3.53          & 0.0000980    \\
+max   & 8.44     & 13.6    & 0.298    & 74.2          & 1.00         \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Estadísticos descriptivos de las features del estado interno (parte II): entropías y ganancia.}
+\label{tab:dist_bayesiano_b}
+\small
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lrrrr}
+\toprule
+ & \texttt{H\_prior\_sal} & \texttt{H\_prior\_mod} & \texttt{H\_posterior} & \texttt{gan\_informacion} \\
+\midrule
+count & 61252 & 61252 & 61252   & 56751   \\
+mean  & 5.45  & 5.74  & 5.35    & 0.214   \\
+std   & 0.447 & 0.520 & 1.71    & 0.456   \\
+min   & 3.85  & 1.59  & 0.0000140 & 0.00000300 \\
+25\%  & 5.28  & 5.61  & 5.37    & 0.0257  \\
+50\%  & 5.48  & 5.84  & 6.10    & 0.0517  \\
+75\%  & 5.79  & 6.05  & 6.38    & 0.143   \\
+max   & 6.15  & 6.32  & 6.58    & 5.90    \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Calidad de la decisión}
+
+\begin{table}[H]
+\centering
+\caption{Estadísticos descriptivos de las features de calidad de la decisión.}
+\label{tab:dist_decision}
+\small
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lrrrrr}
+\toprule
+ & \texttt{eig\_opt} & \texttt{eig\_fij} & \texttt{gap\_entr} & \texttt{dist\_gri} & \texttt{dist\_pix} \\
+\midrule
+count & 61252         & 56751         & 56751  & 56751  &  \\
+mean  & 0.963         & 0.186         & 0.711  & 9.91   &  \\
+std   & 1.20          & 0.517         & 1.04   & 6.03   &  \\
+min   & 0.0716        & ${\approx}0$  & 0.000  & 0.000  &  \\
+25\%  & 0.218         & 0.0289        & 0.127  & 5.39   &  \\
+50\%  & 0.383         & 0.0596        & 0.262  & 9.43   &  \\
+75\%  & 1.08          & 0.101         & 0.702  & 13.9   &  \\
+max   & 4.48          & 4.48          & 4.48   & 31.8   &  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Competencia entre candidatos}
+
+\begin{table}[H]
+\centering
+\caption{Estadísticos descriptivos de las features de competencia entre candidatos.}
+\label{tab:dist_competencia}
+\small
+\setlength{\tabcolsep}{7pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lrrrrr}
+\toprule
+ & \texttt{ratio\_mayor} & \texttt{ratio\_2do} & \texttt{ratio} & \texttt{densidad} & \texttt{densidad\_norm} \\
+\midrule
+count & 61252  & 61252  & 61252  & 61252  & 61252   \\
+mean  & 0.963  & 0.867  & 0.927  & 1.79   & 0.00233 \\
+std   & 1.20   & 1.06   & 0.0562 & 1.82   & 0.00237 \\
+min   & 0.0716 & 0.0713 & 0.763  & 1.00   & 0.00130 \\
+25\%  & 0.218  & 0.207  & 0.889  & 1.00   & 0.00130 \\
+50\%  & 0.383  & 0.356  & 0.940  & 1.00   & 0.00130 \\
+75\%  & 1.08   & 0.967  & 0.974  & 2.00   & 0.00260 \\
+max   & 4.48   & 4.15   & 1.00   & 96.0   & 0.125   \\
+\bottomrule
+\end{tabular}
+\end{table}
+

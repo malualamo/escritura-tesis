@@ -1,0 +1,72 @@
+name: Compilar tesis y subir a Drive
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Compilar LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: tesis/tesis.tex   # <-- cambiá por tu archivo principal
+          latexmk_use_xelatex: false  # ponelo en true si usás xelatex
+
+      - name: Autenticar con Google
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GDRIVE_CREDENTIALS }}
+
+      - name: Subir PDF a Google Drive
+        uses: google-github-actions/upload-cloud-storage@v2
+        with:
+          path: tesis.pdf             # <-- nombre del PDF generado
+          destination: drive:///${{ secrets.GDRIVE_FOLDER_ID }}/tesis.pdf
+          parent: true
+
+      # Alternativa si el step anterior da problemas (usa rclone)
+      # - name: Subir PDF con rclone
+      #   run: |
+      #     pip install gdrive-upload-action || true
+      #     python3 -c "
+      #     import json, base64, os
+      #     from google.oauth2 import service_account
+      #     from googleapiclient.discovery import build
+      #     from googleapiclient.http import MediaFileUpload
+      #     
+      #     creds_json = json.loads(os.environ['GDRIVE_CREDENTIALS'])
+      #     creds = service_account.Credentials.from_service_account_info(
+      #         creds_json, scopes=['https://www.googleapis.com/auth/drive']
+      #     )
+      #     service = build('drive', 'v3', credentials=creds)
+      #     
+      #     # Buscar si ya existe el archivo
+      #     folder_id = os.environ['GDRIVE_FOLDER_ID']
+      #     results = service.files().list(
+      #         q=f\"name='tesis.pdf' and '{folder_id}' in parents and trashed=false\",
+      #         fields='files(id)'
+      #     ).execute()
+      #     files = results.get('files', [])
+      #     
+      #     media = MediaFileUpload('tesis.pdf', mimetype='application/pdf')
+      #     if files:
+      #         service.files().update(fileId=files[0]['id'], media_body=media).execute()
+      #         print('PDF actualizado en Drive')
+      #     else:
+      #         service.files().create(
+      #             body={'name': 'tesis.pdf', 'parents': [folder_id]},
+      #             media_body=media
+      #         ).execute()
+      #         print('PDF subido a Drive')
+      #     "
+      #   env:
+      #     GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
+      #     GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}

@@ -450,13 +450,6 @@ Las features de distancia comparan esta celda con la fijación
 efectivamente realizada por el sujeto en $t+1$:
 
 \begin{featuredef}
-\textbf{Feature \thetcbcounter:} \texttt{modelo\_fix\_y}, \texttt{modelo\_fix\_x}
-
-\textbf{Descripción:} Coordenadas de la celda óptima $(g_y^*, g_x^*)$
-según el modelo.
-\end{featuredef}
-
-\begin{featuredef}
 \textbf{Feature \thetcbcounter:} \texttt{distancia\_grilla}
 
 \textbf{Descripción:} Distancia euclídea en celdas entre la fijación
@@ -558,3 +551,47 @@ de la grilla.
     \texttt{competencia\_densidad\_norm} := \frac{|\mathcal{K}_t|}{N}
 \end{equation}
 \end{featuredef}
+
+\begin{table}[H]
+\centering
+\caption{Resumen de las features extraídas, organizadas por categoría.}
+\label{tab:resumen_features}
+\small
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{cllc}
+\toprule
+\textbf{\#} & \textbf{Nombre} & \textbf{Categoría} & \textbf{Tipo} \\
+\midrule
+1  & \texttt{saliencia\_media}                        & Bottom-up              & Estática \\
+2  & \texttt{saliencia\_mediana}                      & Bottom-up              & Estática \\
+3  & \texttt{saliencia\_pixel}                        & Bottom-up              & Estática \\
+\midrule
+4  & \texttt{similitud\_media}                        & Similitud con target   & Estática \\
+5  & \texttt{similitud\_mediana}                      & Similitud con target   & Estática \\
+6  & \texttt{similitud\_pixel}                        & Similitud con target   & Estática \\
+\midrule
+7  & \texttt{evidencia\_visual}                       & Estado interno del proceso bayesiano       & Dinámica \\
+8  & \texttt{competencia\_fp\_var}                    & Estado interno del proceso bayesiano       & Dinámica \\
+9  & \texttt{competencia\_fp\_media}                  & Estado interno del proceso bayesiano       & Dinámica \\
+10 & \texttt{competencia\_fp\_max}                    & Estado interno del proceso bayesiano       & Dinámica \\
+11 & \texttt{posterior}                               & Estado interno del proceso bayesiano       & Dinámica \\
+12 & \texttt{entropia\_prior\_saliencia}              & Estado interno del proceso bayesiano       & Estática \\
+13 & \texttt{entropia\_prior\_modelo}                 & Estado interno del proceso bayesiano       & Estática \\
+14 & \texttt{entropia\_posterior}                     & Estado interno del proceso bayesiano       & Dinámica \\
+15 & \texttt{ganancia\_informacion}                   & Estado interno del proceso bayesiano       & Dinámica \\
+\midrule
+16 & \texttt{eig\_optimo}                             & Calidad de decisión    & Dinámica \\
+17 & \texttt{eig\_en\_fijacion}                       & Calidad de decisión    & Dinámica \\
+18 & \texttt{gap\_entropia}                           & Calidad de decisión    & Dinámica \\
+19 & \texttt{distancia\_grilla}                       & Calidad de decisión    & Dinámica \\
+20 & \texttt{distancia\_pixels}                       & Calidad de decisión    & Dinámica \\
+\midrule
+21 & \texttt{competencia\_ratio\_mayor}               & Competencia candidatos & Dinámica \\
+22 & \texttt{competencia\_ratio\_segundo\_mayor}      & Competencia candidatos & Dinámica \\
+23 & \texttt{competencia\_ratio}                      & Competencia candidatos & Dinámica \\
+24 & \texttt{competencia\_densidad}                   & Competencia candidatos & Dinámica \\
+25 & \texttt{competencia\_densidad\_norm}             & Competencia candidatos & Dinámica \\
+\bottomrule
+\end{tabular}
+\end{table}
