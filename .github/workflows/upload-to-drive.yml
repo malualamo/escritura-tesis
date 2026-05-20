@@ -17,7 +17,7 @@ jobs:
       - name: Compilar LaTeX
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: tesis/tesis.tex   # <-- cambiá por tu archivo principal
+          root_file: tesis.tex   # <-- cambiá por tu archivo principal
           latexmk_use_xelatex: false  # ponelo en true si usás xelatex
 
       - name: Autenticar con Google
