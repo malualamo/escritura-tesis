@@ -243,14 +243,27 @@ La feature se obtiene evaluando $W$ en las coordenadas de grilla de la fijación
 \end{equation}
 \end{featuredef}
 
-Sea $W_t = W[t]$ la evidencia visual en la fijación $t$, $d^2_{k(t)}$
-el mapa de visibilidad foveal y $d'_{k(t)}$ el mapa de visibilidad
-periférica, ambos centrados en $k(t) = (g_y, g_x)$. Se define la
-matriz de competencia foveal-periférica como:
+A partir del mapa de visibilidad $d_{ik(t)}$ se definen dos kernels de visibilidad:
+\begin{align}
+    d^2_{ik(t)}  &: \text{ mapa base elevado al cuadrado, de caída 
+                    rápida, que restringe la información a la región 
+                    foveal} \\
+    d'_{ik(t)} &= d^p_{ik(t)} \cdot 
+                  \frac{\max_i\left(d^2_{ik(t)}\right)}
+                       {\max_i\left(d^p_{ik(t)}\right)}, \quad p = 0.2
+\end{align}
+
+Elevar $d_{ik(t)}$ a un exponente $p < 1$ aplana la curva y ensancha 
+sus colas, permitiendo que el modelo incorpore información de objetos lejanos a la fijación. El factor de reescalado 
+$\max_i(d^2_{ik(t)})/\max_i(d^p_{ik(t)})$ fuerza a $d'_{ik(t)}$ a 
+compartir el rango de valores de $d^2_{ik(t)}$, preservando la 
+comparabilidad entre ambos kernels. El mapa de competencia 
+foveal-periférica se define entonces como:
 \begin{equation}
-    C_t = \max\left(W_t \cdot d^2_{k(t)},\; W_t \cdot d'_{k(t)}\right)
+    C_{ik(t)} = \max\!\left(W_{ik(t)} \cdot d^2_{ik(t)},\;
+                            W_{ik(t)} \cdot d'_{ik(t)}\right)
 \end{equation}
-donde la operación $\max$ se aplica elemento a elemento.
+donde el $\max$ opera elemento a elemento sobre las celdas $i$. 
 A partir de $C_t$ se calculan:
 
 \begin{featuredef}
@@ -312,11 +325,8 @@ grilla ($24 \times 32$), definido como:
 \begin{equation}
     \tilde{S} = \frac{S}{\sum_{i,j} S[i,j]}
 \end{equation}
-y sea $p[0]$ la distribución posterior en $t = 0$, normalizada como:
-\begin{equation}
-    \tilde{p}[0] = \frac{p[0]}{\sum_{i,j} p[0][i,j]}
-\end{equation}
-Las features se calculan como la entropía de Shannon de cada distribución:
+
+Las features se calculan como la entropía de Shannon de la distribución:
 
 \begin{featuredef}
 \textbf{Feature \thetcbcounter:} \texttt{entropia\_prior\_saliencia}
@@ -331,20 +341,21 @@ normalizado $\tilde{S}$. Feature estática.
 \end{equation}
 \end{featuredef}
 
-\begin{featuredef}
-\textbf{Feature \thetcbcounter:} \texttt{entropia\_prior\_modelo}
 
-\textbf{Descripción:} Entropía de Shannon del prior del modelo
-$\tilde{p}[0]$. Feature estática.
+%%\begin{featuredef}
+%% \textbf{Feature \thetcbcounter:} \texttt{entropia\_prior\_modelo}
+%% 
+%% \textbf{Descripción:} Entropía de Shannon del prior del modelo
+%% $\tilde{p}[0]$. Feature estática.
+%% 
+%% \textbf{Ecuación:}
+%% \begin{equation}
+%%     \texttt{entropia\_prior\_modelo} :=
+%%     -\sum_{i,j} \tilde{p}[0][i,j] \log \tilde{p}[0][i,j]
+%% \end{equation}
+%% \end{featuredef}
 
-\textbf{Ecuación:}
-\begin{equation}
-    \texttt{entropia\_prior\_modelo} :=
-    -\sum_{i,j} \tilde{p}[0][i,j] \log \tilde{p}[0][i,j]
-\end{equation}
-\end{featuredef}
-
-En ambos casos se añade un término de estabilidad numérica
+Se añade un término de estabilidad numérica
 $\varepsilon = 10^{-12}$ dentro del logaritmo para evitar
 indeterminaciones cuando algún valor es cero.
 
@@ -399,47 +410,22 @@ posterior, que es el criterio ELM descripto en la
 sección~\ref{sec:modelo_gonzalo}.
 
 \begin{featuredef}
-\textbf{Feature \thetcbcounter:} \texttt{eig\_optimo}
-
-\textbf{Descripción:} Ganancia de información esperada de la fijación
-óptima según el modelo, independientemente de lo que haya decidido el sujeto.
-
-\textbf{Ecuación:}
-\begin{equation}
-    \texttt{eig\_optimo} := \max_{i,j} E[t][i,j]
-\end{equation}
-\end{featuredef}
-
-\begin{featuredef}
-\textbf{Feature \thetcbcounter:} \texttt{eig\_en\_fijacion}
-
-\textbf{Descripción:} Ganancia de información esperada en la celda
-$k(t+1) = (g_y^{t+1}, g_x^{t+1})$ hacia donde efectivamente se desplazó el
-sujeto en la siguiente fijación.
-
-\textbf{Ecuación:}
-\begin{equation}
-    \texttt{eig\_en\_fijacion} := E[t][g_y^{t+1}, g_x^{t+1}]
-\end{equation}
-\end{featuredef}
-
-\begin{featuredef}
 \textbf{Feature \thetcbcounter:} \texttt{gap\_entropia}
 
-\textbf{Descripción:} Diferencia entre la ganancia óptima y la ganancia
-obtenida por el sujeto. Cuantifica la suboptimalidad de la decisión humana respecto
+\textbf{Descripción:} Diferencia entre la ganancia de información esperada
+en la fijación óptima del modelo y la obtenida en la fijación efectiva del
+sujeto en $t+1$. Cuantifica la suboptimalidad de la decisión humana respecto
 al criterio ELM.
 
 \textbf{Ecuación:}
 \begin{equation}
-    \texttt{gap\_entropia} := \texttt{eig\_optimo} -
-    \texttt{eig\_en\_fijacion}
+    \texttt{gap\_entropia} := \max_{i,j} E[t][i,j] -
+    E[t][g_y^{t+1},\, g_x^{t+1}]
 \end{equation}
 \end{featuredef}
 
-Las features \texttt{eig\_en\_fijacion} y \texttt{gap\_entropia} no
-están definidas para la última fijación de cada trial, dado que no
-existe fijación $t+1$.
+La feature \texttt{gap\_entropia} no está definida para la última
+fijación de cada trial, dado que no existe fijación $t+1$.
 
 Sea $(g_y^*, g_x^*)$ la celda óptima según el modelo en la fijación
 $t$, definida como:
@@ -488,27 +474,27 @@ del mapa $E[t]$, respectivamente:
     E^{(2)}[t] = \max_{i,j \neq \arg\max} E[t][i,j]
 \end{equation}
 
-\begin{featuredef}
-\textbf{Feature \thetcbcounter:} \texttt{competencia\_ratio\_mayor}
+%% \begin{featuredef}
+%% \textbf{Feature \thetcbcounter:} \texttt{competencia\_ratio\_mayor}
+%% 
+%% \textbf{Descripción:} Valor máximo del mapa de EIG.
+%% 
+%% \textbf{Ecuación:}
+%% \begin{equation}
+%%     \texttt{competencia\_ratio\_mayor} := E^{(1)}[t]
+%% \end{equation}
+%% \end{featuredef}
 
-\textbf{Descripción:} Valor máximo del mapa de EIG.
-
-\textbf{Ecuación:}
-\begin{equation}
-    \texttt{competencia\_ratio\_mayor} := E^{(1)}[t]
-\end{equation}
-\end{featuredef}
-
-\begin{featuredef}
-\textbf{Feature \thetcbcounter:} \texttt{competencia\_ratio\_segundo\_mayor}
-
-\textbf{Descripción:} Segundo valor más alto del mapa de EIG.
-
-\textbf{Ecuación:}
-\begin{equation}
-    \texttt{competencia\_ratio\_segundo\_mayor} := E^{(2)}[t]
-\end{equation}
-\end{featuredef}
+%% \begin{featuredef}
+%% \textbf{Feature \thetcbcounter:} \texttt{competencia\_ratio\_segundo\_mayor}
+%% 
+%% \textbf{Descripción:} Segundo valor más alto del mapa de EIG.
+%% 
+%% \textbf{Ecuación:}
+%% \begin{equation}
+%%     \texttt{competencia\_ratio\_segundo\_mayor} := E^{(2)}[t]
+%% \end{equation}
+%% \end{featuredef}
 
 \begin{featuredef}
 \textbf{Feature \thetcbcounter:} \texttt{competencia\_ratio}
@@ -577,21 +563,16 @@ de la grilla.
 10 & \texttt{competencia\_fp\_max}                    & Estado interno del proceso bayesiano       & Dinámica \\
 11 & \texttt{posterior}                               & Estado interno del proceso bayesiano       & Dinámica \\
 12 & \texttt{entropia\_prior\_saliencia}              & Estado interno del proceso bayesiano       & Estática \\
-13 & \texttt{entropia\_prior\_modelo}                 & Estado interno del proceso bayesiano       & Estática \\
-14 & \texttt{entropia\_posterior}                     & Estado interno del proceso bayesiano       & Dinámica \\
-15 & \texttt{ganancia\_informacion}                   & Estado interno del proceso bayesiano       & Dinámica \\
+13 & \texttt{entropia\_posterior}                     & Estado interno del proceso bayesiano       & Dinámica \\
+14 & \texttt{ganancia\_informacion}                   & Estado interno del proceso bayesiano       & Dinámica \\
 \midrule
-16 & \texttt{eig\_optimo}                             & Calidad de decisión    & Dinámica \\
-17 & \texttt{eig\_en\_fijacion}                       & Calidad de decisión    & Dinámica \\
-18 & \texttt{gap\_entropia}                           & Calidad de decisión    & Dinámica \\
-19 & \texttt{distancia\_grilla}                       & Calidad de decisión    & Dinámica \\
-20 & \texttt{distancia\_pixels}                       & Calidad de decisión    & Dinámica \\
+15 & \texttt{gap\_entropia}                           & Calidad de decisión    & Dinámica \\
+16 & \texttt{distancia\_grilla}                       & Calidad de decisión    & Dinámica \\
+17 & \texttt{distancia\_pixels}                       & Calidad de decisión    & Dinámica \\
 \midrule
-21 & \texttt{competencia\_ratio\_mayor}               & Competencia candidatos & Dinámica \\
-22 & \texttt{competencia\_ratio\_segundo\_mayor}      & Competencia candidatos & Dinámica \\
-23 & \texttt{competencia\_ratio}                      & Competencia candidatos & Dinámica \\
-24 & \texttt{competencia\_densidad}                   & Competencia candidatos & Dinámica \\
-25 & \texttt{competencia\_densidad\_norm}             & Competencia candidatos & Dinámica \\
+18 & \texttt{competencia\_ratio}                      & Competencia candidatos & Dinámica \\
+19 & \texttt{competencia\_densidad}                   & Competencia candidatos & Dinámica \\
+20 & \texttt{competencia\_densidad\_norm}             & Competencia candidatos & Dinámica \\
 \bottomrule
 \end{tabular}
 \end{table}

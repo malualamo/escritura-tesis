@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.10)  19 MAY 2026 22:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.10)  24 MAY 2026 04:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/malualamo/Downloads/template_tesis/tesis
-(/Users/malualamo/Downloads/template_tesis/tesis.tex
+**/Users/malualamo/Tesis/template_tesis/tesis
+(/Users/malualamo/Tesis/template_tesis/tesis.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 (./tesis.cls
@@ -451,9 +451,34 @@ Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \tcb@temp=\box76
 )
 \c@tcb@cnt@featuredef=\count339
- (/usr/local/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+ (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
+\MT@toks=\toks46
+\MT@tempbox=\box77
+\MT@count=\count340
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1084.
+LaTeX Info: Redefining \leftprotrusion on input line 1085.
+\MT@prot@toks=\toks47
+LaTeX Info: Redefining \rightprotrusion on input line 1104.
+LaTeX Info: Redefining \textls on input line 1449.
+\MT@outer@kern=\dimen291
+LaTeX Info: Redefining \microtypecontext on input line 2053.
+LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
+\MT@listname@count=\count341
+ (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2026/03/01 v3.2d Definitions specific to pdftex (RS)
+LaTeX Info: Redefining \lsstyle on input line 944.
+LaTeX Info: Redefining \lslig on input line 944.
+\MT@outer@space=\skip60
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+ (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2026/03/01 v3.2d microtype main configuration file (RS)
+)
+LaTeX Info: Redefining \microtypesetup on input line 3065.
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count340
+\l__color_backend_stack_int=\count342
 ) (./tesis.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
@@ -462,41 +487,41 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 )
 \openout1 = `tesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
  (/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count341
-\scratchdimen=\dimen291
-\scratchbox=\box77
-\nofMPsegments=\count342
-\nofMParguments=\count343
-\everyMPshowfont=\toks46
-\MPscratchCnt=\count344
-\MPscratchDim=\dimen292
-\MPnumerator=\count345
-\makeMPintoPDFobject=\count346
-\everyMPtoPDFconversion=\toks47
+\scratchcounter=\count343
+\scratchdimen=\dimen292
+\scratchbox=\box78
+\nofMPsegments=\count344
+\nofMParguments=\count345
+\everyMPshowfont=\toks48
+\MPscratchCnt=\count346
+\MPscratchDim=\dimen293
+\MPnumerator=\count347
+\makeMPintoPDFobject=\count348
+\everyMPtoPDFconversion=\toks49
 ) (/usr/local/texlive/2026/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2026/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Info: Redefining \. on input line 29.
-LaTeX Info: Redefining \% on input line 29.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -532,14 +557,37 @@ LaTeX Info: Redefining \% on input line 29.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(./caratula.tex
+LaTeX Info: Redefining \microtypecontext on input line 30.
+Package microtype Info: Applying patch `item' on input line 30.
+Package microtype Info: Applying patch `toc' on input line 30.
+Package microtype Info: Applying patch `eqnum' on input line 30.
+Package microtype Info: Applying patch `footnote' on input line 30.
+Package microtype Info: Applying patch `verbatim' on input line 30.
+LaTeX Info: Redefining \microtypesetup on input line 30.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+Package microtype Info: Patching command `\showhyphens'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
+) (./caratula.tex
 LaTeX Font Info:    Trying to load font information for U+msa on input line 9.
  (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
  (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 <logofcen.pdf, id=4, 108.405pt x 108.405pt>
 File: logofcen.pdf Graphic file (type pdf)
@@ -605,95 +653,184 @@ File: chapters/02_materiales_metodos/images/fig1_dataset_ejemplo_imagen.png Grap
 <use chapters/02_materiales_metodos/images/fig1_dataset_ejemplo_imagen.png>
 Package pdftex.def Info: chapters/02_materiales_metodos/images/fig1_dataset_ejemplo_imagen.png  used on input line 42.
 (pdftex.def)             Requested size: 234.73654pt x 177.40915pt.
-[3
+) (./chapters/02_materiales_metodos/modelo_damian.tex) (./chapters/02_materiales_metodos/modelo_gonzalo.tex [3
 
-{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]) (./chapters/02_materiales_metodos/modelo_damian.tex) (./chapters/02_materiales_metodos/modelo_gonzalo.tex
-<chapters/02_materiales_metodos/images/flujo_nnelm.png, id=69, 1889.0575pt x 1072.005pt>
+{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./chapters/02_materiales_metodos/images/fig1_dataset_ejemplo_imagen.png>]
+<chapters/02_materiales_metodos/images/flujo_nnelm.png, id=70, 1889.0575pt x 1072.005pt>
 File: chapters/02_materiales_metodos/images/flujo_nnelm.png Graphic file (type png)
 <use chapters/02_materiales_metodos/images/flujo_nnelm.png>
 Package pdftex.def Info: chapters/02_materiales_metodos/images/flujo_nnelm.png  used on input line 23.
 (pdftex.def)             Requested size: 341.43437pt x 193.75409pt.
-LaTeX Info: Redefining \. on input line 39.
-LaTeX Info: Redefining \% on input line 39.
- [4 <./chapters/02_materiales_metodos/images/fig1_dataset_ejemplo_imagen.png> <./chapters/02_materiales_metodos/images/flujo_nnelm.png>]
+LaTeX Info: Redefining \. on input line 56.
+LaTeX Info: Redefining \% on input line 56.
+ [4 <./chapters/02_materiales_metodos/images/flujo_nnelm.png>]
 
 LaTeX Warning: Marginpar on page 5 moved.
 
-LaTeX Info: Redefining \. on input line 95.
-LaTeX Info: Redefining \% on input line 95.
+LaTeX Info: Redefining \. on input line 122.
+LaTeX Info: Redefining \% on input line 122.
 [5]) (./chapters/02_materiales_metodos/extraccion_features.tex
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
+LaTeX Info: Redefining \. on input line 28.
+LaTeX Info: Redefining \% on input line 28.
  [6]
-LaTeX Info: Redefining \. on input line 68.
-LaTeX Info: Redefining \% on input line 68.
+LaTeX Info: Redefining \. on input line 91.
+LaTeX Info: Redefining \% on input line 91.
  [7]
 <chapters/02_materiales_metodos/images/ejemplo_mapas.png, id=89, 1185.42876pt x 594.22pt>
 File: chapters/02_materiales_metodos/images/ejemplo_mapas.png Graphic file (type png)
 <use chapters/02_materiales_metodos/images/ejemplo_mapas.png>
 Package pdftex.def Info: chapters/02_materiales_metodos/images/ejemplo_mapas.png  used on input line 123.
 (pdftex.def)             Requested size: 384.1096pt x 192.53891pt.
-LaTeX Info: Redefining \. on input line 127.
-LaTeX Info: Redefining \% on input line 127.
- [8]
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
- [9 <./chapters/02_materiales_metodos/images/ejemplo_mapas.png>]
-LaTeX Info: Redefining \. on input line 280.
-LaTeX Info: Redefining \% on input line 280.
- [10]
-LaTeX Info: Redefining \. on input line 365.
-LaTeX Info: Redefining \% on input line 365.
+LaTeX Info: Redefining \. on input line 144.
+LaTeX Info: Redefining \% on input line 144.
+ [8 <./chapters/02_materiales_metodos/images/ejemplo_mapas.png>]
+LaTeX Info: Redefining \. on input line 232.
+LaTeX Info: Redefining \% on input line 232.
+ [9]
+Overfull \hbox (64.43019pt too wide) detected at line 254
+[]
+ []
+
+LaTeX Info: Redefining \. on input line 318.
+LaTeX Info: Redefining \% on input line 318.
+[10]
+LaTeX Info: Redefining \. on input line 407.
+LaTeX Info: Redefining \% on input line 407.
  [11]
-LaTeX Info: Redefining \. on input line 439.
-LaTeX Info: Redefining \% on input line 439.
- [12]
-LaTeX Info: Redefining \. on input line 524.
-LaTeX Info: Redefining \% on input line 524.
- [13]) (./chapters/02_materiales_metodos/celdas_vs_pixeles.tex
+LaTeX Info: Redefining \. on input line 510.
+LaTeX Info: Redefining \% on input line 510.
+ [12]) (./chapters/02_materiales_metodos/celdas_vs_pixeles.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [14]) (./chapters/02_materiales_metodos/modelo_regresion.tex) (./chapters/02_materiales_metodos/evaluacion.tex)) (./chapters/03_analisis_features/03_analisis_features.tex
+ [13]) (./chapters/02_materiales_metodos/modelo_regresion.tex) (./chapters/02_materiales_metodos/evaluacion.tex)) (./chapters/03_analisis_features/03_analisis_features.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [15]
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [16
+ [14]
+Cap\'{\i }tulo 3.
+(./chapters/03_analisis_features/validacion_computacional.tex) (./chapters/03_analisis_features/analisis_distribucional.tex [15
 
 ]
-Cap\'{\i }tulo 3.
-(./chapters/03_analisis_features/validacion_computacional.tex) (./chapters/03_analisis_features/analisis_distribucional.tex [17]
-LaTeX Info: Redefining \. on input line 177.
-LaTeX Info: Redefining \% on input line 177.
- [18]) (./chapters/03_analisis_features/coherencia_busqueda.tex)) (./chapters/04_resultados.tex
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
+LaTeX Info: Redefining \. on input line 142.
+LaTeX Info: Redefining \% on input line 142.
+ [16]
+LaTeX Info: Redefining \. on input line 213.
+LaTeX Info: Redefining \% on input line 213.
+ [17]
+<chapters/03_analisis_features/images/violin_plot_features.png, id=125, 1719.5442pt x 424.4658pt>
+File: chapters/03_analisis_features/images/violin_plot_features.png Graphic file (type png)
+<use chapters/03_analisis_features/images/violin_plot_features.png>
+Package pdftex.def Info: chapters/03_analisis_features/images/violin_plot_features.png  used on input line 226.
+(pdftex.def)             Requested size: 554.83005pt x 136.95879pt.
+
+Overfull \hbox (5.13298pt too wide) in paragraph at lines 232--245
+\OT1/cmr/m/n/10.95 (-20) res-to pre-sen-ta asi-metr^^S^^Pa en al-gu-na di-rec-ci^^Son: las fea-tu-res \OT1/cmtt/m/n/10.95 posterior\OT1/cmr/m/n/10.95 (-20) , \OT1/cmtt/m/n/10.95 ganancia[]informacion\OT1/cmr/m/n/10.95 (-20) ,
+ []
+
+LaTeX Info: Redefining \. on input line 249.
+LaTeX Info: Redefining \% on input line 249.
+[18 <./chapters/03_analisis_features/images/violin_plot_features.png>]
+LaTeX Info: Redefining \. on input line 313.
+LaTeX Info: Redefining \% on input line 313.
  [19]
+LaTeX Info: Redefining \. on input line 348.
+LaTeX Info: Redefining \% on input line 348.
+ [20]) (./chapters/03_analisis_features/coherencia_busqueda.tex
+<chapters/03_analisis_features/images/curvas_backward_bottom_up.png, id=138, 1076.823pt x 299.6796pt>
+File: chapters/03_analisis_features/images/curvas_backward_bottom_up.png Graphic file (type png)
+<use chapters/03_analisis_features/images/curvas_backward_bottom_up.png>
+Package pdftex.def Info: chapters/03_analisis_features/images/curvas_backward_bottom_up.png  used on input line 69.
+(pdftex.def)             Requested size: 426.79135pt x 118.77225pt.
+LaTeX Info: Redefining \. on input line 73.
+LaTeX Info: Redefining \% on input line 73.
+ [21]
+<chapters/03_analisis_features/images/curvas_backward_similitud.png, id=142, 1076.823pt x 299.6796pt>
+File: chapters/03_analisis_features/images/curvas_backward_similitud.png Graphic file (type png)
+<use chapters/03_analisis_features/images/curvas_backward_similitud.png>
+Package pdftex.def Info: chapters/03_analisis_features/images/curvas_backward_similitud.png  used on input line 95.
+(pdftex.def)             Requested size: 426.79135pt x 118.77225pt.
+LaTeX Info: Redefining \. on input line 115.
+LaTeX Info: Redefining \% on input line 115.
+ [22 <./chapters/03_analisis_features/images/curvas_backward_bottom_up.png> <./chapters/03_analisis_features/images/curvas_backward_similitud.png>]
+<chapters/03_analisis_features/images/curvas_backward_estado_bayesiano.png, id=148, 1438.173pt x 594.5412pt>
+File: chapters/03_analisis_features/images/curvas_backward_estado_bayesiano.png Graphic file (type png)
+<use chapters/03_analisis_features/images/curvas_backward_estado_bayesiano.png>
+Package pdftex.def Info: chapters/03_analisis_features/images/curvas_backward_estado_bayesiano.png  used on input line 119.
+(pdftex.def)             Requested size: 426.79135pt x 176.43141pt.
+
+Overfull \hbox (2.92989pt too wide) in paragraph at lines 147--156
+[]\OT1/cmr/m/n/10.95 (-20) Este mis-mo com-por-ta-mien-to se re-fle-ja de for-ma com-ple-men-ta-ria en \OT1/cmtt/m/n/10.95 entropia[]posterior\OT1/cmr/m/n/10.95 (-20) :
+ []
+
+<chapters/03_analisis_features/images/curvas_backward_calidad_de_decision.png, id=149, 1076.823pt x 299.6796pt>
+File: chapters/03_analisis_features/images/curvas_backward_calidad_de_decision.png Graphic file (type png)
+<use chapters/03_analisis_features/images/curvas_backward_calidad_de_decision.png>
+Package pdftex.def Info: chapters/03_analisis_features/images/curvas_backward_calidad_de_decision.png  used on input line 168.
+(pdftex.def)             Requested size: 426.79135pt x 118.77225pt.
+LaTeX Info: Redefining \. on input line 172.
+LaTeX Info: Redefining \% on input line 172.
+[23 <./chapters/03_analisis_features/images/curvas_backward_estado_bayesiano.png>]
+<chapters/03_analisis_features/images/curvas_backward_competencia.png, id=154, 1076.823pt x 299.6796pt>
+File: chapters/03_analisis_features/images/curvas_backward_competencia.png Graphic file (type png)
+<use chapters/03_analisis_features/images/curvas_backward_competencia.png>
+Package pdftex.def Info: chapters/03_analisis_features/images/curvas_backward_competencia.png  used on input line 191.
+(pdftex.def)             Requested size: 426.79135pt x 118.77225pt.
+) (./chapters/03_analisis_features/fijaciones_misma_celda.tex
+LaTeX Info: Redefining \. on input line 15.
+LaTeX Info: Redefining \% on input line 15.
+ [24 <./chapters/03_analisis_features/images/curvas_backward_calidad_de_decision.png> <./chapters/03_analisis_features/images/curvas_backward_competencia.png>]
+LaTeX Info: Redefining \. on input line 73.
+LaTeX Info: Redefining \% on input line 73.
+ [25]
+Overfull \hbox (17.51031pt too wide) in paragraph at lines 74--84
+\OT1/cmr/m/n/10.95 (-20) cas): \OT1/cmtt/m/n/10.95 evidencia[]visual\OT1/cmr/m/n/10.95 (-20) , \OT1/cmtt/m/n/10.95 competencia[]fp[]var\OT1/cmr/m/n/10.95 (-20) , \OT1/cmtt/m/n/10.95 competencia[]fp[]media\OT1/cmr/m/n/10.95 (-20) , \OT1/cmtt/m/n/10.95 competencia[]fp[]max\OT1/cmr/m/n/10.95 (-20) ,
+ []
+
+
+Overfull \hbox (31.45543pt too wide) in paragraph at lines 74--84
+\OT1/cmtt/m/n/10.95 posterior\OT1/cmr/m/n/10.95 (-20) , \OT1/cmtt/m/n/10.95 entropia[]posterior\OT1/cmr/m/n/10.95 (-20) , \OT1/cmtt/m/n/10.95 ganancia[]informacion\OT1/cmr/m/n/10.95 (-20) , \OT1/cmtt/m/n/10.95 gap[]entropia \OT1/cmr/m/n/10.95 (-20) y \OT1/cmtt/m/n/10.95 competencia[]ratio\OT1/cmr/m/n/10.95 (-20) .
+ []
+
+) (./chapters/03_analisis_features/multicolinealidad.tex
+<chapters/03_analisis_features/images/bloque5_corr_heatmap.png, id=164, 1289.2968pt x 1057.0692pt>
+File: chapters/03_analisis_features/images/bloque5_corr_heatmap.png Graphic file (type png)
+<use chapters/03_analisis_features/images/bloque5_corr_heatmap.png>
+Package pdftex.def Info: chapters/03_analisis_features/images/bloque5_corr_heatmap.png  used on input line 33.
+(pdftex.def)             Requested size: 426.79135pt x 349.9146pt.
+LaTeX Info: Redefining \. on input line 39.
+LaTeX Info: Redefining \% on input line 39.
+ [26]
+Overfull \hbox (32.77434pt too wide) in paragraph at lines 40--55
+[]\OT1/cmr/m/n/10.95 (-20) Se ob-ser-van blo-ques de al-ta co-rre-la-ci^^Son in-tra-gru-po en Bottom-Up y Si-mi-li-tud: \OT1/cmtt/m/n/10.95 saliencia[]media
+ []
+
+)) (./chapters/04_resultados.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [20
+ [27 <./chapters/03_analisis_features/images/bloque5_corr_heatmap.png>]
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [28
 
 ]
 Cap\'{\i }tulo 4.
-) (./chapters/05_discusion.tex [21]
+) (./chapters/05_discusion.tex [29]
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [22
+ [30
 
 ]
 Cap\'{\i }tulo 5.
-) (./chapters/06_conclusiones.tex [23]
+) (./chapters/06_conclusiones.tex [31]
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [24
+ [32
 
 ]
 Cap\'{\i }tulo 6.
-) [25]
-LaTeX Info: Redefining \. on input line 72.
-LaTeX Info: Redefining \% on input line 72.
- [26
+) [33]
+LaTeX Info: Redefining \. on input line 73.
+LaTeX Info: Redefining \% on input line 73.
+ [34
 
 ] (./tesis.bbl) (./tesis.aux
 LaTeX Info: Redefining \. on input line 8.
@@ -707,20 +844,23 @@ L3 programming layer <2026-01-19>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 19138 strings out of 467525
- 393783 string characters out of 5418982
- 809431 words of memory out of 5000000
- 47664 multiletter control sequences out of 15000+600000
- 638860 words of font info for 83 fonts, out of 8000000 for 9000
+ 21466 strings out of 467525
+ 436755 string characters out of 5418982
+ 879455 words of memory out of 5000000
+ 49776 multiletter control sequences out of 15000+600000
+ 644630 words of font info for 179 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,10n,108p,1952b,956s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on tesis.pdf (38 pages, 8224728 bytes).
+ 99i,11n,108p,1948b,1031s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on tesis.pdf (46 pages, 9761418 bytes).
 PDF statistics:
- 233 PDF objects out of 1000 (max. 8388607)
- 149 compressed objects within 2 object streams
+ 277 PDF objects out of 1000 (max. 8388607)
+ 169 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41028 words of extra memory for PDF output out of 42996 (max. 10000000)
 
