@@ -39,7 +39,7 @@ de la media (SEM), definido como:
 donde $\sigma_t$ es el desvío estándar de los valores de la feature 
 entre los trials en la posición $t$, y $N_t$ es el número de trials. 
 
-Se excluye del análisis a \texttt{entropia\_prior\_saliencia} por ser estática a lo largo de las fijaciones de un mismo trial.
+Se excluye del análisis a \feat{entropia\_prior\_saliencia} por ser estática a lo largo de las fijaciones de un mismo trial.
 
 \begin{tcolorbox}[
   title=Aclaración sobre el índice temporal,
@@ -71,7 +71,7 @@ target mismo.
     \label{fig:temporal_bottomup}
 \end{figure}
 
-Las features \texttt{saliencia\_media} y \texttt{saliencia\_mediana} 
+Las features \feat{saliencia\_media} y \feat{saliencia\_mediana} 
 presentan una tendencia decreciente a lo largo de las últimas fijaciones 
 del trial. Esto indica que a medida que el trial avanza 
 hacia su final, los sujetos tienden a fijar zonas de menor saliencia 
@@ -81,7 +81,7 @@ los trials con target no encontrado, los valores son sistemáticamente
 más bajos que en los trials con target encontrado a lo largo de toda 
 la ventana analizada, con una tendencia decreciente similar.
 
-La feature \texttt{saliencia\_pixel} no muestra una tendencia temporal 
+La feature \feat{saliencia\_pixel} no muestra una tendencia temporal 
 clara, con bandas de 
 error amplias que se solapan entre condiciones en la mayor parte de la 
 ventana. Esto es coherente con su naturaleza puntual: el valor en el 
@@ -93,12 +93,12 @@ completa.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{chapters/03_analisis_features/images/curvas_backward_similitud.png}
-    \caption{Evolución temporal de las features de información bottom-up.}
+    \caption{Evolución temporal de las features de similitud con el target.}
     \label{fig:temporal_similitud}
 \end{figure}
 
 En los trials con target encontrado, 
-\texttt{similitud\_media} y \texttt{similitud\_mediana} permanecen 
+\feat{similitud\_media} y \feat{similitud\_mediana} permanecen 
 relativamente estables hasta $t=-2$, y luego exhiben un 
 incremento pronunciado hacia $t = 0$. Este incremento indica que 
 en la fijación inmediatamente anterior a la detección del target el 
@@ -109,7 +109,7 @@ En contraste, en los trials con target no encontrado ambas features
 permanecen estables y en niveles más bajos a lo largo de toda la 
 ventana, sin ningún incremento hacia el final. 
 
-\texttt{similitud\_pixel} muestra el mismo patrón cualitativo pero 
+\feat{similitud\_pixel} muestra el mismo patrón cualitativo pero 
 con mayor ruido, consistente con su naturaleza puntual.
 
 \subsubsection{Estado interno del proceso bayesiano}
@@ -117,11 +117,11 @@ con mayor ruido, consistente con su naturaleza puntual.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{chapters/03_analisis_features/images/curvas_backward_estado_bayesiano.png}
-    \caption{Evolución temporal de las features de información bottom-up.}
+    \caption{Evolución temporal de las features del estado interno del proceso bayesiano.}
     \label{fig:temporal_estado_bayesiano}
 \end{figure}
 
-\texttt{evidencia\_visual} permanece estable durante 
+\feat{evidencia\_visual} permanece estable durante 
 la mayor parte de la ventana en ambas condiciones, con un incremento 
 hacia valores menos negativos exclusivamente en $t = 0$ para los trials 
 con target encontrado. Este incremento refleja que en la fijación 
@@ -129,14 +129,14 @@ previa a la detección el sujeto se encuentra sobre una zona con alta
 similitud con el target, generando una evidencia visual positiva.
 
 Las features de competencia foveal-periférica muestran patrones 
-distintos entre sí. \texttt{competencia\_fp\_media} y 
-\texttt{competencia\_fp\_max} permanecen estables durante la mayor 
+distintos entre sí. \feat{competencia\_fp\_media} y 
+\feat{competencia\_fp\_max} permanecen estables durante la mayor 
 parte del trial y exhiben un incremento abrupto exclusivamente en 
 $t = 0$ para los trials con target encontrado, mientras que en los 
 trials sin target permanecen prácticamente constantes a lo largo de 
-toda la ventana. Para \texttt{competencia\_fp\_var}, no se observa una tendencia clara en los trials sin target.
+toda la ventana. Para \feat{competencia\_fp\_var}, no se observa una tendencia clara en los trials sin target.
 
-Para la \texttt{posterior} en los trials con target encontrado permanece 
+Para la \feat{posterior} en los trials con target encontrado permanece 
 cercana a cero hasta aproximadamente $t = -3$, momento a partir del 
 cual comienza a crecer aceleradamente. Este crecimiento refleja la 
 concentración progresiva de la distribución posterior en la celda 
@@ -145,7 +145,7 @@ fijaciones del trial. En los trials sin target, la posterior permanece
 cercana a cero sin ninguna tendencia creciente.
 
 Este mismo comportamiento se refleja de forma complementaria en 
-\texttt{entropia\_posterior}: en los trials con target encontrado 
+\feat{entropia\_posterior}: en los trials con target encontrado 
 parte de valores altos y decrece 
 aceleradamente hacia valores cercanos a cero en $t = 0$, mientras 
 que en los trials sin target permanece elevada y estable durante 
@@ -154,7 +154,7 @@ cae; cuando la posterior permanece difusa, la entropía se mantiene
 alta. Ambas features capturan así la misma dinámica bayesiana desde 
 perspectivas complementarias.
 
-\texttt{ganancia\_informacion} permanece estable y baja en ambas 
+\feat{ganancia\_informacion} permanece estable y baja en ambas 
 condiciones durante la mayor parte de la ventana, con un incremento 
 pronunciado en $t = 0$ exclusivamente para los trials con target 
 encontrado. Esto refleja que la fijación previa a la detección 
@@ -166,7 +166,7 @@ genera la mayor actualización bayesiana del trial.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{chapters/03_analisis_features/images/curvas_backward_calidad_de_decision.png}
-    \caption{Evolución temporal de las features de información bottom-up.}
+    \caption{Evolución temporal de las features de calidad de la decisión.}
     \label{fig:temporal_calidad_decision}
 \end{figure}
 
@@ -175,9 +175,9 @@ consistentes entre sí. Dado que estas features no están definidas
 para la última fijación de cada trial, las curvas finalizan en 
 $t = -1$.
 
-\texttt{gap\_entropia} PENDIENTE!!!
+\feat{gap\_entropia} PENDIENTE!!!
 
-En \texttt{distancia\_grilla} y \texttt{distancia\_pixels} se observa como en los trials con target encontrado, la distancia 
+En \feat{distancia\_grilla} y \feat{distancia\_pixels} se observa como en los trials con target encontrado, la distancia 
 entre la fijación del sujeto y la predicción del modelo decrece 
 progresivamente hacia el final del trial, indicando que las fijaciones 
 del sujeto se acercan espacialmente a la predicción del modelo. En 
@@ -195,8 +195,8 @@ la ventana.
 
 
 Las tres features de competencia muestran una dinámica similar. En 
-los trials con target encontrado, \texttt{competencia\_densidad} y 
-\texttt{competencia\_densidad\_norm} presentan valores relativamente 
+los trials con target encontrado, \feat{competencia\_densidad} y 
+\feat{competencia\_densidad\_norm} presentan valores relativamente 
 estables, seguidos de un descenso pronunciado en $t = 0$. Este descenso indica que en las fijaciones 
 previas a la detección del target el mapa EIG tiende a concentrarse 
 en un único candidato dominante, lo que refleja que el modelo ha 
@@ -204,7 +204,7 @@ reducido su incertidumbre sobre la localización del target.
 
 En los trials sin target, las tres features permanecen estables y 
 en niveles más bajos que en los trials exitosos durante toda la 
-ventana. \texttt{competencia\_ratio} muestra bandas de error 
+ventana. \feat{competencia\_ratio} muestra bandas de error 
 solapadas entre condiciones durante la mayor parte de la ventana, 
 consistente con su baja variabilidad global ya observada en el 
 análisis distribucional.

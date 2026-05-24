@@ -11,3 +11,33 @@
 %    de Damián (problema de celdas vs. píxeles y sincronización).
 % 3. Incorporar las features al modelo de regresión EEG y evaluar su
 %    contribución con criterios de selección de modelos.
+
+El modelo \textit{nnELM} genera, en cada ciclo fijación por fijación, un conjunto de mapas que representan distintos aspectos del proceso de búsqueda: el prior espacial provisto por DeepGaze II, el mapa de similitud con el target generado por ResNet, el mapa de visibilidad periférica, y el posterior bayesiano resultante de integrar esa evidencia de forma acumulativa a lo largo del scanpath. Por otro lado, el framework de TRFs por regresión regularizada permite estimar, a partir de la señal EEG continua registrada con los movimientos oculares, la contribución de predictores definidos a nivel de fijación a la respuesta neural. Esto abre una pregunta que articula ambas líneas de investigación:
+
+\begin{tcolorbox}[
+    colback=gray!10,
+    colframe=black!60,
+    boxrule=0.8pt,
+    arc=4pt,
+    left=10pt, right=10pt, top=8pt, bottom=8pt
+]
+\textit{Dado que contamos con los mapas generados por el modelo nnELM y con el framework de análisis de TRFs, ¿es posible diseñar y extraer features a nivel de fijación a partir de dichos mapas que tengan correlatos en la señal EEG registrada durante una tarea de búsqueda visual híbrida?}
+\end{tcolorbox}
+
+\noindent Esta pregunta es relevante tanto desde el punto de vista teórico: permitiría identificar qué aspectos del proceso de búsqueda computacionalmente definido se manifiestan en la actividad neural, como desde el metodológico: implica compatibilizar dos pipelines con distintos criterios de preprocesamiento y distintas resoluciones espaciales (el modelo opera sobre una grilla de celdas; el algoritmo de fijaciones EEG opera píxel a píxel).
+
+\medskip
+\noindent Para abordarla, se plantean tres objetivos específicos:
+
+\begin{enumerate}
+
+    \item \textbf{Diseño, extracción y validación de features del modelo \textit{nnELM} sobre el dataset HSEM.}
+    Diseñar features a nivel de fijación a partir de los mapas generados por el modelo, aplicarlo sobre los scanpaths del dataset HSEM y extraer dichas features para cada fijación. Validar su distribución, coherencia con las condiciones experimentales y su comportamiento a lo largo de la progresión del trial.
+
+    \item \textbf{Compatibilización de los pipelines de movimientos oculares y EEG.}
+    Dado que el modelo \textit{nnELM} opera sobre la representación en celdas de la escena, y que el pipeline de EEG utiliza los timestamps de fijaciones detectados por un algoritmo distinto, es necesario resolver el problema de alineación entre ambos conjuntos de fijaciones. Esto incluye definir una estrategia de asignación de las features del modelo a las fijaciones del análisis EEG, y analizar los casos en que múltiples fijaciones consecutivas corresponden a la misma celda del modelo.
+
+    \item \textbf{Evaluación de la contribución de las features a la predicción de la señal EEG.}
+    Incorporar las features del \textit{nnELM} como predictores adicionales en el modelo de regresión regularizada, siguiendo el esquema de crecimiento gradual de complejidad de \todo{cita}. Evaluar su contribución mediante $\Delta$AIC con grados de libertad efectivos de Ridge, diagnosticar la multicolinealidad con VIF, y determinar la significancia estadística de los efectos mediante TFCE.
+
+\end{enumerate}

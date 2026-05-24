@@ -38,25 +38,25 @@ pertenencia.
 \end{figure}
 
 Se observan bloques de alta correlación 
-intragrupo en Bottom-Up y Similitud: \texttt{saliencia\_media} y 
-\texttt{saliencia\_mediana} presentan $\rho = 1.00$, y 
-\texttt{similitud\_media} y \texttt{similitud\_mediana} presentan 
+intragrupo en Bottom-Up y Similitud: \feat{saliencia\_media} y 
+\feat{saliencia\_mediana} presentan $\rho = 1.00$, y 
+\feat{similitud\_media} y \feat{similitud\_mediana} presentan 
 $\rho = 0.99$. Estas correlaciones son esperables dado que ambas 
 features de cada par fueron diseñadas como resúmenes alternativos 
 de la misma información espacial y se incluyeron por separado 
 con el objetivo de evaluar su performance individual en el modelo. 
 Lo mismo ocurre dentro del grupo de Competencia: 
-\texttt{competencia\_densidad} y \texttt{competencia\_densidad\_norm} 
+\feat{competencia\_densidad} y \feat{competencia\_densidad\_norm} 
 presentan $\rho = 1.00$ por ser transformaciones lineales entre sí, 
 y ambas muestran una correlación moderada con 
-\texttt{competencia\_ratio} ($\rho = 0.85$), también esperable dado 
+\feat{competencia\_ratio} ($\rho = 0.85$), también esperable dado 
 que las tres cuantifican distintos aspectos de la misma estructura 
 del mapa EIG.
 
 En segundo lugar, se observan correlaciones altas entre grupos que 
 no fueron anticipadas en el diseño de las features. 
-\texttt{entropia\_posterior} y \texttt{gap\_entropia} presentan 
+\feat{entropia\_posterior} y \feat{gap\_entropia} presentan 
 una correlación negativa de $\rho = -0.79$, y 
-\texttt{ganancia\_informacion} y \texttt{gap\_entropia} presentan 
+\feat{ganancia\_informacion} y \feat{gap\_entropia} presentan 
 una correlación positiva de $\rho = 0.69$. 
 

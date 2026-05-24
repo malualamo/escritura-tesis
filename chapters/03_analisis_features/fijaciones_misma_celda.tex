@@ -35,36 +35,36 @@ consecutivas que caen en la misma celda ($N = 2.908$ pares).}
 \toprule
 \textbf{Feature} & \textbf{Idénticas} & \textbf{Distintas} & \textbf{\% idénticas} \\
 \midrule
-\texttt{saliencia\_media}               & 2.908 & 0     & 100.0\% \\
-\texttt{saliencia\_mediana}             & 2.908 & 0     & 100.0\% \\
-\texttt{similitud\_media}               & 2.908 & 0     & 100.0\% \\
-\texttt{similitud\_mediana}             & 2.908 & 0     & 100.0\% \\
-\texttt{entropia\_prior\_saliencia}     & 2.908 & 0     & 100.0\% \\
+\feat{saliencia\_media}               & 2.908 & 0     & 100.0\% \\
+\feat{saliencia\_mediana}             & 2.908 & 0     & 100.0\% \\
+\feat{similitud\_media}               & 2.908 & 0     & 100.0\% \\
+\feat{similitud\_mediana}             & 2.908 & 0     & 100.0\% \\
+\feat{entropia\_prior\_saliencia}     & 2.908 & 0     & 100.0\% \\
 \midrule
-\texttt{competencia\_densidad}          & 1.943 & 965   & 66.8\%  \\
-\texttt{competencia\_densidad\_norm}    & 1.943 & 965   & 66.8\%  \\
-\texttt{saliencia\_pixel}               & 1.596 & 1.312 & 54.9\%  \\
-\texttt{similitud\_pixel}               & 1.101 & 1.807 & 37.9\%  \\
-\texttt{distancia\_grilla}              & 197   & 2.711 & 6.8\%   \\
-\texttt{distancia\_pixels}              & 197   & 2.711 & 6.8\%   \\
-\texttt{gap\_entropia}                  & 24    & 2.884 & 0.8\%   \\
+\feat{competencia\_densidad}          & 1.943 & 965   & 66.8\%  \\
+\feat{competencia\_densidad\_norm}    & 1.943 & 965   & 66.8\%  \\
+\feat{saliencia\_pixel}               & 1.596 & 1.312 & 54.9\%  \\
+\feat{similitud\_pixel}               & 1.101 & 1.807 & 37.9\%  \\
+\feat{distancia\_grilla}              & 197   & 2.711 & 6.8\%   \\
+\feat{distancia\_pixels}              & 197   & 2.711 & 6.8\%   \\
+\feat{gap\_entropia}                  & 24    & 2.884 & 0.8\%   \\
 \midrule
-\texttt{evidencia\_visual}              & 0     & 2.908 & 0.0\%   \\
-\texttt{competencia\_fp\_var}           & 0     & 2.908 & 0.0\%   \\
-\texttt{competencia\_fp\_media}         & 0     & 2.908 & 0.0\%   \\
-\texttt{competencia\_fp\_max}           & 0     & 2.908 & 0.0\%   \\
-\texttt{posterior}                      & 0     & 2.908 & 0.0\%   \\
-\texttt{entropia\_posterior}            & 0     & 2.908 & 0.0\%   \\
-\texttt{ganancia\_informacion}          & 0     & 2.908 & 0.0\%   \\
-\texttt{competencia\_ratio}             & 0     & 2.908 & 0.0\%   \\
+\feat{evidencia\_visual}              & 0     & 2.908 & 0.0\%   \\
+\feat{competencia\_fp\_var}           & 0     & 2.908 & 0.0\%   \\
+\feat{competencia\_fp\_media}         & 0     & 2.908 & 0.0\%   \\
+\feat{competencia\_fp\_max}           & 0     & 2.908 & 0.0\%   \\
+\feat{posterior}                      & 0     & 2.908 & 0.0\%   \\
+\feat{entropia\_posterior}            & 0     & 2.908 & 0.0\%   \\
+\feat{ganancia\_informacion}          & 0     & 2.908 & 0.0\%   \\
+\feat{competencia\_ratio}             & 0     & 2.908 & 0.0\%   \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 El primer grupo corresponde a las features con valores idénticos en 
-el $100\%$ de los pares: \texttt{saliencia\_media}, 
-\texttt{saliencia\_mediana}, \texttt{similitud\_media}, 
-\texttt{similitud\_mediana} y \texttt{entropia\_prior\_saliencia}. 
+el $100\%$ de los pares: \feat{saliencia\_media}, 
+\feat{saliencia\_mediana}, \feat{similitud\_media}, 
+\feat{similitud\_mediana} y \feat{entropia\_prior\_saliencia}. 
 Estas features dependen únicamente de la celda y de la imagen, por 
 lo que dos fijaciones en la misma celda reciben necesariamente el 
 mismo valor. Este comportamiento es esperable y no representa un 
@@ -72,28 +72,28 @@ problema metodológico, sino una consecuencia directa de su naturaleza
 estática.
 
 El segundo grupo corresponde a las features con valores siempre 
-distintos ($0\%$ de idénticas): \texttt{evidencia\_visual}, 
-\texttt{competencia\_fp\_var}, \texttt{competencia\_fp\_media}, 
-\texttt{competencia\_fp\_max}, \texttt{posterior}, 
-\texttt{entropia\_posterior}, \texttt{ganancia\_informacion}, 
-\texttt{gap\_entropia} y \texttt{competencia\_ratio}. Para estas 
+distintos ($0\%$ de idénticas): \feat{evidencia\_visual}, 
+\feat{competencia\_fp\_var}, \feat{competencia\_fp\_media}, 
+\feat{competencia\_fp\_max}, \feat{posterior}, 
+\feat{entropia\_posterior}, \feat{ganancia\_informacion}, 
+\feat{gap\_entropia} y \feat{competencia\_ratio}. Para estas 
 features, los mapas internos del modelo nnELM se actualizan en 
 cada fijación independientemente de la celda visitada, por lo que 
 dos fijaciones consecutivas en la misma celda producen valores 
 distintos.
 
 El tercer grupo corresponde a features con comportamiento intermedio, 
-que merecen una explicación particular. \texttt{saliencia\_pixel} 
-($54.9\%$) y \texttt{similitud\_pixel} ($37.9\%$) dependen del 
+que merecen una explicación particular. \feat{saliencia\_pixel} 
+($54.9\%$) y \feat{similitud\_pixel} ($37.9\%$) dependen del 
 píxel exacto de fijación dentro de la celda: dos fijaciones en la 
 misma celda pueden caer en píxeles distintos y recibir valores 
 distintos, o en el mismo píxel y recibir valores idénticos. 
-\texttt{competencia\_densidad} y \texttt{competencia\_densidad\_norm} 
+\feat{competencia\_densidad} y \feat{competencia\_densidad\_norm} 
 presentan un $66.8\%$ de valores idénticos no por ser estáticas sino 
 por su distribución discreta: dado que la mediana es $1$ y el Q75 
 es $2$, es frecuente que dos fijaciones consecutivas tengan el mismo 
-valor por coincidencia. Finalmente, \texttt{distancia\_grilla} y 
-\texttt{distancia\_pixels} presentan un $6.8\%$ de valores idénticos, 
+valor por coincidencia. Finalmente, \feat{distancia\_grilla} y 
+\feat{distancia\_pixels} presentan un $6.8\%$ de valores idénticos, 
 correspondientes a los casos en que el modelo predice la misma celda 
 óptima en dos fijaciones consecutivas.
 

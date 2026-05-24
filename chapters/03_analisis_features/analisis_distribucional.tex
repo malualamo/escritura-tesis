@@ -39,7 +39,7 @@ Las features de información bottom-up se encuentran sesgadas a la derecha, con 
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{lrrr}
 \toprule
- & \texttt{saliencia\_media} & \texttt{saliencia\_mediana} & \texttt{saliencia\_pixel} \\
+ & \feat{saliencia\_media} & \feat{saliencia\_mediana} & \feat{saliencia\_pixel} \\
 \midrule
 count & 61252 & 61252 & 61252 \\
 mean  & 0.1046 & 0.1004 & 0.0449 \\
@@ -66,7 +66,7 @@ Al igual que las features de información bottom-up, las features de informació
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{lrrr}
 \toprule
- & \texttt{similitud\_media} & \texttt{similitud\_mediana} & \texttt{similitud\_pixel} \\
+ & \feat{similitud\_media} & \feat{similitud\_mediana} & \feat{similitud\_pixel} \\
 \midrule
 count & 61252 & 61252 & 61252 \\
 mean  & 0.0910 & 0.0835 & 0.0334 \\
@@ -84,7 +84,7 @@ max   & 0.8268 & 0.8353 & 0.9490 \\
 
 \todo{Pendiente: análisis de las features de competencia fp}
 
-La feature \texttt{posterior} es la que presenta mayor sesgo de todo el conjunto. Su distribución se encuentra extremadamente concentrada cerca de cero, con una cola muy larga hacia valores altos. Esto es esperable dado el funcionamiento del modelo bayesiano nnELM: en cada fijación, la probabilidad asignada a la celda fijada es muy pequeña, salvo en las fijaciones finales cuando la posterior se concentra en torno al target. La concentración de \texttt{posterior} hacia el final del trial se analiza en la sección~\ref{sec:coherencia_busqueda}.
+La feature \feat{posterior} es la que presenta mayor sesgo de todo el conjunto. Su distribución se encuentra extremadamente concentrada cerca de cero, con una cola muy larga hacia valores altos. Esto es esperable dado el funcionamiento del modelo bayesiano nnELM: en cada fijación, la probabilidad asignada a la celda fijada es muy pequeña, salvo en las fijaciones finales cuando la posterior se concentra en torno al target. La concentración de \feat{posterior} hacia el final del trial se analiza en la sección~\ref{sec:coherencia_busqueda}.
 
 \begin{table}[H]
 \centering
@@ -96,7 +96,7 @@ La feature \texttt{posterior} es la que presenta mayor sesgo de todo el conjunto
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{lrrrrr}
 \toprule
- & \texttt{evidencia\_visual} & \texttt{competencia\_fp\_var} & \texttt{competencia\_fp\_media} & \texttt{competencia\_fp\_max} & \texttt{posterior} \\
+ & \feat{evidencia\_visual} & \feat{competencia\_fp\_var} & \feat{competencia\_fp\_media} & \feat{competencia\_fp\_max} & \feat{posterior} \\
 \midrule
 count & 61252    & 61252   & 61252    & 61252         & 61252        \\
 mean  & $-3.36$  & 4.60    & $-0.195$ & 4.83          & 0.0152       \\
@@ -111,11 +111,11 @@ max   & 8.44     & 13.6    & 0.298    & 74.2          & 1.00         \\
 }
 \end{table}
 
-La distribución de \texttt{entropia\_prior\_saliencia} es estrecha (std $= 0.447$), lo que indica que las imágenes del dataset presentan una complejidad visual similar entre sí. El valor máximo para una distribución uniforme sobre la grilla de $24 \times 32 = 768$ celdas es $\log(768) \approx 6.64$; dado que la media se ubica en $5.45$, los mapas de saliencia presentan siempre cierta estructura espacial, sin ser completamente uniformes ni extremadamente concentrados.
+La distribución de \feat{entropia\_prior\_saliencia} es estrecha (std $= 0.447$), lo que indica que las imágenes del dataset presentan una complejidad visual similar entre sí. El valor máximo para una distribución uniforme sobre la grilla de $24 \times 32 = 768$ celdas es $\log(768) \approx 6.64$; dado que la media se ubica en $5.45$, los mapas de saliencia presentan siempre cierta estructura espacial, sin ser completamente uniformes ni extremadamente concentrados.
 
-Por otro lado, la mediana de \texttt{entropia\_posterior} se ubica en $6.10$, lo que indica una posterior casi uniforme sobre la grilla en la mayoría de las fijaciones. La evolución de esta feature a lo largo del trial se examina en la sección~\ref{sec:coherencia_busqueda}.
+Por otro lado, la mediana de \feat{entropia\_posterior} se ubica en $6.10$, lo que indica una posterior casi uniforme sobre la grilla en la mayoría de las fijaciones. La evolución de esta feature a lo largo del trial se examina en la sección~\ref{sec:coherencia_busqueda}.
 
-La distribución de \texttt{ganancia\_informacion} está fuertemente sesgada a la derecha (mediana $= 0.052$, media $= 0.214$, máximo $= 5.90$), lo que indica que la mayoría de las fijaciones aportan poca información sobre la localización del target. Se analiza si las fijaciones con ganancia alta se concentran hacia el final del trial en la sección~\ref{sec:coherencia_busqueda}.
+La distribución de \feat{ganancia\_informacion} está fuertemente sesgada a la derecha (mediana $= 0.052$, media $= 0.214$, máximo $= 5.90$), lo que indica que la mayoría de las fijaciones aportan poca información sobre la localización del target. Se analiza si las fijaciones con ganancia alta se concentran hacia el final del trial en la sección~\ref{sec:coherencia_busqueda}.
 
 \begin{table}[H]
 \centering
@@ -126,7 +126,7 @@ La distribución de \texttt{ganancia\_informacion} está fuertemente sesgada a l
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{lrrr}
 \toprule
- & \texttt{entropia\_prior\_saliencia} & \texttt{entropia\_posterior} & \texttt{ganancia\_informacion} \\
+ & \feat{entropia\_prior\_saliencia} & \feat{entropia\_posterior} & \feat{ganancia\_informacion} \\
 \midrule
 count & 61252 & 61252   & 56751   \\
 mean  & 5.45  & 5.35    & 0.214   \\
@@ -142,7 +142,7 @@ max   & 6.15  & 6.58    & 5.90    \\
 
 \subsubsection{Calidad de la decisión}
 
-La feature \texttt{gap\_entropia} cuantifica la diferencia entre la ganancia
+La feature \feat{gap\_entropia} cuantifica la diferencia entre la ganancia
 de información esperada en la fijación óptima según el modelo y la ganancia
 correspondiente a la fijación efectivamente realizada por el sujeto. Su
 distribución presenta un marcado sesgo a la derecha: la mediana es $0.262$
@@ -154,13 +154,13 @@ criterio ELM. En conjunto, la distribución revela una suboptimalidad
 sistemática: los sujetos no siguen la estrategia de minimización de
 entropía que prescribe el modelo. \todo{esto es esperable? Buscar y citar}
 
-Las features \texttt{distancia\_grilla} (mediana $= 9.43$ celdas) y
-\texttt{distancia\_pixels} (mediana $= 302$ px) complementan este análisis
+Las features \feat{distancia\_grilla} (mediana $= 9.43$ celdas) y
+\feat{distancia\_pixels} (mediana $= 302$ px) complementan este análisis
 desde una perspectiva espacial. Dado que la grilla tiene $32$ columnas,
 una distancia mediana de $9.43$ celdas equivale casi a un tercio del ancho
 de la imagen, indicando que la mayoría de las fijaciones se encuentran
 a una distancia considerable del óptimo, coherente con el análisis de
-\texttt{gap\_entropia}.
+\feat{gap\_entropia}.
 
 \begin{table}[H]
 \centering
@@ -171,7 +171,7 @@ a una distancia considerable del óptimo, coherente con el análisis de
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{lrrr}
 \toprule
- & \texttt{gap\_entropia} & \texttt{distancia\_grilla} & \texttt{distancia\_pixels} \\
+ & \feat{gap\_entropia} & \feat{distancia\_grilla} & \feat{distancia\_pixels} \\
 \midrule
 count & 56751  & 56751  & 56751  \\
 mean  & 0.711  & 9.91   & 317    \\
@@ -187,7 +187,7 @@ max   & 4.48   & 31.8   & 1016   \\
 
 \subsubsection{Competencia entre candidatos}
 
-La feature \texttt{competencia\_ratio} presenta una baja variabilidad relativa (std $= 0.056$, media $= 0.927$), lo que indica que casi siempre el segundo mejor candidato alcanza entre el $89\%$ y el $97\%$ del valor del mejor candidato. En otras palabras, el mapa EIG rara vez tiene un único ganador claro: casi siempre hay competencia entre candidatos.
+La feature \feat{competencia\_ratio} presenta una baja variabilidad relativa (std $= 0.056$, media $= 0.927$), lo que indica que casi siempre el segundo mejor candidato alcanza entre el $89\%$ y el $97\%$ del valor del mejor candidato. En otras palabras, el mapa EIG rara vez tiene un único ganador claro: casi siempre hay competencia entre candidatos.
 
 \begin{table}[H]
 \centering
@@ -198,7 +198,7 @@ La feature \texttt{competencia\_ratio} presenta una baja variabilidad relativa (
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{lrrr}
 \toprule
- & \texttt{competencia\_ratio} & \texttt{competencia\_densidad} & \texttt{competencia\_densidad\_norm} \\
+ & \feat{competencia\_ratio} & \feat{competencia\_densidad} & \feat{competencia\_densidad\_norm} \\
 \midrule
 count & 61252  & 61252  & 61252   \\
 mean  & 0.927  & 1.79   & 0.00233 \\
@@ -232,15 +232,15 @@ indican la mediana y los cuartiles Q1 y Q3 de la distribución.
 El análisis de los violinplots permite identificar patrones 
 distribucionales relevantes que complementan los estadísticos 
 descriptivos de las tablas anteriores. Se observan las diferencias en la forma de las 
-distribuciones. Las features \texttt{evidencia\_visual} y 
-\texttt{competencia\_fp\_media} son las únicas con distribuciones 
+distribuciones. Las features \feat{evidencia\_visual} y 
+\feat{competencia\_fp\_media} son las únicas con distribuciones 
 aproximadamente simétricas. El resto presenta asimetría en alguna 
-dirección: las features \texttt{posterior}, \texttt{ganancia\_informacion}, 
-\texttt{competencia\_fp\_max}, \texttt{gap\_entropia} y 
-\texttt{competencia\_densidad} muestran una cola pronunciada hacia 
+dirección: las features \feat{posterior}, \feat{ganancia\_informacion}, 
+\feat{competencia\_fp\_max}, \feat{gap\_entropia} y 
+\feat{competencia\_densidad} muestran una cola pronunciada hacia 
 valores positivos, con masa concentrada en valores bajos y eventos 
-raros de valores altos. En sentido contrario, \texttt{entropia\_posterior} 
-y \texttt{competencia\_ratio} presentan una cola hacia valores negativos, 
+raros de valores altos. En sentido contrario, \feat{entropia\_posterior} 
+y \feat{competencia\_ratio} presentan una cola hacia valores negativos, 
 con la masa concentrada en la parte alta de su rango.
 
 \subsection{Mirada por sujeto}
@@ -287,37 +287,37 @@ within-subject.
 \toprule
 \textbf{Feature} & $\widetilde{\sigma}_f$ & $\widetilde{CV}_f$ & \textbf{Categoría} \\
 \midrule
-\texttt{competencia\_ratio}           & 0.0558  & 0.060 & Competencia       \\
-\texttt{entropia\_prior\_saliencia}   & 0.4461  & 0.082 & Est.\ Bayesiano   \\
-\texttt{entropia\_posterior}          & 1.6322  & 0.304 & Est.\ Bayesiano   \\
-\texttt{competencia\_fp\_var}         & 1.5731  & 0.342 & Est.\ Bayesiano   \\
-\texttt{competencia\_fp\_media}       & 0.0811  & 0.416 & Est.\ Bayesiano   \\
-\texttt{distancia\_pixels}            & 191.399 & 0.603 & Cal.\ Decisión    \\
-\texttt{distancia\_grilla}            & 5.9812  & 0.603 & Cal.\ Decisión    \\
-\texttt{evidencia\_visual}            & 2.2432  & 0.647 & Est.\ Bayesiano   \\
-\texttt{competencia\_densidad}        & 1.4914  & 0.822 & Competencia       \\
-\texttt{competencia\_densidad\_norm}  & 0.0019  & 0.822 & Competencia       \\
-\texttt{similitud\_media}             & 0.1150  & 1.278 & Similitud         \\
-\texttt{saliencia\_media}             & 0.1416  & 1.333 & Bottom-Up         \\
-\texttt{similitud\_mediana}           & 0.1137  & 1.369 & Similitud         \\
-\texttt{saliencia\_mediana}           & 0.1397  & 1.372 & Bottom-Up         \\
-\texttt{gap\_entropia}                & 1.0026  & 1.469 & Cal.\ Decisión    \\
-\texttt{ganancia\_informacion}        & 0.4512  & 2.111 & Est.\ Bayesiano   \\
-\texttt{saliencia\_pixel}             & 0.0959  & 2.123 & Bottom-Up         \\
-\texttt{competencia\_fp\_max}         & 9.9494  & 2.132 & Est.\ Bayesiano   \\
-\texttt{similitud\_pixel}             & 0.0718  & 2.133 & Similitud         \\
-\texttt{posterior}                    & 0.0874  & 6.468 & Est.\ Bayesiano   \\
+\feat{competencia\_ratio}           & 0.0558  & 0.060 & Competencia       \\
+\feat{entropia\_prior\_saliencia}   & 0.4461  & 0.082 & Est.\ Bayesiano   \\
+\feat{entropia\_posterior}          & 1.6322  & 0.304 & Est.\ Bayesiano   \\
+\feat{competencia\_fp\_var}         & 1.5731  & 0.342 & Est.\ Bayesiano   \\
+\feat{competencia\_fp\_media}       & 0.0811  & 0.416 & Est.\ Bayesiano   \\
+\feat{distancia\_pixels}            & 191.399 & 0.603 & Cal.\ Decisión    \\
+\feat{distancia\_grilla}            & 5.9812  & 0.603 & Cal.\ Decisión    \\
+\feat{evidencia\_visual}            & 2.2432  & 0.647 & Est.\ Bayesiano   \\
+\feat{competencia\_densidad}        & 1.4914  & 0.822 & Competencia       \\
+\feat{competencia\_densidad\_norm}  & 0.0019  & 0.822 & Competencia       \\
+\feat{similitud\_media}             & 0.1150  & 1.278 & Similitud         \\
+\feat{saliencia\_media}             & 0.1416  & 1.333 & Bottom-Up         \\
+\feat{similitud\_mediana}           & 0.1137  & 1.369 & Similitud         \\
+\feat{saliencia\_mediana}           & 0.1397  & 1.372 & Bottom-Up         \\
+\feat{gap\_entropia}                & 1.0026  & 1.469 & Cal.\ Decisión    \\
+\feat{ganancia\_informacion}        & 0.4512  & 2.111 & Est.\ Bayesiano   \\
+\feat{saliencia\_pixel}             & 0.0959  & 2.123 & Bottom-Up         \\
+\feat{competencia\_fp\_max}         & 9.9494  & 2.132 & Est.\ Bayesiano   \\
+\feat{similitud\_pixel}             & 0.0718  & 2.133 & Similitud         \\
+\feat{posterior}                    & 0.0874  & 6.468 & Est.\ Bayesiano   \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-La feature \texttt{competencia\_ratio} presenta el coeficiente de variación within-subject más bajo del conjunto ($\widetilde{CV} = 0.060$), consistente
+La feature \feat{competencia\_ratio} presenta el coeficiente de variación within-subject más bajo del conjunto ($\widetilde{CV} = 0.060$), consistente
 con su distribución global estrecha ya observada en el análisis distribucional
 (std $= 0.056$, rango $[0.763,\, 1.000]$). Dado que esta feature es casi
 constante tanto a nivel global como dentro de cada sujeto, se la considera
 candidata a descarte antes del modelado de EEG. \todo{Chequear si tiene sentido con los resultados en el modelo de TRFs. Ver si agregar esos resultados o ya la damos x descartada}
 
-La feature \texttt{entropia\_prior\_saliencia} también presenta un
+La feature \feat{entropia\_prior\_saliencia} también presenta un
 $\widetilde{CV}$ bajo ($0.082$), pero es esperable al ser
 estática por trial. Su variabilidad within-subject no refleja la dinámica 
 de búsqueda fijación a fijación sino únicamente las diferencias entre las 
@@ -332,9 +332,9 @@ trials como dentro de cada sujeto.
 En el extremo opuesto, las features de saliencia y similitud presentan 
 coeficientes de variación superiores a $1$, lo que indica que su desvío 
 estándar within-subject supera a su propia media. Lo mismo ocurre con 
-\texttt{ganancia\_informacion} ($\widetilde{CV} = 2.111$), 
-\texttt{competencia\_fp\_max} ($\widetilde{CV} = 2.132$) y 
-\texttt{similitud\_pixel} ($\widetilde{CV} = 2.133$). Estas features 
+\feat{ganancia\_informacion} ($\widetilde{CV} = 2.111$), 
+\feat{competencia\_fp\_max} ($\widetilde{CV} = 2.132$) y 
+\feat{similitud\_pixel} ($\widetilde{CV} = 2.133$). Estas features 
 presentan la mayor variabilidad relativa dentro de cada sujeto y son 
 por lo tanto las candidatas más robustas como predictores individuales.
 
@@ -346,12 +346,12 @@ alto no refleja necesariamente una feature con gran variabilidad
 within-subject sino simplemente una feature cuya media es pequeña en 
 relación a su dispersión.
 
-Esta situación se presenta en \texttt{posterior} ($\mu = 0.0135$, 
-$\widetilde{\sigma} = 0.087$), \texttt{similitud\_pixel} ($\mu = 0.0337$, 
-$\widetilde{\sigma} = 0.072$) y \texttt{saliencia\_pixel} ($\mu = 0.0450$, 
+Esta situación se presenta en \feat{posterior} ($\mu = 0.0135$, 
+$\widetilde{\sigma} = 0.087$), \feat{similitud\_pixel} ($\mu = 0.0337$, 
+$\widetilde{\sigma} = 0.072$) y \feat{saliencia\_pixel} ($\mu = 0.0450$, 
 $\widetilde{\sigma} = 0.096$): las tres tienen medias pequeñas pero 
 desvíos estándar considerablemente mayores que sus medias, lo que infla 
-el cociente. Esto contrasta con \texttt{competencia\_densidad\_norm}, 
+el cociente. Esto contrasta con \feat{competencia\_densidad\_norm}, 
 que también tiene media pequeña ($\mu = 0.00231$) pero cuyos valores 
 están igualmente agrupados cerca de cero ($\widetilde{\sigma} = 0.0019$), 
 resultando en un CV moderado ($0.822$). Por esta razón, el CV de las 

@@ -4,54 +4,54 @@
 \contentsline {section}{\numberline {1.2}El modelo nnELM}{1}{}%
 \contentsline {section}{\numberline {1.3}EEG en búsqueda visual}{2}{}%
 \contentsline {section}{\numberline {1.4}Pregunta principal y objetivos}{2}{}%
-\contentsline {chapter}{\numberline {2.}Materiales y Métodos}{3}{}%
-\contentsline {section}{\numberline {2.1}Dataset HSEM}{3}{}%
-\contentsline {subsubsection}{Dataset}{3}{}%
-\contentsline {subsubsection}{Participantes}{3}{}%
-\contentsline {subsubsection}{Estímulos y tarea}{3}{}%
-\contentsline {section}{\numberline {2.2}Pipeline de análisis de EEG}{4}{}%
-\contentsline {section}{\numberline {2.3}El modelo nnELM}{4}{}%
-\contentsline {subsubsection}{Representación Espacial}{4}{}%
-\contentsline {subsubsection}{Prior inicial}{4}{}%
-\contentsline {subsubsection}{Mapa de similitud con el target}{5}{}%
-\contentsline {subsubsection}{Mapa de visibilidad}{5}{}%
-\contentsline {subsubsection}{Evidencia visual}{5}{}%
-\contentsline {subsubsection}{Actualización del posterior}{6}{}%
-\contentsline {subsubsection}{Criterio de selección: minimización de entropía esperada}{6}{}%
-\contentsline {subsubsection}{Extensión a búsqueda híbrida}{6}{}%
-\contentsline {section}{\numberline {2.4}Extracción de features del nnELM}{6}{}%
-\contentsline {subsection}{\numberline {2.4.1}Notación}{6}{}%
-\contentsline {subsection}{\numberline {2.4.2}Procedimiento}{7}{}%
-\contentsline {subsection}{\numberline {2.4.3}Features extraídas}{8}{}%
-\contentsline {subsubsection}{Información bottom-up}{8}{}%
-\contentsline {subsubsection}{Similitud con el target}{9}{}%
-\contentsline {subsubsection}{Estado interno del proceso bayesiano}{10}{}%
-\contentsline {subsubsection}{Calidad de la decisión}{11}{}%
-\contentsline {subsubsection}{Competencia entre candidatos}{12}{}%
-\contentsline {section}{\numberline {2.5}Generalización en celdas vs. pixel a pixel}{14}{}%
-\contentsline {section}{\numberline {2.6}Modelo de regresión EEG}{14}{}%
-\contentsline {section}{\numberline {2.7}Metodología de evaluación}{14}{}%
-\contentsline {chapter}{\numberline {3.}Análisis de Features}{15}{}%
-\contentsline {section}{\numberline {3.1}Validación computacional de las features}{15}{}%
-\contentsline {section}{\numberline {3.2}Análisis distribucional}{15}{}%
-\contentsline {subsection}{\numberline {3.2.1}Análisis Global}{15}{}%
-\contentsline {subsubsection}{Información Bottom Up}{15}{}%
-\contentsline {subsubsection}{Similitud con el target}{15}{}%
-\contentsline {subsubsection}{Estado interno del proceso bayesiano}{16}{}%
-\contentsline {subsubsection}{Calidad de la decisión}{17}{}%
-\contentsline {subsubsection}{Competencia entre candidatos}{17}{}%
-\contentsline {subsubsection}{Análisis General}{18}{}%
-\contentsline {subsection}{\numberline {3.2.2}Mirada por sujeto}{19}{}%
-\contentsline {section}{\numberline {3.3}Coherencia con el proceso de búsqueda}{21}{}%
-\contentsline {subsubsection}{Información bottom-up}{22}{}%
-\contentsline {subsubsection}{Similitud con el target}{22}{}%
-\contentsline {subsubsection}{Estado interno del proceso bayesiano}{23}{}%
-\contentsline {subsubsection}{Calidad de la decisión}{24}{}%
-\contentsline {subsubsection}{Competencia entre candidatos}{24}{}%
-\contentsline {section}{\numberline {3.4}Fijaciones consecutivas en misma celda}{25}{}%
-\contentsline {section}{\numberline {3.5}Diagnóstico de Multicolinealidad}{26}{}%
-\contentsline {chapter}{\numberline {4.}Resultados}{29}{}%
-\contentsline {section}{\numberline {4.1}Resultados con features agregadas}{29}{}%
-\contentsline {section}{\numberline {4.2}Interpretación de resultados}{29}{}%
-\contentsline {chapter}{\numberline {5.}Discusión}{31}{}%
-\contentsline {chapter}{\numberline {6.}Conclusiones}{33}{}%
+\contentsline {chapter}{\numberline {2.}Materiales y Métodos}{5}{}%
+\contentsline {section}{\numberline {2.1}Dataset HSEM}{5}{}%
+\contentsline {subsubsection}{Dataset}{5}{}%
+\contentsline {subsubsection}{Participantes}{5}{}%
+\contentsline {subsubsection}{Estímulos y tarea}{5}{}%
+\contentsline {section}{\numberline {2.2}Pipeline de análisis de EEG}{6}{}%
+\contentsline {section}{\numberline {2.3}El modelo nnELM}{6}{}%
+\contentsline {subsubsection}{Representación Espacial}{6}{}%
+\contentsline {subsubsection}{Prior inicial}{6}{}%
+\contentsline {subsubsection}{Mapa de similitud con el target}{7}{}%
+\contentsline {subsubsection}{Mapa de visibilidad}{7}{}%
+\contentsline {subsubsection}{Evidencia visual}{7}{}%
+\contentsline {subsubsection}{Actualización del posterior}{8}{}%
+\contentsline {subsubsection}{Criterio de selección: minimización de entropía esperada}{8}{}%
+\contentsline {subsubsection}{Extensión a búsqueda híbrida}{8}{}%
+\contentsline {section}{\numberline {2.4}Extracción de features del nnELM}{8}{}%
+\contentsline {subsection}{\numberline {2.4.1}Notación}{8}{}%
+\contentsline {subsection}{\numberline {2.4.2}Procedimiento}{9}{}%
+\contentsline {subsection}{\numberline {2.4.3}Features extraídas}{10}{}%
+\contentsline {subsubsection}{Información bottom-up}{10}{}%
+\contentsline {subsubsection}{Similitud con el target}{11}{}%
+\contentsline {subsubsection}{Estado interno del proceso bayesiano}{12}{}%
+\contentsline {subsubsection}{Calidad de la decisión}{13}{}%
+\contentsline {subsubsection}{Competencia entre candidatos}{14}{}%
+\contentsline {section}{\numberline {2.5}Generalización en celdas vs. pixel a pixel}{16}{}%
+\contentsline {section}{\numberline {2.6}Modelo de regresión EEG}{16}{}%
+\contentsline {section}{\numberline {2.7}Metodología de evaluación}{16}{}%
+\contentsline {chapter}{\numberline {3.}Análisis de Features}{17}{}%
+\contentsline {section}{\numberline {3.1}Validación computacional de las features}{17}{}%
+\contentsline {section}{\numberline {3.2}Análisis distribucional}{17}{}%
+\contentsline {subsection}{\numberline {3.2.1}Análisis Global}{17}{}%
+\contentsline {subsubsection}{Información Bottom Up}{17}{}%
+\contentsline {subsubsection}{Similitud con el target}{17}{}%
+\contentsline {subsubsection}{Estado interno del proceso bayesiano}{18}{}%
+\contentsline {subsubsection}{Calidad de la decisión}{19}{}%
+\contentsline {subsubsection}{Competencia entre candidatos}{19}{}%
+\contentsline {subsubsection}{Análisis General}{20}{}%
+\contentsline {subsection}{\numberline {3.2.2}Mirada por sujeto}{21}{}%
+\contentsline {section}{\numberline {3.3}Coherencia con el proceso de búsqueda}{23}{}%
+\contentsline {subsubsection}{Información bottom-up}{24}{}%
+\contentsline {subsubsection}{Similitud con el target}{24}{}%
+\contentsline {subsubsection}{Estado interno del proceso bayesiano}{25}{}%
+\contentsline {subsubsection}{Calidad de la decisión}{26}{}%
+\contentsline {subsubsection}{Competencia entre candidatos}{26}{}%
+\contentsline {section}{\numberline {3.4}Fijaciones consecutivas en misma celda}{27}{}%
+\contentsline {section}{\numberline {3.5}Diagnóstico de Multicolinealidad}{28}{}%
+\contentsline {chapter}{\numberline {4.}Resultados}{31}{}%
+\contentsline {section}{\numberline {4.1}Resultados con features agregadas}{31}{}%
+\contentsline {section}{\numberline {4.2}Interpretación de resultados}{31}{}%
+\contentsline {chapter}{\numberline {5.}Discusión}{33}{}%
+\contentsline {chapter}{\numberline {6.}Conclusiones}{35}{}%
