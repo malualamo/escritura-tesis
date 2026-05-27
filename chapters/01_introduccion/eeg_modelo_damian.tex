@@ -5,3 +5,29 @@
 % durante búsqueda visual. Presentar el pipeline de análisis de Damián:
 % deconvolución lineal (TRF), regularización Ridge, y los predictores
 % del modelo base.
+
+El electroencefalograma (EEG) es una técnica de registro que mide la actividad eléctrica cerebral a través de electrodos ubicados en el cuero cabelludo. La señal registrada representa la suma de potenciales de grandes poblaciones neuronales que se activan de forma sincrónica. Particularmente, es una herramienta que permite estudiar los procesos cognitivos que operan durante la búsqueda visual.
+
+El método clásico para estudiar la actividad neural durante la búsqueda visual 
+consiste en obtener \textbf{fixation-related potentials} (FRPs). El procedimiento 
+alinea la señal continua de EEG con el inicio de cada fijación ocular y promedia 
+la señal resultante a lo largo de todos los eventos del mismo tipo para un 
+mismo sujeto. El promediado cancela las fluctuaciones aleatorias no relacionadas 
+con el evento de interés, dejando visible la respuesta neural sistemáticamente 
+asociada a cada fijación.
+
+Sin embargo, este enfoque presenta una limitación fundamental. Durante la búsqueda visual, las fijaciones oculares tienen 
+una duración típica de 200--300 ms, mientras que las respuestas neurales 
+evocadas por cada fijación se extienden entre 400 y 600 ms. Como consecuencia, 
+la respuesta a una fijación aún terminó cuando la siguiente ya comenzó, de modo que las señales neurales de fijaciones consecutivas se 
+\textbf{superponen} en el registro continuo de EEG. El promediado clásico no 
+puede separar estas contribuciones, por lo que los FRPs obtenidos no reflejan 
+la respuesta independiente a cada fijación sino una mezcla contaminada por 
+los eventos adyacentes. \todo{CITA PAPER DAMIAN}
+
+Para abordar este problema, se propusieron métodos de \textbf{deconvolución lineal} que modelan la señal continua de EEG cómo la suma de respuestas evocadas por múltiples eventos simultáneos. La idea central es plantear el problema como una 
+\textbf{regresión lineal}: se construye una \textbf{matriz de diseño} en la que cada fila corresponde 
+a un punto temporal del registro continuo de EEG, y las columnas corresponden 
+a los predictores desplazados temporalmente. Para cada evento de interés (por ejemplo, si el target está o no presente en la fijación), se incluyen copias de la señal desplazadas a distintos tiempos (lags) dentro de una ventana de análisis definida. De este modo, los coeficientes estimados por la regresión en cada retardo 
+constituyen la respuesta neural asociada a ese evento a lo largo del tiempo, 
+lo que se denomina \textbf{Temporal Response Function (TRF)}. Este enfoque \textbf{deconvoluciona las respuestas solapadas}, permitiendo recuperar la contribución independiente de cada evento sobre la señal EEG.
