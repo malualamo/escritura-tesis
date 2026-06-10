@@ -9,49 +9,60 @@
 \contentsline {subsubsection}{Dataset}{5}{}%
 \contentsline {subsubsection}{Participantes}{5}{}%
 \contentsline {subsubsection}{Estímulos y tarea}{5}{}%
-\contentsline {section}{\numberline {2.2}Pipeline de análisis de EEG}{6}{}%
-\contentsline {section}{\numberline {2.3}El modelo nnELM}{6}{}%
+\contentsline {section}{\numberline {2.2}El modelo nnELM}{6}{}%
 \contentsline {subsubsection}{Representación Espacial}{6}{}%
 \contentsline {subsubsection}{Prior inicial}{6}{}%
-\contentsline {subsubsection}{Mapa de similitud con el target}{7}{}%
+\contentsline {subsubsection}{Mapa de similitud con el target}{6}{}%
 \contentsline {subsubsection}{Mapa de visibilidad}{7}{}%
 \contentsline {subsubsection}{Evidencia visual}{7}{}%
 \contentsline {subsubsection}{Actualización del posterior}{8}{}%
 \contentsline {subsubsection}{Criterio de selección: minimización de entropía esperada}{8}{}%
 \contentsline {subsubsection}{Extensión a búsqueda híbrida}{8}{}%
-\contentsline {section}{\numberline {2.4}Extracción de features del nnELM}{8}{}%
-\contentsline {subsection}{\numberline {2.4.1}Notación}{8}{}%
-\contentsline {subsection}{\numberline {2.4.2}Procedimiento}{9}{}%
-\contentsline {subsection}{\numberline {2.4.3}Features extraídas}{10}{}%
+\contentsline {section}{\numberline {2.3}Extracción de features del nnELM}{8}{}%
+\contentsline {subsection}{\numberline {2.3.1}Notación}{8}{}%
+\contentsline {subsection}{\numberline {2.3.2}Procedimiento}{9}{}%
+\contentsline {subsection}{\numberline {2.3.3}Features extraídas}{10}{}%
 \contentsline {subsubsection}{Información bottom-up}{10}{}%
 \contentsline {subsubsection}{Similitud con el target}{11}{}%
 \contentsline {subsubsection}{Estado interno del proceso bayesiano}{12}{}%
 \contentsline {subsubsection}{Calidad de la decisión}{13}{}%
 \contentsline {subsubsection}{Competencia entre candidatos}{14}{}%
-\contentsline {section}{\numberline {2.5}Generalización en celdas vs. pixel a pixel}{16}{}%
-\contentsline {section}{\numberline {2.6}Modelo de regresión EEG}{16}{}%
-\contentsline {section}{\numberline {2.7}Metodología de evaluación}{16}{}%
-\contentsline {chapter}{\numberline {3.}Análisis de Features}{17}{}%
-\contentsline {section}{\numberline {3.1}Validación computacional de las features}{17}{}%
-\contentsline {section}{\numberline {3.2}Análisis distribucional}{17}{}%
-\contentsline {subsection}{\numberline {3.2.1}Análisis Global}{17}{}%
-\contentsline {subsubsection}{Información Bottom Up}{17}{}%
-\contentsline {subsubsection}{Similitud con el target}{17}{}%
-\contentsline {subsubsection}{Estado interno del proceso bayesiano}{18}{}%
-\contentsline {subsubsection}{Calidad de la decisión}{19}{}%
-\contentsline {subsubsection}{Competencia entre candidatos}{19}{}%
-\contentsline {subsubsection}{Análisis General}{20}{}%
-\contentsline {subsection}{\numberline {3.2.2}Mirada por sujeto}{21}{}%
-\contentsline {section}{\numberline {3.3}Coherencia con el proceso de búsqueda}{23}{}%
-\contentsline {subsubsection}{Información bottom-up}{24}{}%
-\contentsline {subsubsection}{Similitud con el target}{24}{}%
-\contentsline {subsubsection}{Estado interno del proceso bayesiano}{25}{}%
-\contentsline {subsubsection}{Calidad de la decisión}{26}{}%
-\contentsline {subsubsection}{Competencia entre candidatos}{26}{}%
-\contentsline {section}{\numberline {3.4}Fijaciones consecutivas en misma celda}{27}{}%
-\contentsline {section}{\numberline {3.5}Diagnóstico de Multicolinealidad}{28}{}%
-\contentsline {chapter}{\numberline {4.}Resultados}{31}{}%
-\contentsline {section}{\numberline {4.1}Resultados con features agregadas}{31}{}%
-\contentsline {section}{\numberline {4.2}Interpretación de resultados}{31}{}%
-\contentsline {chapter}{\numberline {5.}Discusión}{33}{}%
-\contentsline {chapter}{\numberline {6.}Conclusiones}{35}{}%
+\contentsline {section}{\numberline {2.4}Integración de los pipelines}{16}{}%
+\contentsline {subsubsection}{Algoritmos de detección de fijaciones}{16}{}%
+\contentsline {subsubsection}{Resolución espacial: celdas vs. píxeles}{17}{}%
+\contentsline {section}{\numberline {2.5}Modelo de TRFs por regresión regularizada}{17}{}%
+\contentsline {subsection}{\numberline {2.5.1}Temporal Response Functions (TRFs)}{18}{}%
+\contentsline {subsection}{\numberline {2.5.2}Construcción de Matriz de Diseño}{18}{}%
+\contentsline {subsection}{\numberline {2.5.3}Estimación Ridge y selección del parámetro de regularización}{18}{}%
+\contentsline {subsubsection}{Selección de $\lambda $}{19}{}%
+\contentsline {subsubsection}{El modelo base: MH1}{19}{}%
+\contentsline {section}{\numberline {2.6}Metodología de evaluación}{19}{}%
+\contentsline {subsection}{\numberline {2.6.1}Construcción Incremental de Modelos}{19}{}%
+\contentsline {subsection}{\numberline {2.6.2}$\Delta \mathrm {AIC}$ con grados de libertad efectivos de Ridge}{20}{}%
+\contentsline {subsection}{\numberline {2.6.3}VIF}{20}{}%
+\contentsline {subsection}{\numberline {2.6.4}TFCE: Inferencia Estadística Espacio-Temporal}{20}{}%
+\contentsline {subsection}{\numberline {2.6.5}Exploración de Transformación de Variables}{21}{}%
+\contentsline {chapter}{\numberline {3.}Análisis de Features}{23}{}%
+\contentsline {section}{\numberline {3.1}Validación computacional de las features}{23}{}%
+\contentsline {section}{\numberline {3.2}Análisis distribucional}{23}{}%
+\contentsline {subsection}{\numberline {3.2.1}Análisis Global}{23}{}%
+\contentsline {subsubsection}{Información Bottom Up}{23}{}%
+\contentsline {subsubsection}{Similitud con el target}{23}{}%
+\contentsline {subsubsection}{Estado interno del proceso bayesiano}{24}{}%
+\contentsline {subsubsection}{Calidad de la decisión}{25}{}%
+\contentsline {subsubsection}{Competencia entre candidatos}{25}{}%
+\contentsline {subsubsection}{Análisis General}{26}{}%
+\contentsline {subsection}{\numberline {3.2.2}Mirada por sujeto}{27}{}%
+\contentsline {section}{\numberline {3.3}Coherencia con el proceso de búsqueda}{29}{}%
+\contentsline {subsubsection}{Información bottom-up}{30}{}%
+\contentsline {subsubsection}{Similitud con el target}{30}{}%
+\contentsline {subsubsection}{Estado interno del proceso bayesiano}{31}{}%
+\contentsline {subsubsection}{Calidad de la decisión}{32}{}%
+\contentsline {subsubsection}{Competencia entre candidatos}{32}{}%
+\contentsline {section}{\numberline {3.4}Fijaciones consecutivas en misma celda}{33}{}%
+\contentsline {section}{\numberline {3.5}Diagnóstico de Multicolinealidad}{34}{}%
+\contentsline {chapter}{\numberline {4.}Resultados}{37}{}%
+\contentsline {section}{\numberline {4.1}Resultados con features agregadas}{37}{}%
+\contentsline {section}{\numberline {4.2}Interpretación de resultados}{37}{}%
+\contentsline {chapter}{\numberline {5.}Discusión}{39}{}%
+\contentsline {chapter}{\numberline {6.}Conclusiones}{41}{}%

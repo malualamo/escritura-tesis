@@ -4,3 +4,46 @@
 % Presentar las métricas con las que se evalúa si una feature contribuye
 % al modelo y con las que se comparan modelos entre sí.
 % Mencionar la corrección por comparaciones múltiples.
+
+\subsection{Construcción Incremental de Modelos}
+
+Para la evaluación de la contribución de las features extraídas del nnELM se adoptó la estrategia de \textbf{construcción incremental de modelos}. Se utiliza como base el modelo MH1 (Sección~\ref{sec:modelo_regresion}) y se incorpora de forma independiente cada feature candidata. Esta estrategia permite aislar el aporte marginal de cada variable antes de considerar combinaciones.
+
+Previo a su incorporación al modelo, cada feature se estandariza mediante z-score intrasujeto: para cada sujeto $s$ y cada feature $f$, se sustrae la media de los valores de $f$ sobre todas las fijaciones del sujeto a lo largo de todos sus trials, y se divide por el desvío estándar correspondiente.
+
+\begin{equation}
+    \label{eq:zscore}
+    z_{f,s}(t) = \frac{f_s(t) - \mu_{f,s}}{\sigma_{f,s}}
+\end{equation}
+
+La estandarización z-score elimina las diferencias de escala, haciendo que los coeficientes TRF resultantes sean comparables entre features con distintas unidades y rangos.
+
+\subsection{$\Delta\mathrm{AIC}$ con grados de libertad efectivos de Ridge}
+
+El Criterio de Información de Akaike (AIC) es una métrica basada en la teoría de la información que busca el equilibrio óptimo entre la bondad de ajuste de un modelo y su complejidad \todo{cita Damian}. El AIC estima la distancia KL (es decir, la información "perdida") entre el modelo propuesto y el mecanismo que generó los datos.
+
+\begin{equation}
+    \label{eq:aic}
+    \mathrm{AIC} = n\left[\log(2\pi) + \log(\hat{\sigma}^2) + 1\right] + 2\,df_\lambda
+\end{equation}
+
+donde $n$ es el número de observaciones y $\hat{\sigma}^2$ es la varianza del residuo. En el AIC la penalización por complejidad se determina como $2K$, donde $K$ es el número de parámetros del modelo (mayor cantidad de coeficientes, mayor penalización). Sin embargo, el modelo Ridge aplica regularización hacia los coeficientes: los coeficientes no significativos resultan en valores muy cercanos al 0. Esto da como resultado una sobrepenalización en la complejidad del modelo. Como solución, se utilizan los grados de libertad efectivos $df_{\lambda}$. En lugar de contar cuántos coeficientes hay, se mide cuánta libertad real tiene el modelo para ajustarse a los datos después de aplicar la regularización (usando el $\lambda$ de la regularización).
+
+\begin{equation}
+    \label{eq:df_lambda}
+    df_{\lambda} = \sum_{i} \frac{d_i^2}{d_i^2 + \lambda}
+\end{equation}
+
+El $\Delta\mathrm{AIC}$ se calcula como la diferencia entre el AIC del modelo base y el AIC del modelo extendido, para cada electrodo y cada participante. Dado que no se espera que todos los electrodos respondan a cada feature agregada, se seleccionan para cada sujeto \todo{chequear si es para cada sujeto} los $N = 32$ electrodos con mayor mejora y se promedian. Este valor se promedia luego entre participantes, obteniendo como resultado un $\Delta\mathrm{AIC}$ final por feature. Valores más negativos de $\Delta\mathrm{AIC}$ indican mayor mejora relativa.
+
+\subsection{VIF}
+
+\todo{pendiente}
+
+\subsection{TFCE: Inferencia Estadística Espacio-Temporal}
+
+Para realizar un análisis grupal entre los resultados de distintos participantes, se utiliza el método \textbf{TFCE (Threshold-Free Cluster Enhancement)}. Este método toma los coeficientes TRF de cada participante, electrodo y muestra temporal, e identifica clusters en el espacio de electrodos $\times$ muestras temporales donde los coeficientes son distintos de cero entre participantes (es decir, la señal es reproducible a nivel grupal). Para evaluar la significancia de cada cluster (llamémoslo cluster original), se realizan $2048$ permutaciones en las que se asigna al azar un signo a los coeficientes de cada participante, y se registra el tamaño del cluster más grande resultante. Si la proporción de permutaciones que produjeron un cluster de tamaño mayor o igual al cluster original es menor al $5\%$, se determina que el cluster es significativo, y por lo tanto lo es la variable. En los resultados se reporta qué ventana temporal y en qué electrodos se encontró significancia.
+
+\subsection{Exploración de Transformación de Variables}
+
+A partir del análisis distribucional presentado en la Sección~\ref{sec:analisis_distribucional}, varias features exhiben distribuciones fuertemente asimétricas con colas positivas pronunciadas, lo que puede afectar la calidad de la estimación de los coeficientes en un modelo de regresión. Para evaluar si la normalización distribucional mejora la detección de efectos neurales, se aplicaron transformaciones a features que lo requirieran, y se compararon el $\Delta\mathrm{AIC}$ y los resultados TFCE obtenidos entre la variable original y la transformada. Los criterios para seleccionar qué features transformar y sus resultados se presentan en la Sección~\ref{sec:analisis_distribucional}.
