@@ -35,34 +35,52 @@
 \contentsline {subsection}{\numberline {2.5.2}Construcción de Matriz de Diseño}{18}{}%
 \contentsline {subsection}{\numberline {2.5.3}Estimación Ridge y selección del parámetro de regularización}{18}{}%
 \contentsline {subsubsection}{Selección de $\lambda $}{19}{}%
-\contentsline {subsubsection}{El modelo base: MH1}{19}{}%
-\contentsline {section}{\numberline {2.6}Metodología de evaluación}{19}{}%
-\contentsline {subsection}{\numberline {2.6.1}Construcción Incremental de Modelos}{19}{}%
-\contentsline {subsection}{\numberline {2.6.2}$\Delta \mathrm {AIC}$ con grados de libertad efectivos de Ridge}{20}{}%
-\contentsline {subsection}{\numberline {2.6.3}VIF}{20}{}%
-\contentsline {subsection}{\numberline {2.6.4}TFCE: Inferencia Estadística Espacio-Temporal}{20}{}%
-\contentsline {subsection}{\numberline {2.6.5}Exploración de Transformación de Variables}{21}{}%
-\contentsline {chapter}{\numberline {3.}Análisis de Features}{23}{}%
-\contentsline {section}{\numberline {3.1}Validación computacional de las features}{23}{}%
-\contentsline {section}{\numberline {3.2}Análisis distribucional}{23}{}%
-\contentsline {subsection}{\numberline {3.2.1}Análisis Global}{23}{}%
-\contentsline {subsubsection}{Información Bottom Up}{23}{}%
-\contentsline {subsubsection}{Similitud con el target}{23}{}%
-\contentsline {subsubsection}{Estado interno del proceso bayesiano}{24}{}%
-\contentsline {subsubsection}{Calidad de la decisión}{25}{}%
-\contentsline {subsubsection}{Competencia entre candidatos}{25}{}%
-\contentsline {subsubsection}{Análisis General}{26}{}%
-\contentsline {subsection}{\numberline {3.2.2}Mirada por sujeto}{27}{}%
-\contentsline {section}{\numberline {3.3}Coherencia con el proceso de búsqueda}{29}{}%
-\contentsline {subsubsection}{Información bottom-up}{30}{}%
-\contentsline {subsubsection}{Similitud con el target}{30}{}%
-\contentsline {subsubsection}{Estado interno del proceso bayesiano}{31}{}%
-\contentsline {subsubsection}{Calidad de la decisión}{32}{}%
-\contentsline {subsubsection}{Competencia entre candidatos}{32}{}%
-\contentsline {section}{\numberline {3.4}Fijaciones consecutivas en misma celda}{33}{}%
-\contentsline {section}{\numberline {3.5}Diagnóstico de Multicolinealidad}{34}{}%
-\contentsline {chapter}{\numberline {4.}Resultados}{37}{}%
-\contentsline {section}{\numberline {4.1}Resultados con features agregadas}{37}{}%
-\contentsline {section}{\numberline {4.2}Interpretación de resultados}{37}{}%
-\contentsline {chapter}{\numberline {5.}Discusión}{39}{}%
-\contentsline {chapter}{\numberline {6.}Conclusiones}{41}{}%
+\contentsline {subsubsection}{El modelo base: MD2}{19}{}%
+\contentsline {subsection}{\numberline {2.5.4}Interpretación de las TRFs: regiones cerebrales y componentes de referencia}{19}{}%
+\contentsline {section}{\numberline {2.6}Metodología de evaluación}{21}{}%
+\contentsline {subsection}{\numberline {2.6.1}Construcción Incremental de Modelos}{21}{}%
+\contentsline {subsection}{\numberline {2.6.2}$\Delta \mathrm {AIC}$ con grados de libertad efectivos de Ridge}{21}{}%
+\contentsline {subsection}{\numberline {2.6.3}Diagnóstico de multicolinealidad mediante VIF}{21}{}%
+\contentsline {subsubsection}{VIF en matriz de diseño de Modelo de TRFs}{22}{}%
+\contentsline {subsection}{\numberline {2.6.4}TFCE: Inferencia Estadística Espacio-Temporal}{22}{}%
+\contentsline {subsection}{\numberline {2.6.5}Exploración de Transformación de Variables}{22}{}%
+\contentsline {chapter}{\numberline {3.}Análisis de Features}{25}{}%
+\contentsline {section}{\numberline {3.1}Análisis distribucional}{25}{}%
+\contentsline {subsection}{\numberline {3.1.1}Análisis Global}{25}{}%
+\contentsline {subsubsection}{Información Bottom Up}{25}{}%
+\contentsline {subsubsection}{Similitud con el target}{25}{}%
+\contentsline {subsubsection}{Estado interno del proceso bayesiano}{26}{}%
+\contentsline {subsubsection}{Calidad de la decisión}{27}{}%
+\contentsline {subsubsection}{Competencia entre candidatos}{27}{}%
+\contentsline {subsubsection}{Análisis General}{28}{}%
+\contentsline {subsection}{\numberline {3.1.2}Mirada por sujeto}{29}{}%
+\contentsline {section}{\numberline {3.2}Coherencia con el proceso de búsqueda}{31}{}%
+\contentsline {subsubsection}{Información bottom-up}{32}{}%
+\contentsline {subsubsection}{Similitud con el target}{32}{}%
+\contentsline {subsubsection}{Estado interno del proceso bayesiano}{33}{}%
+\contentsline {subsubsection}{Calidad de la decisión}{34}{}%
+\contentsline {subsubsection}{Competencia entre candidatos}{34}{}%
+\contentsline {section}{\numberline {3.3}Fijaciones consecutivas en misma celda}{35}{}%
+\contentsline {section}{\numberline {3.4}Diagnóstico de Multicolinealidad de pares de features}{36}{}%
+\contentsline {section}{\numberline {3.5}Transformaciones de features}{38}{}%
+\contentsline {subsubsection}{Transformaciones a features Bottom-Up}{38}{}%
+\contentsline {subsubsection}{Transformaciones a features de Similitud con el target}{39}{}%
+\contentsline {subsubsection}{Transformaciones a features de Estado interno del proceso bayesiano}{39}{}%
+\contentsline {subsubsection}{Transformaciones a features de Calidad de la decisión}{40}{}%
+\contentsline {subsubsection}{Transformaciones a features de Competencia entre candidatos}{41}{}%
+\contentsline {chapter}{\numberline {4.}Resultados}{43}{}%
+\contentsline {section}{\numberline {4.1}Resultados modelo base MD2}{43}{}%
+\contentsline {section}{\numberline {4.2}Resultados con features en escala original}{44}{}%
+\contentsline {subsection}{\numberline {4.2.1}Diagnóstico de multicolinealidad (VIF)}{44}{}%
+\contentsline {subsection}{\numberline {4.2.2}Evaluación individual de features mediante $\Delta $AIC}{45}{}%
+\contentsline {subsection}{\numberline {4.2.3}Resultados TFCE: Significancia Estadística Espacio-Temporal}{46}{}%
+\contentsline {section}{\numberline {4.3}Resultados con features transformadas}{47}{}%
+\contentsline {subsection}{\numberline {4.3.1}Diagnóstico de multicolinealidad (VIF)}{47}{}%
+\contentsline {subsection}{\numberline {4.3.2}Evaluación individual de features mediante $\Delta $ AIC}{47}{}%
+\contentsline {subsection}{\numberline {4.3.3}Resultados TFCE: Significancia Estadística Espacio-Temporal}{48}{}%
+\contentsline {subsubsection}{Features con clusters significativos en ambas versiones}{49}{}%
+\contentsline {subsubsection}{Features con clusters significativos solo en la versión transformada}{51}{}%
+\contentsline {subsubsection}{Features sin clusters significativos en ninguna versión}{53}{}%
+\contentsline {section}{\numberline {4.4}Interpretación de resultados}{53}{}%
+\contentsline {chapter}{\numberline {5.}Discusión}{55}{}%
+\contentsline {chapter}{\numberline {6.}Conclusiones}{57}{}%

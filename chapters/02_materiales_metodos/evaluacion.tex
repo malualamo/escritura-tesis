@@ -7,7 +7,7 @@
 
 \subsection{Construcción Incremental de Modelos}
 
-Para la evaluación de la contribución de las features extraídas del nnELM se adoptó la estrategia de \textbf{construcción incremental de modelos}. Se utiliza como base el modelo MH1 (Sección~\ref{sec:modelo_regresion}) y se incorpora de forma independiente cada feature candidata. Esta estrategia permite aislar el aporte marginal de cada variable antes de considerar combinaciones.
+Para la evaluación de la contribución de las features extraídas del nnELM se adoptó la estrategia de \textbf{construcción incremental de modelos}. Se utiliza como base el modelo MD2 (Sección~\ref{sec:modelo_regresion}) y se incorpora de forma independiente cada feature candidata. Esta estrategia permite aislar el aporte marginal de cada variable antes de considerar combinaciones.
 
 Previo a su incorporación al modelo, cada feature se estandariza mediante z-score intrasujeto: para cada sujeto $s$ y cada feature $f$, se sustrae la media de los valores de $f$ sobre todas las fijaciones del sujeto a lo largo de todos sus trials, y se divide por el desvío estándar correspondiente.
 
@@ -36,9 +36,42 @@ donde $n$ es el número de observaciones y $\hat{\sigma}^2$ es la varianza del r
 
 El $\Delta\mathrm{AIC}$ se calcula como la diferencia entre el AIC del modelo base y el AIC del modelo extendido, para cada electrodo y cada participante. Dado que no se espera que todos los electrodos respondan a cada feature agregada, se seleccionan para cada sujeto \todo{chequear si es para cada sujeto} los $N = 32$ electrodos con mayor mejora y se promedian. Este valor se promedia luego entre participantes, obteniendo como resultado un $\Delta\mathrm{AIC}$ final por feature. Valores más negativos de $\Delta\mathrm{AIC}$ indican mayor mejora relativa.
 
-\subsection{VIF}
+\subsection{Diagnóstico de multicolinealidad mediante VIF}
 
-\todo{pendiente}
+Para el diagnóstico de multicolinealidad entre predictores, se utilizó el Factor de Inflación de la Varianza (VIF) definido para el predictor $k$ como:
+
+\begin{equation}
+    \label{eq:vif}
+    VIF_{k} = \frac{1}{1-R_k^2}
+\end{equation}
+
+donde $R_k^2$ es el coeficiente de determinación obtenido al tomar la columna $k$ como variable dependiente y ajustar una regresión lineal utilizando todas las demás columnas como predictores. Un VIF elevado indica que el predictor $k$ puede expresarse como combinación lineal de los otros predictores, lo que infla la varianza del coeficiente estimado.
+
+Computacionalmente, el VIF se obtuvo mediante la identidad matricial equivalente a la definición presentada en \eqref{eq:vif}. Para el predictor $k$, la identidad establece:
+
+\begin{equation}
+    \label{eq:vif_identidad}
+    \text{VIF}_k = \left[(X^\top X)^{-1}\right]_{kk} \cdot \left(X^\top X\right)_{kk}
+\end{equation}
+
+donde $X$ es la matriz de diseño con columnas centradas. Los subíndices $kk$ denotan el elemento diagonal correspondiente a la columna $k$. 
+
+\subsubsection{VIF en matriz de diseño de Modelo de TRFs}
+\label{subsec:vif}
+
+En la matriz de diseño del modelo de TRFs cada predictor ocupa $L$ columnas contiguas: una por cada lag temporal del intervalo de análisis $[\texttt{tmin}, \texttt{tmax}]$.
+
+El VIF de cada predictor se obtuvo promediando sobre un subconjunto de hasta 10 lags representativos, seleccionados de forma uniforme dentro del bloque correspondiente.
+
+Adicionalmente, los predictores de intercepto de fijación y sacada fueron excluidos
+del cálculo. Su exclusión es
+metodológicamente consistente dado que el VIF del intercepto no tiene interpretación
+en términos de multicolinealidad entre predictores de interés.
+
+El cálculo se realizó de forma independiente para cada participante, en consonancia con la estrategia de estimación del modelo, donde el TRF y el 
+parámetro de regularización $\lambda$ se determinan individualmente para cada 
+sujeto. 
+
 
 \subsection{TFCE: Inferencia Estadística Espacio-Temporal}
 
@@ -46,4 +79,4 @@ Para realizar un análisis grupal entre los resultados de distintos participante
 
 \subsection{Exploración de Transformación de Variables}
 
-A partir del análisis distribucional presentado en la Sección~\ref{sec:analisis_distribucional}, varias features exhiben distribuciones fuertemente asimétricas con colas positivas pronunciadas, lo que puede afectar la calidad de la estimación de los coeficientes en un modelo de regresión. Para evaluar si la normalización distribucional mejora la detección de efectos neurales, se aplicaron transformaciones a features que lo requirieran, y se compararon el $\Delta\mathrm{AIC}$ y los resultados TFCE obtenidos entre la variable original y la transformada. Los criterios para seleccionar qué features transformar y sus resultados se presentan en la Sección~\ref{sec:analisis_distribucional}.
+A partir del análisis distribucional presentado en la Sección~\ref{sec:analisis_distribucional}, varias features exhiben distribuciones fuertemente asimétricas con colas positivas pronunciadas, lo que puede afectar la calidad de la estimación de los coeficientes en un modelo de regresión. Para evaluar si la normalización distribucional mejora la detección de efectos neurales, se aplicaron transformaciones a features que lo requirieran, y se compararon el $\Delta\mathrm{AIC}$ y los resultados TFCE obtenidos entre la variable original y la transformada. Los criterios para seleccionar qué features transformar y sus resultados se presentan en la Sección~\ref{sec:transformaciones} y ~\ref{sec:resultados_features_transformadas}, respectivamente..

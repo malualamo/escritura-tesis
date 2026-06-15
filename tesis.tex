@@ -11,6 +11,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{booktabs}
+\usepackage{multirow}
 \subsubsectionfont{\bfseries}
 \raggedbottom
 \usepackage{tcolorbox}
@@ -28,6 +29,14 @@
 \usepackage{microtype}
 % Formato para nombres de features del modelo
 \newcommand{\feat}[1]{\textcolor[HTML]{A63D52}{\texttt{#1}}}
+% Cuadro de pendiente
+\newcommand{\pendiente}[1]{%
+  \begin{tcolorbox}[colback=gray!15, colframe=gray!40, boxrule=0.4pt,
+    sharp corners, left=6pt, right=6pt, top=4pt, bottom=4pt,
+    before skip=\medskipamount, after skip=\medskipamount]
+    \small\textbf{Pendiente:} #1
+  \end{tcolorbox}%
+}
 
 \begin{document}
 
@@ -38,7 +47,7 @@
 \def\runtitulo{Correlatos neurales de modelos de búsqueda visual híbrida}
 \def\runtitle{Neural correlates of computational models of hybrid visual search}
 \def\director{Juan Esteban Kamienkowski}
-\def\codirector{Gonzalo Ruarte}
+\def\codirector{Gonzalo Ruarte, Damián Care}
 \def\lugar{Buenos Aires, 2026}
 \input{caratula}
 
@@ -67,9 +76,9 @@
 \input{chapters/01_introduccion/01_introduccion}
 \input{chapters/02_materiales_metodos/02_materiales_metodos}
 \input{chapters/03_analisis_features/03_analisis_features}
-\input{chapters/04_resultados}
-\input{chapters/05_discusion}
-\input{chapters/06_conclusiones}
+\input{chapters/04_resultados/04_resultados}
+\input{chapters/05_discusion/05_discusion}
+\input{chapters/06_conclusiones/06_conclusiones}
 
 %%%% BIBLIOGRAFIA
 \backmatter

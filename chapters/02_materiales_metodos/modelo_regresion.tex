@@ -63,9 +63,9 @@ de $\lambda$, y se evalúa sobre el 10\% restante midiendo el coeficiente de cor
 de Pearson entre la señal EEG predicha y la señal real. El $\lambda$ óptimo es aquel 
 que maximiza la correlación promedio entre los 10 folds.
 
-\subsubsection{El modelo base: MH1}
+\subsubsection{El modelo base: MD2}
 
-Cómo punto de partida para el análisis, se adopta el modelo base definido en \todo{cita}, que incluye los siguientes predictores:
+Cómo punto de partida para el análisis, se adopta el modelo base MD2 definido en \todo{cita}, que incluye los siguientes predictores:
 
 \begin{itemize}
     \item \textbf{Intercept de fijación}: respuesta media asociada a cualquier 
@@ -85,3 +85,60 @@ Cómo punto de partida para el análisis, se adopta el modelo base definido en \
 
 La ventana de análisis se define entre $-200$ ms y $+400$ ms respecto al onset 
 de cada fijación, y entre $-200$ ms y $+400$ ms respecto al onset de cada sacada.
+
+
+\subsection{Interpretación de las TRFs: regiones cerebrales y componentes de referencia}
+
+Las TRFs estimadas por el modelo producen patrones de actividad
+con una estructura espacial y temporal específica: actividad neuronal
+que ocurre a latencias determinadas y que se concentra en
+regiones particulares del cuero cabelludo. Para poder interpretar
+esos patrones en la sección de Resultados, esta sección introduce
+los conceptos básicos de neurociencia necesarios: la organización
+espacial de los electrodos EEG y los componentes neurales de
+referencia que se pueden observar tanto en el modelo base como en los experimentos realizados.
+
+La señal EEG se registra simultáneamente en múltiples electrodos
+distribuidos sobre el cuero cabelludo. Esta distribución espacial permite localizar aproximadamente
+qué región cortical genera cada respuesta: los electrodos frontales (ubicados en la parte delantera 
+de la cabeza) reflejan procesos cognitivos de alto nivel como
+planificación, control atencional y memoria de trabajo;
+los electrodos parietales (ubicados en la parte 
+trasera) capturan procesos de atención espacial; los electrodos occipitales (ubicados 
+en la parte de atrás de la cabeza) capturan principalmente actividad 
+de la corteza visual primaria, reflejando el procesamiento visual 
+temprano ante cada fijación.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{chapters/02_materiales_metodos/images/cabecita_regiones.png}
+    \caption{Distribución de las regiones del cuero cabelludo según 
+su ubicación anatómica.}
+    \label{fig:regiones_corteza}
+\end{figure}
+
+
+La respuesta neural ante un evento puede caracterizarse a través de
+\textit{componentes}: patrones de activación de la señal EEG que
+ocurren a latencias específicas tras el onset del evento y que están
+bien establecidos en la literatura de neurociencia cognitiva. Por
+convención, los componentes se nombran según la polaridad de la
+activación (positiva (P) o negativa (N)) y su latencia aproximada
+en milisegundos. Por ejemplo, el P100 es una activación positiva
+que ocurre alrededor de los 100 ms; el N200, una activación negativa
+alrededor de los 200 ms.
+
+El \textbf{compontente P100} es un componente positivo temprano 
+que ocurre entre los 80 y 130 ms tras la presentación de un 
+estímulo visual, con distribución sobre electrodos occipitales 
+laterales. Refleja el procesamiento visual temprano ante la llegada de ueva información visual. El P100 puede ser modulado por la atención: su  amplitud aumenta cuando el estímulo aparece en una región del 
+campo visual que el sujeto estaba atendiendo.  
+
+El \textbf{componente P300} es un componente positivo tardío que ocurre entre los 
+250 y 500 ms tras el onset de un estímulo, con pico típico 
+alrededor de los 300 ms y distribución máxima sobre electrodos 
+parietales. A diferencia del P100, su ocurrencia no depende de las características físicas del 
+estímulo sino de la relevancia que ese estímulo tiene para 
+la tarea en curso. En particular, el P300 se asocia a procesos 
+de evaluación y categorización del estímulo.
