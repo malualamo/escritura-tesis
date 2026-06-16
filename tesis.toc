@@ -76,11 +76,12 @@
 \contentsline {subsection}{\numberline {4.2.3}Resultados TFCE: Significancia Estadística Espacio-Temporal}{46}{}%
 \contentsline {section}{\numberline {4.3}Resultados con features transformadas}{47}{}%
 \contentsline {subsection}{\numberline {4.3.1}Diagnóstico de multicolinealidad (VIF)}{47}{}%
-\contentsline {subsection}{\numberline {4.3.2}Evaluación individual de features mediante $\Delta $ AIC}{47}{}%
+\contentsline {subsection}{\numberline {4.3.2}Evaluación individual de features mediante $\Delta $ AIC}{48}{}%
 \contentsline {subsection}{\numberline {4.3.3}Resultados TFCE: Significancia Estadística Espacio-Temporal}{48}{}%
 \contentsline {subsubsection}{Features con clusters significativos en ambas versiones}{49}{}%
 \contentsline {subsubsection}{Features con clusters significativos solo en la versión transformada}{51}{}%
 \contentsline {subsubsection}{Features sin clusters significativos en ninguna versión}{53}{}%
-\contentsline {section}{\numberline {4.4}Interpretación de resultados}{53}{}%
+\contentsline {section}{\numberline {4.4}Combinación de variables}{53}{}%
+\contentsline {section}{\numberline {4.5}Interpretación de resultados}{53}{}%
 \contentsline {chapter}{\numberline {5.}Discusión}{55}{}%
 \contentsline {chapter}{\numberline {6.}Conclusiones}{57}{}%

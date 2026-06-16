@@ -135,11 +135,7 @@ Las features \feat{saliencia\_pixel}, \feat{saliencia\_media} y
 su versión en escala original como en su versión transformada, aunque 
 con diferencias en la extensión espacio-temporal de los clusters.
 
-\feat{saliencia\_pixel\_log} mantiene un cluster negativo de distribución 
-amplia en una ventana similar a la observada en escala original 
-($\sim$0--200 ms), lo que indica que la transformación logarítmica 
-preserva el patrón de activación sin modificar sustancialmente su 
-extensión espacio-temporal.
+\pendiente{Análisis de FRPs (componentes, amplitud, consistencia, etc.)}
 
 \begin{figure}[H]
     \centering
@@ -148,25 +144,12 @@ extensión espacio-temporal.
     \label{fig:tfce_saliencia_pixel}
 \end{figure}
 
-\feat{saliencia\_media\_log} presenta un cluster negativo, pero de 
-extensión considerablemente más acotada respecto a su versión original: 
-mientras que en escala original el cluster abarcaba una ventana amplia 
-de 0--200 ms con distribución generalizada, la versión transformada 
-muestra un cluster reducido a aproximadamente 80--120 ms. Este resultado 
-sugiere que, pese a la mejora en la simetría distribucional, la 
-transformación logarítmica no mejora la detección de efectos 
-significativos para esta feature.
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{chapters/04_resultados/images/TFCE_saliencia_media.png}
     \caption{Comparación resultados de TFCE para \feat{saliencia\_media} original y transformada en escala logarítmica.}
     \label{fig:tfce_saliencia_media}
 \end{figure}
-
-\feat{similitud\_pixel\_log} presenta 
-un cluster negativo levemente más acotado respecto a su versión original, 
-concentrado entre 80--180 ms.
 
 \begin{figure}[H]
     \centering
@@ -183,7 +166,7 @@ original pero sí en su versión transformada, lo que indica que la
 transformación logarítmica permite detectar efectos que no eran 
 evidentes en la escala original.
 
-\feat{similitud\_media\_log} \todo{Análisis de diferencias entre original y transformada}
+\pendiente{Análisis de FRPs (componentes, amplitud, consistencia, etc.)}
 
 \begin{figure}[H]
     \centering
@@ -192,17 +175,12 @@ evidentes en la escala original.
     \label{fig:tfce_similitud_media}
 \end{figure}
 
-
-\feat{ganancia\_informacion\_log} \todo{Análisis de diferencias entre original y transformada}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{chapters/04_resultados/images/TFCE_ganancia_informacion.png}
     \caption{Comparación resultados de TFCE para \feat{ganancia\_informacion} original y transformada en escala logarítmica.}
     \label{fig:tfce_ganancia_informacion}
 \end{figure}
-
-\feat{gap\_entropia\_log} \todo{Análisis de diferencias entre original y transformada}
 
 \begin{figure}[H]
     \centering
