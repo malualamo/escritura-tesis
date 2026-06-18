@@ -13,7 +13,7 @@ La motivación detrás de este procedimiento es extraer, a partir del modelo nnE
 variables internas que capturen distintas dimensiones del proceso de
 búsqueda visual en cada fijación. Estas variables se incorporan
 posteriormente como predictores en el modelo de regresión EEG de
-Care et al.~\todo{cita}, con el fin de evaluar si las representaciones
+\citet{care2025}, con el fin de evaluar si las representaciones
 computacionales del modelo tienen correlatos en la actividad cerebral
 registrada durante la tarea de búsqueda híbrida.
 
@@ -413,38 +413,38 @@ sección~\ref{sec:modelo_gonzalo}.
 \textbf{Feature \thetcbcounter:} \feat{gap\_entropia}
 
 \textbf{Descripción:} Diferencia entre la ganancia de información esperada
-en la fijación óptima del modelo y la obtenida en la fijación efectiva del
-sujeto en $t+1$. Cuantifica la suboptimalidad de la decisión humana respecto
-al criterio ELM.
+en la fijación óptima del modelo en $t-1$ y la obtenida en la fijación
+efectiva del sujeto en $t$. Cuantifica la suboptimalidad de la decisión
+tomada por el sujeto al pasar de la fijación anterior a la actual,
+respecto al criterio ELM.
 
 \textbf{Ecuación:}
 \begin{equation}
-    \feat{gap\_entropia} := \max_{i,j} E[t][i,j] -
-    E[t][g_y^{t+1},\, g_x^{t+1}]
+    \feat{gap\_entropia} := \max_{i,j} E[t-1][i,j] -
+    E[t-1][g_y^{t},\, g_x^{t}]
 \end{equation}
 \end{featuredef}
-
-La feature \feat{gap\_entropia} no está definida para la última
-fijación de cada trial, dado que no existe fijación $t+1$.
-
+La feature \feat{gap\_entropia} no está definida para la primera
+fijación de cada trial, dado que no existe fijación $t-1$.
 Sea $(g_y^*, g_x^*)$ la celda óptima según el modelo en la fijación
-$t$, definida como:
+$t-1$, definida como:
+
 \begin{equation}
-    (g_y^*, g_x^*) = \arg\max_{i,j} E[t][i,j]
+    (g_y^*, g_x^*) = \arg\max_{i,j} E[t-1][i,j]
 \end{equation}
+
 Las features de distancia comparan esta celda con la fijación
-efectivamente realizada por el sujeto en $t+1$:
+efectivamente realizada por el sujeto en $t$:
 
 \begin{featuredef}
 \textbf{Feature \thetcbcounter:} \feat{distancia\_grilla}
 
 \textbf{Descripción:} Distancia euclídea en celdas entre la fijación
-óptima del modelo y la fijación efectiva del sujeto en $t+1$.
+óptima del modelo en $t-1$ y la fijación efectiva del sujeto en $t$.
 
-\textbf{Ecuación:}
 \begin{equation}
-    \feat{distancia\_grilla} := \sqrt{(g_y^{t+1} - g_y^*)^2 +
-    (g_x^{t+1} - g_x^*)^2}
+    \feat{distancia\_grilla} := \sqrt{(g_y^{t} - g_y^*)^2 +
+    (g_x^{t} - g_x^*)^2}
 \end{equation}
 \end{featuredef}
 
@@ -461,7 +461,7 @@ multiplicando por el tamaño de celda $c = 32$ px.
 \end{featuredef}
 
 Las features \feat{distancia\_grilla} y \feat{distancia\_pixels}
-no están definidas para la última fijación de cada trial.
+no están definidas para la primera fijación de cada trial.
 
 % ---------------------------------------------------------------
 \subsubsection{Competencia entre candidatos}

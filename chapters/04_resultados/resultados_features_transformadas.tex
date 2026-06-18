@@ -114,7 +114,7 @@ la transformación empeora el ajuste respecto a la versión original
 la escala original captura mejor la relación de esta feature con 
 la señal EEG.
 
-\subsection{Resultados TFCE: Significancia Estadística Espacio-Temporal}
+\subsection{Resultados TFCE}
 
 La significancia estadística de los efectos fue evaluada mediante TFCE 
 para las 7 features transformadas que superaron el diagnóstico de multicolinealidad.
@@ -135,7 +135,7 @@ Las features \feat{saliencia\_pixel}, \feat{saliencia\_media} y
 su versión en escala original como en su versión transformada, aunque 
 con diferencias en la extensión espacio-temporal de los clusters.
 
-\pendiente{Análisis de FRPs (componentes, amplitud, consistencia, etc.)}
+La transformación logarítmica de \feat{saliencia\_pixel} conserva el efecto observado en escala original, aunque con diferencias en amplitud y extensión; en ambas versiones se identifica un efecto temprano con topografía occipital. La amplitud de la TRF es considerablemente menor en la versión logarítmica, lo que es esperable dado que la transformación comprime los valores extremos. Un hallazgo que se repite en ambas versiones es la presencia de activación significativa en el período previo al onset de la fijación.
 
 \begin{figure}[H]
     \centering
@@ -144,6 +144,8 @@ con diferencias en la extensión espacio-temporal de los clusters.
     \label{fig:tfce_saliencia_pixel}
 \end{figure}
 
+En los resultados de \feat{saliencia\_media} se puede observar cómo la señal de la versión logarítmica es más limpia que la señal de la escala original, aunque con menor amplitud. La topografía negativa occipital aparece más concetrada y localizada. Sin embargo, el cluster TFCE es considerablemente más pequeño y acotado que en la versión original, lo que contrasta con el patrón observado en el resto de las features transformadas. La activación pre-onset presente en la versión original no se observa en la versión logarítmica.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{chapters/04_resultados/images/TFCE_saliencia_media.png}
@@ -151,10 +153,12 @@ con diferencias en la extensión espacio-temporal de los clusters.
     \label{fig:tfce_saliencia_media}
 \end{figure}
 
+En su versión logarítmica \feat{similitud\_pixel} presenta una activación negativa más pronunciada que en escala original. La topografía a 80 ms es occipital, más limpia y localizada que en la versión original, donde el patrón era más difuso. El cluster TFCE resultante es también más concentrado espacialmente.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{chapters/04_resultados/images/TFCE_similitud_pixel.png}
-    \caption{Comparación resultados de TFCE para \feat{saliencia\_media} original y transformada en escala logarítmica.}
+    \caption{Comparación resultados de TFCE para \feat{similitud\_pixel} original y transformada en escala logarítmica.}
     \label{fig:tfce_similitud_pixel}
 \end{figure}
 
@@ -166,7 +170,7 @@ original pero sí en su versión transformada, lo que indica que la
 transformación logarítmica permite detectar efectos que no eran 
 evidentes en la escala original.
 
-\pendiente{Análisis de FRPs (componentes, amplitud, consistencia, etc.)}
+Para \feat{similitud\_media} en escala original la señal es ruidosa y sin estructura, y el cluster TFCE es inexistente. En la versión logarítmica emerge una señal limpia con una activación positiva y una topografía fronto-central clara. La topografía fronto-central contrasta con el patrón occipital observado en \feat{similitud\_pixel}.
 
 \begin{figure}[H]
     \centering
@@ -175,6 +179,8 @@ evidentes en la escala original.
     \label{fig:tfce_similitud_media}
 \end{figure}
 
+En escala original \feat{ganancia\_informacion} no produce cluster significativos y su $\Delta$ AIC es el único positivo del conjunto. La versión logarítmica revierte este resultado: aparece una activación negativa con topografía de mayor intensidad en canales centrales y parietales.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{chapters/04_resultados/images/TFCE_ganancia_informacion.png}
@@ -182,13 +188,14 @@ evidentes en la escala original.
     \label{fig:tfce_ganancia_informacion}
 \end{figure}
 
+El cluster resultante de aplicar transformación logarítmica a \feat{ganancia\_informacion} es negativo y la distribución espacio-temporal observada es similar a la de \feat{ganancia\_informacion} en escala logarítmica. Como punto llamativo, la topografía observada a $\sim$80ms en la versión logarítmica es inversa a la observada en escala original. 
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{chapters/04_resultados/images/TFCE_gap_entropia.png}
     \caption{Comparación resultados de TFCE para \feat{gap\_entropia} original y transformada en escala logarítmica.}
     \label{fig:tfce_gap_entropia}
 \end{figure}
-
 
 \subsubsection{Features sin clusters significativos en ninguna versión}
 

@@ -7,15 +7,15 @@
 % seleccionar las que sobreviven, luego agregar interacciones.
 % Justificar la estrategia.
 
-El objetivo principal de esta tesis es investigar si las features \todo{o variables, renombrar} extraídas del modelo nnELM tienen correlatos con la actividad neural. El análisis de la actividad cerebral durante las tareas de búsqueda visual tiene una dificultad particular: las respuestas cerebrales de fijaciones sucesivas se solapan temporalmente. La duración típica de una fijación presenta una media de 219ms, un tiempo considerablemente menor a la ventanal temporal necesaria para capturar una respuesta completa, la cual se extiende a lo largo de 600ms. \todo{cita}
+El objetivo principal de esta tesis es investigar si las features extraídas del modelo nnELM tienen correlatos con la actividad neural. El análisis de la actividad cerebral durante las tareas de búsqueda visual tiene una dificultad particular: las respuestas cerebrales de fijaciones sucesivas se solapan temporalmente. La duración típica de una fijación presenta una media de 219ms, un tiempo considerablemente menor a la ventana temporal necesaria para capturar una respuesta completa, la cual se extiende a lo largo de 600ms.
 
 \subsection{Temporal Response Functions (TRFs)}
 
 Una Temporal Response Function (TRF) es la respuesta neural estimada asociada a un predictor específico en función del tiempo relativo al onset del evento.  Para cada variable del modelo, la TRF es una curva que indica cuánto varía la señal EEG en cada retardo temporal ante un cambio unitario de ese predictor: si la TRF de un predictor muestra un pico positivo a los 300ms, significa que en promedio la señal EEG aumenta 300ms después de que ese evento ocurre. De esta manera, el conjunto de TRFs del modelo describe cómo cada variable de interés modula la actividad cerebral a lo largo del tiempo.
 
-\subsection{Construcción de Matriz de Diseño}
+\subsection{Construcción de matriz de diseño}
 
-El framework de TRFs por Regresión Regularizadas \todo{cita} representa la señal EEG de cada electrodo como una combinación lineal de las respuestas a distintos tipos de eventos. Por ejemplo, para un solo predictor $x$ con ventana de $L$ lags:
+El framework de TRFs por Regresión Regularizadas representa la señal EEG de cada electrodo como una combinación lineal de las respuestas a distintos tipos de eventos. Por ejemplo, para un solo predictor $x$ con ventana de $L$ lags:
 
 \begin{equation}
 r(t) = \sum_{\tau=0}^{L} w(\tau) \cdot x(t - \tau) + \varepsilon(t)
@@ -46,9 +46,9 @@ $t_5$ & 1 & 0 & 0 & 0 & 0 & 1 & 0.3 & 0.0 & 0.0 \\
 \label{tab:matriz_disenio}
 \end{table}
 
-\subsection{Estimación Ridge y selección del parámetro de regularización}
+\subsection{Estimación ridge y selección del parámetro de regularización}
 
-Los coeficientes del modelo (las TRFs) se estiman metiante regresión Ridge (regularización L2).
+Los coeficientes del modelo (las TRFs) se estiman mediante regresión Ridge (regularización L2).
 
 \begin{equation}
 \hat{\mathbf{w}} = \arg\min_{\mathbf{w}} \left[ \sum_t \left( r(t) - \sum_{\tau} w(\tau) \cdot x(t-\tau) \right)^2 + \lambda \sum_{\tau} w(\tau)^2 \right]
@@ -65,10 +65,10 @@ que maximiza la correlación promedio entre los 10 folds.
 
 \subsubsection{El modelo base: MD2}
 
-Cómo punto de partida para el análisis, se adopta el modelo base MD2 definido en \todo{cita}, que incluye los siguientes predictores:
+Cómo punto de partida para el análisis, se adopta el modelo base MD2 definido en \citet{care2025}, que incluye los siguientes predictores:
 
 \begin{itemize}
-    \item \textbf{Intercept de fijación}: respuesta media asociada a cualquier 
+    \item \textbf{Intercept de fijación}: respuesta media asociada a cualquier
     fijación sobre un estímulo.
     \item \textbf{Target}: variable binaria que indica si la fijación cayó sobre 
     el target (1) o un distractor (0).
@@ -78,6 +78,7 @@ Cómo punto de partida para el análisis, se adopta el modelo base MD2 definido 
     respondió correctamente en ese trial.
     \item \textbf{Intercept de sacada}: respuesta media asociada a cada 
     movimiento sacádico.
+    \item \textbf{Task Progress Score (TPS)}: rango estandarizado de la fijación que captura el progreso temporal dentro de cada ensayo.
     \item \textbf{Splines de amplitud de sacada}: 5 splines cúbicos que 
     modelan la relación no lineal entre la amplitud de la sacada y la 
     respuesta EEG.
@@ -129,18 +130,18 @@ en milisegundos. Por ejemplo, el P100 es una activación positiva
 que ocurre alrededor de los 100 ms; el N200, una activación negativa
 alrededor de los 200 ms.
 
-El \textbf{compontente P100} es un componente positivo temprano 
-que ocurre entre los 80 y 130 ms tras la presentación de un 
-estímulo visual, con distribución sobre electrodos occipitales 
-laterales. Refleja el procesamiento visual temprano ante la llegada de ueva información visual. El P100 puede ser modulado por la atención: su  amplitud aumenta cuando el estímulo aparece en una región del 
-campo visual que el sujeto estaba atendiendo.  
+El \textbf{compontente P100} es un componente positivo temprano
+que ocurre entre los 80 y 130 ms tras la presentación de un
+estímulo visual, con distribución sobre electrodos occipitales
+laterales. Refleja el procesamiento visual temprano ante la llegada de nueva información visual. El P100 puede ser modulado por la atención: su amplitud aumenta cuando el estímulo aparece en una región del
+campo visual que el sujeto estaba atendiendo.
 
-El \textbf{componente P300} es un componente positivo tardío que ocurre entre los 
-250 y 500 ms tras el onset de un estímulo, con pico típico 
-alrededor de los 300 ms y distribución máxima sobre electrodos 
-parietales. A diferencia del P100, su ocurrencia no depende de las características físicas del 
-estímulo sino de la relevancia que ese estímulo tiene para 
-la tarea en curso. En particular, el P300 se asocia a procesos 
+El \textbf{componente P300} es un componente positivo tardío que ocurre entre los
+250 y 500 ms tras el onset de un estímulo, con pico típico
+alrededor de los 300 ms y distribución máxima sobre electrodos
+parietales. A diferencia del P100, su ocurrencia no depende de las características físicas del
+estímulo sino de la relevancia que ese estímulo tiene para
+la tarea en curso. En particular, el P300 se asocia a procesos
 de evaluación y categorización del estímulo.
 
 \pendiente{En caso de aparecer nuevos componentes en el análisis de los resultados de TFCE (en sección resultados), serán agregados y explicados en esta}

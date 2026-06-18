@@ -38,7 +38,7 @@ El modelo \textit{nnELM} genera, en cada ciclo fijación por fijación, un conju
     Dado que el modelo \textit{nnELM} opera sobre la representación en celdas de la escena, y que el pipeline de EEG utiliza los timestamps de fijaciones detectados por un algoritmo distinto, es necesario resolver el problema de alineación entre ambos conjuntos de fijaciones. Esto incluye definir una estrategia de asignación de las features del modelo a las fijaciones del análisis EEG, y analizar los casos en que múltiples fijaciones consecutivas corresponden a la misma celda del modelo.
 
     \item \textbf{Evaluación de la contribución de las features a la predicción de la señal EEG.}
-    Incorporar las features del \textit{nnELM} como predictores adicionales en el modelo de regresión regularizada, siguiendo el esquema de crecimiento gradual de complejidad de \todo{cita}. Evaluar su contribución mediante $\Delta$AIC con grados de libertad efectivos de Ridge, diagnosticar la multicolinealidad con VIF, y determinar la significancia estadística de los efectos mediante TFCE.
+    Incorporar las features del \textit{nnELM} como predictores adicionales en el modelo de regresión regularizada, siguiendo el esquema de crecimiento gradual de complejidad de \citet{care2025}. Evaluar su contribución mediante $\Delta$AIC con grados de libertad efectivos de Ridge, diagnosticar la multicolinealidad con VIF, y determinar la significancia estadística de los efectos mediante TFCE.
 
 \end{enumerate}
 

@@ -21,11 +21,11 @@ El análisis se organiza en torno a dos perspectivas complementarias:
 \begin{itemize}
     \item \textbf{Análisis global:} se presentan histogramas y estadísticos descriptivos para cada feature, considerando el conjunto completo de fijaciones del dataset ($N = 61.252$). Esto permite identificar características generales de la distribución, como sesgo, presencia de outliers o valores constantes.
     
-    \item \textbf{Mirada por sujeto:} se examina la variabilidad de cada feature dentro de cada participante por separado. El modelo de regresión \todo{ver como nombrar modelo} se estima de forma independiente para cada sujeto: la matriz de diseño de cada participante contiene únicamente sus propias fijaciones, y los coeficientes TRF resultantes reflejan la relación entre las features y la señal cerebral de ese individuo. En consecuencia, es crucial verificar que las features presentan variabilidad dentro de cada sujeto, ya que una feature constante para un participante no contribuirá a explicar su señal cerebral.
+    \item \textbf{Mirada por sujeto:} se examina la variabilidad de cada feature dentro de cada participante por separado. El Modelo de TRFs por regresión regularizada se estima de forma independiente para cada sujeto: la matriz de diseño de cada participante contiene únicamente sus propias fijaciones, y los coeficientes TRF resultantes reflejan la relación entre las features y la señal cerebral de ese individuo. En consecuencia, es crucial verificar que las features presentan variabilidad dentro de cada sujeto, ya que una feature constante para un participante no contribuirá a explicar su señal cerebral.
 \end{itemize}
 
 
-\subsection{Análisis Global}
+\subsection{Análisis global}
 \subsubsection{Información Bottom Up}
 
 Las features de información bottom-up se encuentran sesgadas a la derecha, con una mayoría de fijaciones que presentan valores bajos. Esto refleja que la mayoría de las fijaciones caen en zonas de baja saliencia. 
@@ -152,7 +152,7 @@ existen casos de suboptimalidad muy pronunciada. El mínimo exactamente igual
 a $0$ refleja los casos en que el sujeto fija la celda óptima según el
 criterio ELM. En conjunto, la distribución revela una suboptimalidad
 sistemática: los sujetos no siguen la estrategia de minimización de
-entropía que prescribe el modelo. \todo{esto es esperable? Buscar y citar}
+entropía que prescribe el modelo. 
 
 Las features \feat{distancia\_grilla} (mediana $= 9.43$ celdas) y
 \feat{distancia\_pixels} (mediana $= 302$ px) complementan este análisis
@@ -247,7 +247,7 @@ con la masa concentrada en la parte alta de su rango.
 
 La variabilidad relevante para el modelo de TRFs por regresión regularizada no es la variabilidad global del dataset sino la variabilidad dentro de cada sujeto (variabilidad within-subject). El objetivo de esta sección es analizar cuánto varía cada feature dentro de las fijaciones de un mismo participante. Para cuantificarla se calcularon las siguientes métricas, tomando como unidad de análisis a cada sujeto por separado:
 
-\todo{Esto esta ok acá o debería ir en métodos?}
+%\todo{Esto esta ok acá o debería ir en métodos?}
 
 Para cada sujeto $s$ y cada feature $f$, se calculó el desvío estándar de los valores de $f$ sobre todas sus fijaciones:
 
@@ -315,7 +315,7 @@ La feature \feat{competencia\_ratio} presenta el coeficiente de variación withi
 con su distribución global estrecha ya observada en el análisis distribucional
 (std $= 0.056$, rango $[0.763,\, 1.000]$). Dado que esta feature es casi
 constante tanto a nivel global como dentro de cada sujeto, se la considera
-candidata a descarte antes del modelado de EEG. \todo{Chequear si tiene sentido con los resultados en el modelo de TRFs. Ver si agregar esos resultados o ya la damos x descartada}
+candidata a descarte antes del modelado de EEG. %\todo{Chequear si tiene sentido con los resultados en el modelo de TRFs. Ver si agregar esos resultados o ya la damos x descartada}
 
 La feature \feat{entropia\_prior\_saliencia} también presenta un
 $\widetilde{CV}$ bajo ($0.082$), pero es esperable al ser

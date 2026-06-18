@@ -1,0 +1,54 @@
+\begin{thebibliography}{}
+
+\bibitem[Akaike, 1974]{akaike1974}
+Akaike, H. (1974).
+\newblock A new look at the statistical model identification.
+\newblock {\em IEEE Transactions on Automatic Control}, 19(6):716--723.
+
+\bibitem[Bujia et~al., 2022]{bujia2022}
+Bujia, G., Sclar, M., Vita, S., Solovey, G., and Kamienkowski, J.~E. (2022).
+\newblock Modeling human visual search in natural scenes: {A} combined
+  {Bayesian} searcher and saliency map approach.
+\newblock {\em Frontiers in Systems Neuroscience}, 16:882315.
+
+\bibitem[Care et~al., 2025]{care2025}
+Care, D., Gonz{\'a}lez, J.~E., Ison, M.~J., and Kamienkowski, J.~E. (2025).
+\newblock Time--space signatures of hybrid search resolution using {EEG} and
+  eye movements concurrent recordings.
+\newblock En preparaci{\'o}n.
+
+\bibitem[Deng et~al., 2009]{deng2009imagenet}
+Deng, J., Dong, W., Socher, R., Li, L.-J., Li, K., and Fei-Fei, L. (2009).
+\newblock {ImageNet}: A large-scale hierarchical image database.
+\newblock In {\em 2009 IEEE Conference on Computer Vision and Pattern
+  Recognition}, pages 248--255.
+
+\bibitem[Ehinger and Dimigen, 2019]{ehinger2019}
+Ehinger, B.~V. and Dimigen, O. (2019).
+\newblock Unfold: an integrated toolbox for overlap correction, non-linear
+  modeling, and regression-based {EEG} analysis.
+\newblock {\em PeerJ}, 7:e7838.
+
+\bibitem[K{\"u}mmerer and Bethge, 2021]{kummerer2021}
+K{\"u}mmerer, M. and Bethge, M. (2021).
+\newblock State-of-the-art in human scanpath prediction.
+\newblock {\em arXiv preprint arXiv:2102.12239}.
+
+\bibitem[Lin et~al., 2014]{lin2014coco}
+Lin, T.-Y., Maire, M., Belongie, S., Hays, J., Perona, P., Ramanan, D.,
+  Doll{\'a}r, P., and Zitnick, C.~L. (2014).
+\newblock {Microsoft COCO}: Common objects in context.
+\newblock In {\em Computer Vision -- ECCV 2014}, pages 740--755.
+
+\bibitem[Najemnik and Geisler, 2005]{najemnik2005}
+Najemnik, J. and Geisler, W.~S. (2005).
+\newblock Optimal eye movement strategies in visual search.
+\newblock {\em Nature}, 434(7031):387--391.
+
+\bibitem[Ruarte et~al., 2025]{ruarte2025}
+Ruarte, G., Bujia, G., Care, D., Ison, M.~J., and Kamienkowski, J.~E. (2025).
+\newblock Integrating {Bayesian} and neural networks models for eye movement
+  prediction in hybrid search.
+\newblock {\em Scientific Reports}, 15(1):16482.
+
+\end{thebibliography}

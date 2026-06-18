@@ -12,7 +12,7 @@ La incorporación de las features extraídas del nnELM al modelo de TRFs por reg
 
 \subsubsection{Algoritmos de detección de fijaciones}
 
-El pipeline de EEG \todo{cita} utiliza el algoritmo \todo{nombrar algoritmo} para detectar fijaciones y sacadas a partir de la señal del eye-tracking. El modelo nnELM, en cambio, fue diseñado para generar sus propios scanpaths internos a partir de su mecanismo de decisión. Dado que el análisis del EEG requiere que los eventos estén alineados con la señal cerebral, se forzó al modelo nnELM a utilizar cómo input las coordenadas de fijación del pipeline del EEG, en lugar de generar su propio scanpath. De esta manera, cómo resultado cada fijación del scanpath de \todo{care} obtuvo los valores de las features calculadas por el nnELM.
+El pipeline de EEG utiliza el algoritmo de Engbert y Mergenthaler (2006) para detectar fijaciones y sacadas a partir de la señal del eye-tracking. El modelo nnELM, en cambio, fue diseñado para generar sus propios scanpaths internos a partir de su mecanismo de decisión. Dado que el análisis del EEG requiere que los eventos estén alineados con la señal cerebral, se forzó al modelo nnELM a utilizar cómo input las coordenadas de fijación del pipeline del EEG, en lugar de generar su propio scanpath. De esta manera, cómo resultado cada fijación del scanpath de \citet{care2025} obtuvo los valores de las features calculadas por el nnELM.
 
 \subsubsection{Resolución espacial: celdas vs. píxeles}
 

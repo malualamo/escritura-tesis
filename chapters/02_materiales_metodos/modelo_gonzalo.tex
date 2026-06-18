@@ -13,7 +13,7 @@
 % salida el scanpath completo con todos los mapas intermedios en cada paso.
 
 
-El modelo nnELM \todo{cita Ruarte 2025} implementa un esquema de inferencia bayesiana iterativa: en cada fijación, integra nueva evidencia visual 
+El modelo nnELM~\citep{ruarte2025} implementa un esquema de inferencia bayesiana iterativa: en cada fijación, integra nueva evidencia visual 
 para actualizar una distribución de probabilidad posterior sobre la 
 localización del target, y selecciona la siguiente fijación según un 
 criterio de minimización de entropía esperada. 
@@ -39,16 +39,15 @@ procesadas por el modelo.
 
 \subsubsection{Prior inicial}
 
-Antes de la primera fijación, el modelo inicializa la distribución 
-a priori sobre la localización del target mediante DeepGaze II 
-\todo{cita}, una red neuronal convolucional entrenada para predecir dónde mira el sujeto al observar una imagen sin un objetivo de búsqueda predeterminado. Este mapa de saliencia modela la atención de forma guíada por el estímulo (lo que se conoce como bottom-up): captura las caracterísiticas visuales de bajo y alto nivel que atraen la mirada basándose en propiedades intrínsecas de la escena. De esta manera, la prior funciona como una estimación inicial de las regiones más llamativas en un primer vistazo, sirviendo cómo punto de partida antes de que los mecanismos del modelo empiecen a guiar los movimientos en función del objetivo de la búsqueda.
+Antes de la primera fijación, el modelo inicializa la distribución
+a priori sobre la localización del target mediante DeepGaze II~\citep{kummerer2021}, una red neuronal convolucional entrenada para predecir dónde mira el sujeto al observar una imagen sin un objetivo de búsqueda predeterminado. Este mapa de saliencia modela la atención de forma guíada por el estímulo (lo que se conoce como bottom-up): captura las caracterísiticas visuales de bajo y alto nivel que atraen la mirada basándose en propiedades intrínsecas de la escena. De esta manera, la prior funciona como una estimación inicial de las regiones más llamativas en un primer vistazo, sirviendo cómo punto de partida antes de que los mecanismos del modelo empiecen a guiar los movimientos en función del objetivo de la búsqueda.
 
 \subsubsection{Mapa de similitud con el target}
 
 El mapa de similitud ($\phi$) cuantifica el parecido entre cada 
 región de la imagen y el target buscado. Se construye dividiendo la 
 imagen en bloques de $224 \times 224$ píxeles que son procesados por 
-una red ResNeXt-101 32$\times$8d \todo{cita} preentrenada. El target 
+una red ResNeXt-101 32$\times$8 preentrenada. El target 
 es reescalado a $128 \times 128$ píxeles y procesado por la misma red. 
 Luego, el mapa de características (\textit{feature map}) de la última 
 capa convolucional de cada bloque de imagen es convolucionado con el 
@@ -72,9 +71,9 @@ covarianza:
     \text{ px}^2
 \end{equation}
 
-\noindent fue estimada en \todo{cita Bujia 2022} a partir de 
-mediciones empíricas de la excentricidad visual de participantes 
-humanos en experimentos de búsqueda visual \todo{cita Najemnik 2005}. 
+\noindent fue estimada en \citet{bujia2022} a partir de
+mediciones empíricas de la excentricidad visual de participantes
+humanos en experimentos de búsqueda visual. 
 Los valores más altos de $d$ cerca del centro de fijación y su 
 decaimiento hacia la periferia capturan el gradiente de resolución 
 del sistema visual.
@@ -132,8 +131,8 @@ convierte en el prior del siguiente paso.
 
 \subsubsection{Criterio de selección: minimización de entropía esperada}
 
-La siguiente fijación se selecciona según el criterio ELM 
-(\textit{Entropy Limit Minimization}) \todo{cita Najemnik}, que 
+La siguiente fijación se selecciona según el criterio ELM
+(\textit{Entropy Limit Minimization}) que 
 elige la posición $k(T+1)$ que maximiza la reducción esperada de 
 entropía en el posterior:
 
@@ -163,6 +162,5 @@ entre todos los targets:
 
 \noindent donde $H(\cdot)$ denota la entropía de Shannon. Esta 
 estrategia, denominada \textit{MinEntropy}, prioriza el target sobre 
-el cual el modelo tiene mayor certeza acumulada, y fue la que 
-demostró mejor desempeño en comparación con estrategias alternativas 
-\todo{cita Ruarte 2025}.
+el cual el modelo tiene mayor certeza acumulada, y fue la que
+demostró mejor desempeño en comparación con estrategias alternativas~\citep{ruarte2025}.

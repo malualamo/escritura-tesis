@@ -23,7 +23,7 @@ la respuesta a una fijación aún terminó cuando la siguiente ya comenzó, de m
 \textbf{superponen} en el registro continuo de EEG. El promedio clásico no 
 puede separar estas contribuciones, por lo que los FRPs obtenidos no reflejan 
 la respuesta independiente a cada fijación sino una mezcla contaminada por 
-los eventos adyacentes. \todo{CITA PAPER DAMIAN}
+los eventos adyacentes.
 
 Para abordar este problema, se propusieron métodos de \textbf{deconvolución lineal} que modelan la señal continua de EEG cómo la suma de respuestas evocadas por múltiples eventos simultáneos. La idea central es plantear el problema como una 
 \textbf{regresión lineal}: se construye una \textbf{matriz de diseño} en la que cada fila corresponde 
@@ -40,6 +40,6 @@ lo que se denomina \textbf{Temporal Response Function (TRF)}. Este enfoque \text
     temporalmente expandidos: uno para los eventos de estímulo (rojo) y otro para 
     las fijaciones oculares (verde). Los parámetros estimados (izquierda) 
     representan la respuesta neural independiente asociada a cada tipo de evento, 
-    es decir, la Temporal Response Function (TRF). Adaptado de \cite{Ehinger2019}.}
+    es decir, la Temporal Response Function (TRF). Adaptado de \citet{ehinger2019}.}
     \label{fig:deconvolucion}
 \end{figure}

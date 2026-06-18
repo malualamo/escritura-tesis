@@ -140,7 +140,7 @@ En el extremo inferior del ranking, \texttt{competencia\_fp\_var} ($\Delta$AIC $
 % \label{tab:delta_aic_base}
 % \end{table}
 
-\subsection{Resultados TFCE: Significancia Estadística Espacio-Temporal}
+\subsection{Resultados TFCE}
 
 La significancia estadística de los efectos fue evaluada mediante TFCE sobre 
 los modelos correspondientes a cada feature en escala original. De las 15 features 
@@ -151,11 +151,15 @@ evaluadas, 4 presentaron clusters espacio-temporales significativos:
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{chapters/04_resultados/images/resultados_TFCE_base}
-    \caption{Ejemplo de scanpath obtenido del experimento.}
+    \caption{Resultados TFCE para las features con clusters significativos en escala original: \feat{posterior}, \feat{saliencia\_media}, \feat{saliencia\_pixel} y \feat{similitud\_pixel}.}
     \label{fig:resultados_TFCE_base}
 \end{figure}
 
-\pendiente{Análisis de FRPs (componentes, amplitud, consistencia, etc.)}
+La feature \feat{posterior} muestra una activación positiva que aparece alrededor de los 200 ms luego de la fijación, con distribución topográfica centro-parietal. La latencia y la distribución son consistentes con el componente P300. Una posible hipótesis es que cuando el modelo nnELM asigna alta probabilidad posterior a la celda fijada, el cerebro genera una respuesta tardía similar a la que se observa ante estímulos de relevancia para la tarea. 
+
+Las features \feat{saliencia\_media} y \feat{saliencia\_pixel} presentan el mismo patrón: una activación negativo con un pico consistente con el componente P100. Se observan algunas diferencias entre las features: en \feat{saliencia\_media} se observa una activación de mayor amplitud y distribución fronto-central, mientras que en \feat{saliencia\_pixel} la topografía predominante es la occipital y la amplitud es menor. Una observación muy importante es que ambas features exhiben activación significativa previo al onset de la fijación; para analizarlo, en futuros trabajos se podría abordar un análisis del modelado de la señal en relación a la sacada en lugar de la fijación.
+
+La feature \feat{similitud\_pixel} presenta una activación negativa y un patrón más complejo para analizar. Se observan latencias tempranas y tardías, con una distribución que involucra electrodos fronto-centrales y parietales.
 
 Las 11 features restantes no presentaron clusters significativos según el 
 criterio TFCE, entre ellas todas las features de calidad de la decisión 
