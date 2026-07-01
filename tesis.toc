@@ -60,14 +60,13 @@
 \contentsline {subsubsection}{Estado interno del proceso bayesiano}{33}{}%
 \contentsline {subsubsection}{Calidad de la decisión}{34}{}%
 \contentsline {subsubsection}{Competencia entre candidatos}{34}{}%
-\contentsline {section}{\numberline {3.3}Fijaciones consecutivas en misma celda}{35}{}%
-\contentsline {section}{\numberline {3.4}Diagnóstico de multicolinealidad de pares de features}{36}{}%
-\contentsline {section}{\numberline {3.5}Transformaciones de features}{38}{}%
-\contentsline {subsubsection}{Transformaciones a features Bottom-Up}{38}{}%
-\contentsline {subsubsection}{Transformaciones a features de Similitud con el target}{39}{}%
-\contentsline {subsubsection}{Transformaciones a features de Estado interno del proceso bayesiano}{39}{}%
-\contentsline {subsubsection}{Transformaciones a features de Calidad de la decisión}{40}{}%
-\contentsline {subsubsection}{Transformaciones a features de Competencia entre candidatos}{41}{}%
+\contentsline {section}{\numberline {3.3}Diagnóstico de multicolinealidad de pares de features}{35}{}%
+\contentsline {section}{\numberline {3.4}Transformaciones de features}{37}{}%
+\contentsline {subsubsection}{Transformaciones a features Bottom-Up}{37}{}%
+\contentsline {subsubsection}{Transformaciones a features de Similitud con el target}{38}{}%
+\contentsline {subsubsection}{Transformaciones a features de Estado interno del proceso bayesiano}{38}{}%
+\contentsline {subsubsection}{Transformaciones a features de Calidad de la decisión}{39}{}%
+\contentsline {subsubsection}{Transformaciones a features de Competencia entre candidatos}{40}{}%
 \contentsline {chapter}{\numberline {4.}Resultados}{43}{}%
 \contentsline {section}{\numberline {4.1}Resultados modelo base MD2}{43}{}%
 \contentsline {section}{\numberline {4.2}Resultados con features en escala original}{44}{}%
