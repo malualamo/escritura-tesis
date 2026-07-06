@@ -1,0 +1,32 @@
+\chapter{Conclusiones}
+\label{ch:conclusiones}
+
+% Responder la pregunta central de la tesis a la luz de los resultados.
+% Sintetizar los aportes metodológicos y conceptuales.
+% Proponer líneas de trabajo futuro.
+
+Esta tesis partió de la pregunta: \textbf{¿es posible diseñar y extraer variables
+a nivel de fijación que cuantifiquen distintos aspectos
+del proceso de búsqueda visual y que tengan correlatos en la señal EEG registrada durante una
+tarea de búsqueda visual híbrida?}. Los resultados presentados permiten responder afirmativamente: un subconjunto de las variables propuestas mostró efectos estadísticamente significativos sobre la señal EEG, con correlatos en cuatro de las cinco categorías conceptuales definidas (información bottom-up, similitud con el target, estado interno del proceso bayesiano y calidad de la decisión), mientras que otro subconjunto no reveló efectos detectables bajo la metodología empleada. Esto indica que ciertos aspectos del proceso de búsqueda capturados por el modelo computacional nnELM se manifiestan en la actividad cerebral, mientras que otros aspectos no mostraron, bajo la metodología empleada, un correlato neural detectable.
+
+En relación con los tres objetivos específicos planteados:
+
+En cuanto al \textbf{diseño, extracción y validación de variables del modelo nnELM} sobre el dataset HSEM, se definieron y extrajeron 20 variables a nivel de fijación organizadas en cinco categorías conceptuales. El análisis distribucional y de variabilidad \textit{within-subject} permitió identificar variables redundantes o casi constantes, que fueron descartadas antes del modelado, y el análisis de coherencia temporal mostró que la evolución de las variables a lo largo del trial es consistente con la dinámica esperada de un proceso bayesiano de acumulación de evidencia, lo que valida su diseño e interpretación teórica.
+
+Respecto de la \textbf{compatibilización de los pipelines de movimientos oculares y EEG}, se resolvió el problema de alineación entre la representación en grilla del modelo nnELM y la resolución a nivel de píxel del pipeline de EEG mediante el mapeo de coordenadas de fijación a celdas. Se mostró que, si bien esta discretización introduce cierta redundancia en variables estáticas cuando fijaciones consecutivas caen en la misma celda, las variables dinámicas no presentan este problema, por lo que la discretización espacial no compromete la validez del análisis posterior.
+
+En cuanto a la \textbf{evaluación de la contribución de las variables a la predicción de la señal EEG}, el esquema de construcción incremental de modelos permitió identificar qué variables aportan de forma individual (Experimentos 1 y 2) y estudiar su comportamiento conjunto (Experimento 3). En este último, ningún modelo combinado superó en desempeño al mejor predictor individual, \feat{saliencia\_pixel\_log}, lo que sugiere que la relación entre las variables candidatas y la señal EEG involucra una estructura de varianza compartida que no fue completamente explicada por el enfoque de selección utilizado.
+
+En conjunto, estos resultados aportan evidencia de que el framework de TRFs por regresión regularizada es una herramienta apropiada para vincular variables latentes de un modelo computacional bayesiano de búsqueda visual con la actividad neural registrada durante la tarea, extendiendo el uso de este framework más allá de las variables observables definidas a nivel de fijación y sacada.
+
+\section*{Trabajo a futuro}
+
+A partir de las limitaciones y hallazgos discutidos en el Capítulo \ref{ch:discusion}, se identifican las siguientes líneas de trabajo futuro:
+
+\begin{itemize}
+    \item Profundizar el resultado del Experimento 3 mediante análisis de partición de varianza, esquemas de selección \textit{forward stepwise}, o metodologías de selección de variables alternativas que no dependan de la secuencia de filtros aplicada en este trabajo, así como incorporar términos de interacción entre variables.
+    \item Modelar las variables de saliencia bottom-up en relación con el onset de la sacada en lugar del onset de la fijación, dada la activación significativa observada en el período previo a la fijación.
+    \item Diseñar variables que capturen explícitamente la dinámica de competencia entre los targets sostenidos simultáneamente en memoria durante la búsqueda híbrida, complementando el efecto ya observado para el Memory Set Size.
+    \item Explorar métodos de análisis no lineales para las variables que no mostraron correlatos significativos bajo el modelo de regresión regularizada lineal empleado en este trabajo.
+\end{itemize}

@@ -1,0 +1,17 @@
+\chapter{Métodos}
+\label{ch:metodos}
+
+El presente capítulo describe el pipeline metodológico completo de la tesis. A modo de síntesis, la figura~\ref{fig:esquema} presenta un panorama general del pipeline empleado en este trabajo. A partir del dataset HSEM se ejecutó el modelo nnELM, del cual se extrajeron los mapas internos utilizados para construir el set inicial de variables. Se realizaron tres experimentos sobre el Modelo de TRFs por regresión regularizada: el Experimento~1 evaluó la performance individual de cada variable candidata en escala original, incorporada por separado al modelo base MD2; el Experimento~2 replicó este análisis sobre las versiones transformadas de dichas variables, permitiendo comparar su desempeño contra el de la escala original; el Experimento~3 seleccionó, para cada variable, la versión (original o transformada) con mejor desempeño según los Experimentos~1 y~2, y construyó con ese subconjunto un modelo combinado de mayor complejidad, evaluando su contribución conjunta. Los tres experimentos fueron diagnosticados mediante VIF y evaluados mediante $\Delta$AIC y TFCE.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{chapters/03_metodos/images/diagrama-metodologia.png}
+    \caption{Esquema general del pipeline de la tesis.}
+    \label{fig:esquema}
+\end{figure}
+
+Cada uno de estos componentes se desarrolla en detalle en las siguientes secciones.
+
+\input{chapters/03_metodos/extraccion_features}
+%\input{chapters/03_metodos/celdas_vs_pixeles}
+\input{chapters/03_metodos/evaluacion}

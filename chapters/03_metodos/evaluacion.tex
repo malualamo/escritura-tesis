@@ -1,0 +1,116 @@
+\section{Metodología de evaluación}
+\label{sec:evaluacion}
+
+% Presentar las métricas con las que se evalúa si una variable contribuye
+% al modelo y con las que se comparan modelos entre sí.
+% Mencionar la corrección por comparaciones múltiples.
+\subsection{Modelo base: MD2}
+
+Todos los resultados presentados en esta tesis se evalúan por comparación contra un modelo de referencia, al que se hace mención a lo largo del trabajo como \textbf{modelo base} o \textbf{MD2}. Este modelo fue definido y validado por \citet{care2025} sobre el mismo dataset HSEM, y su replicación sobre los datos utilizados en este trabajo se presenta en la Sección~\ref{sec:resultados_modelo_base}. El modelo MD2 incluye los siguientes predictores:
+
+\begin{itemize}
+    \item \textbf{Intercept de fijación}: respuesta media asociada a cualquier
+    fijación sobre un estímulo.
+    \item \textbf{Target}: variable binaria que indica si la fijación cayó sobre 
+    el target (1) o un distractor (0).
+    \item \textbf{Memory Set Size (MSS)}: tamaño del conjunto de memoria, 
+    codificado ordinalmente como $\{0, 1, 3\}$ para MSS $\in \{1, 2, 4\}$.
+    \item \textbf{Correct}: variable binaria que indica si el participante 
+    respondió correctamente en ese trial.
+    \item \textbf{Intercept de sacada}: respuesta media asociada a cada 
+    movimiento sacádico.
+    \item \textbf{Task Progress Score (TPS)}: rango estandarizado de la fijación que captura el progreso temporal dentro de cada ensayo.
+    \item \textbf{Splines de amplitud de sacada}: 5 splines cúbicos que 
+    modelan la relación no lineal entre la amplitud de la sacada y la 
+    respuesta EEG.
+\end{itemize}
+
+La ventana de análisis se define entre $-200$ ms y $+400$ ms respecto al onset 
+de cada fijación, y entre $-200$ ms y $+400$ ms respecto al onset de cada sacada.
+
+
+\subsection{$\Delta\mathrm{AIC}$ con grados de libertad efectivos de Ridge}
+
+Como métrica de comparación entre modelos, se utiliza el $\Delta$AIC. El Criterio de Información de Akaike (AIC) es una métrica basada en la teoría de la información que busca el equilibrio óptimo entre la bondad de ajuste de un modelo y su complejidad~\citep{akaike1974}. El AIC estima la distancia KL (es decir, la información "perdida") entre el modelo propuesto y el mecanismo que generó los datos.
+
+\begin{equation}
+    \label{eq:aic}
+    \mathrm{AIC} = n\left[\log(2\pi) + \log(\hat{\sigma}^2) + 1\right] + 2\,df_\lambda
+\end{equation}
+
+\noindent donde $n$ es el número de observaciones y $\hat{\sigma}^2$ es la varianza del residuo. En el AIC la penalización por complejidad se determina como $2K$, donde $K$ es el número de parámetros del modelo (mayor cantidad de coeficientes, mayor penalización). Sin embargo, el modelo Ridge aplica regularización hacia los coeficientes: los coeficientes no significativos resultan en valores muy cercanos al 0. Esto da como resultado una sobrepenalización en la complejidad del modelo. Como solución, se utilizan los grados de libertad efectivos $df_{\lambda}$. En lugar de contar cuántos coeficientes hay, se mide cuánta libertad real tiene el modelo para ajustarse a los datos después de aplicar la regularización (usando el $\lambda$ de la regularización).
+
+\begin{equation}
+    \label{eq:df_lambda}
+    df_{\lambda} = \sum_{i} \frac{d_i^2}{d_i^2 + \lambda}
+\end{equation}
+
+El $\Delta\mathrm{AIC}$ se calcula como la diferencia entre el AIC del modelo base y el AIC del modelo extendido, para cada electrodo y cada participante. Dado que no se espera que todos los electrodos respondan a cada variable agregada, se seleccionan para cada sujeto los $N = 32$ electrodos con mayor mejora y se promedian. Este valor se promedia luego entre participantes, obteniendo como resultado un $\Delta\mathrm{AIC}$ final por variable. Valores más negativos de $\Delta\mathrm{AIC}$ indican mayor mejora relativa.
+
+\subsection{Diagnóstico de multicolinealidad mediante VIF}
+
+Para el diagnóstico de multicolinealidad entre predictores, se utilizó el Factor de Inflación de la Varianza (VIF) definido para el predictor $k$ como:
+
+\begin{equation}
+    \label{eq:vif}
+    VIF_{k} = \frac{1}{1-R_k^2}
+\end{equation}
+
+\noindent donde $R_k^2$ es el coeficiente de determinación obtenido al tomar la columna $k$ como variable dependiente y ajustar una regresión lineal utilizando todas las demás columnas como predictores. Un VIF elevado indica que el predictor $k$ puede expresarse como combinación lineal de los otros predictores, lo que infla la varianza del coeficiente estimado.
+
+Computacionalmente, el VIF se obtuvo mediante la identidad matricial equivalente a la definición presentada en \eqref{eq:vif} \citep{taboga2021vif}. Para el predictor $k$, la identidad establece:
+
+\begin{equation}
+    \label{eq:vif_identidad}
+    \text{VIF}_k = \left[(X^\top X)^{-1}\right]_{kk} \cdot \left(X^\top X\right)_{kk}
+\end{equation}
+
+\noindent donde $X$ es la matriz de diseño con columnas centradas. Los subíndices $kk$ denotan el elemento diagonal correspondiente a la columna $k$. 
+
+\subsubsection{VIF en matriz de diseño de Modelo de TRFs}
+\label{subsec:vif}
+
+En la matriz de diseño del modelo de TRFs cada predictor ocupa $L$ columnas contiguas: una por cada lag temporal del intervalo de análisis $[\texttt{tmin}, \texttt{tmax}]$.
+
+El VIF de cada predictor se obtuvo promediando sobre un subconjunto de hasta 10 lags representativos, seleccionados de forma uniforme dentro del bloque correspondiente.
+
+Adicionalmente, los predictores de intercepto de fijación y sacada fueron excluidos
+del cálculo. Su exclusión es
+metodológicamente consistente dado que el VIF del intercepto no tiene interpretación
+en términos de multicolinealidad entre predictores de interés.
+
+El cálculo se realizó de forma independiente para cada participante, en consonancia con la estrategia de estimación del modelo, donde el TRF y el 
+parámetro de regularización $\lambda$ se determinan individualmente para cada 
+sujeto. 
+
+Para cada variable se reporta el porcentaje de sujetos que superan los umbrales de
+referencia VIF $>$ 3 y VIF $>$ 5. Se consideró que una variable presentaba multicolinealidad
+problemática cuando más de la mitad de los sujetos superó el umbral de VIF $>$ 5.
+
+
+\subsection{TFCE: Inferencia estadística espacio-temporal}
+
+Para realizar un análisis grupal entre los resultados de distintos participantes, se utiliza el método \textbf{TFCE (Threshold-Free Cluster Enhancement)}. Este método toma los coeficientes TRF de cada participante, electrodo y muestra temporal, e identifica clusters en el espacio de \texttt{electrodos $\times$ muestras temporales} donde los coeficientes son distintos de cero entre participantes (es decir, la señal es reproducible a nivel grupal). Para evaluar la significancia de cada cluster (llamémoslo cluster original), se realizan $2048$ permutaciones en las que se asigna al azar un signo a los coeficientes de cada participante, y se registra el tamaño del cluster más grande resultante. Si la proporción de permutaciones que produjeron un cluster de tamaño mayor o igual al cluster original es menor al $5\%$, se determina que el cluster es significativo, y por lo tanto lo es la variable. En los resultados se reporta qué ventana temporal y en qué electrodos se encontró significancia.
+
+\subsection{Exploración de transformación de variables}
+
+Para evaluar si la normalización distribucional mejora la detección de efectos neurales, se aplicaron transformaciones a variables que lo requirieran, y se compararon el $\Delta\mathrm{AIC}$ y los resultados TFCE obtenidos entre la variable original y la transformada. Los criterios para seleccionar qué variables transformar y sus resultados se presentan en la Sección~\ref{sec:transformaciones} y ~\ref{sec:resultados_features_transformadas}, respectivamente.
+
+\subsection{Construcción de modelos: evaluación individual y combinada}
+
+Para la evaluación de la contribución de las variables extraídas del nnELM se adoptó la estrategia de \textbf{construcción incremental de modelos}~\citep{care2025}. Se desarrollaron tres experimentos.
+
+\begin{itemize}
+    \item \textbf{Experimento 1: evaluación individual.} Se utiliza como base el modelo MD2 (Sección~\ref{sec:modelo_regresion}) y se incorpora de forma independiente cada variable candidata. Esta estrategia permite aislar el aporte marginal de cada variable antes de considerar combinaciones.
+    \item \textbf{Experimento 2: evaluación individual de variables transformadas.} Siguiendo la misma lógica que el Experimento~1, se incorporan de forma independiente al modelo base MD2 las versiones transformadas de las variables candidatas, y se comparan sus resultados con los obtenidos por la versión en escala original de cada variable.
+    \item \textbf{Experimento 3: construcción de un modelo combinado.} A partir de los resultados de los Experimentos~1 y~2, se construye un subconjunto de variables con capacidad predictiva demostrada, priorizando en cada caso la versión (original o transformada) con mejor desempeño. Con este subconjunto se arma una única matriz de diseño conjunta, incorporada simultáneamente al modelo base MD2, con el objetivo de evaluar si el aporte individual observado en los experimentos anteriores se mantiene cuando las variables compiten por explicar la misma señal EEG. 
+\end{itemize}
+
+Previo a su incorporación al modelo, cada variable se estandariza mediante z-score intrasujeto: para cada sujeto $s$ y cada variable $f$, se sustrae la media de los valores de $f$ sobre todas las fijaciones del sujeto a lo largo de todos sus trials, y se divide por el desvío estándar correspondiente.
+
+\begin{equation}
+    \label{eq:zscore}
+    z_{f,s}(t) = \frac{f_s(t) - \mu_{f,s}}{\sigma_{f,s}}
+\end{equation}
+
+La estandarización z-score elimina las diferencias de escala, haciendo que los coeficientes TRF resultantes sean comparables entre variables con distintas unidades y rangos.

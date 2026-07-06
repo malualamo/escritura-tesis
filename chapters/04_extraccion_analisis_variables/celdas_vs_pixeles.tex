@@ -1,0 +1,56 @@
+\section{Integración de los pipelines}
+\label{sec:celdas_vs_pixeles}
+
+% Explicar la diferencia entre el procesamiento del nnELM (grilla de
+% celdas) y el pipeline de EEG (fijaciones en píxeles).
+% Justificar el uso de los scanpaths de Damián como referencia.
+% Describir la estrategia de asignación de valores de celda a fijaciones.
+% Tratar el caso de fijaciones consecutivas en la misma celda.
+% Mencionar los criterios de exclusión aplicados.
+
+La incorporación de las variables extraídas del nnELM al modelo de TRFs por regresión regularizada requiere compatibilizar dos pipelines que difieren en el procesamiento de la resolución espacial: procesamiento en celdas vs. procesamiento en píxeles.
+
+El modelo nnELM opera sobre una representación espacial discreta de la imagen, dividida en una grilla de $24 \times 32$ celdas de $32 \times 32$ píxeles cada una. Como consecuencia, las variables extraídas del modelo toman un valor por celda, no por píxel. El pipeline del EEG, en cambio, registra la posición de cada fijación a nivel pixel. Para asignar el valor de cada variable a cada fijación, se mapeó la coordenada de fijación a la celda correspondiente de la grilla.
+
+Una consecuencia de esta discretización es que dos fijaciones consecutivas que caen dentro de la misma celda podrían recibir el mismo valor en las variables extraídas del modelo nnELM. Sin embargo, esto sucede en las variables estáticas del modelo (que no dependen del estado interno del modelo en cada paso). En las variables dinámicas no sucede: entre fijación y fijación el modelo actualiza su estado interno, haciendo que el valor de las variables cambien aunque caigan dentro de la misma celda. 
+
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lrr}
+\toprule
+Variable & \% idénticas & Tipo \\
+\midrule
+\texttt{saliencia\_media}              & 100.0\% & estática \\
+\texttt{saliencia\_mediana}            & 100.0\% & estática \\
+\texttt{saliencia\_pixel}              &  54.9\% & estática \\
+\texttt{similitud\_media}              & 100.0\% & estática \\
+\texttt{similitud\_mediana}            & 100.0\% & estática \\
+\texttt{similitud\_pixel}              &  37.9\% & estática \\
+\texttt{entropia\_prior\_saliencia}    & 100.0\% & estática \\
+\midrule
+\texttt{competencia\_densidad}         &  66.8\% & dinámica \\
+\texttt{competencia\_densidad\_norm}   &  66.8\% & dinámica \\
+\texttt{distancia\_grilla}             &  58.1\% & dinámica \\
+\texttt{distancia\_pixels}             &  58.1\% & dinámica \\
+\texttt{gap\_entropia}                 &   3.1\% & dinámica \\
+\texttt{evidencia\_visual}             &   0.0\% & dinámica \\
+\texttt{competencia\_fp\_var}          &   0.0\% & dinámica \\
+\texttt{competencia\_fp\_media}        &   0.0\% & dinámica \\
+\texttt{competencia\_fp\_max}          &   0.0\% & dinámica \\
+\texttt{posterior}                     &   0.0\% & dinámica \\
+\texttt{entropia\_posterior}           &   0.0\% & dinámica \\
+\texttt{ganancia\_informacion}         &   0.0\% & dinámica \\
+\texttt{competencia\_ratio}            &   0.0\% & dinámica \\
+\bottomrule
+\end{tabular}
+\caption{Proporción de pares de fijaciones consecutivas en la misma celda 
+($N = 2{,}908$) con valores idénticos para cada variable. Las variables estáticas 
+no dependen de la secuencia de fijaciones, por lo que presentan redundancia 
+total o parcial. Las variables dinámicas se actualizan en cada paso del modelo, 
+resultando en valores distintos incluso cuando dos fijaciones caen en la misma celda.}
+\label{tab:pares_celda}
+\end{table}
+
+Este resultado indica que la discretización espacial no introduce una pérdida de información problemática para el análisis. 

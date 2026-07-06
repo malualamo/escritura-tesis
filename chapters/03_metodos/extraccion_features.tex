@@ -1,0 +1,7 @@
+\section{Extracción de variables del nnELM}
+
+El primer paso consistió en obtener un conjunto de variables a nivel de fijación que capturaran distintos aspectos del proceso de búsqueda visual. Para esto se aprovecharon los mapas internos que genera el modelo nnELM en cada ciclo de fijación.
+
+Un punto importante es que el nnELM fue originalmente diseñado para generar su propio scanpath de forma autónoma, seleccionando en cada paso la fijación que minimiza la entropía esperada según el criterio ELM (Sección \ref{sec:modelo_gonzalo}). Sin embargo, para el objetivo de la tesis es necesario que cada variable quede asociada a una fijación efectivamente realizada por cada sujeto. Por esta razón, se modificó el ciclo de ejecución del modelo para que en lugar de decidir la siguiente fijación, recibiera como input la secuencia de coordenadas del scanpath humano y actualizara su estado interno siguiendo esas fijaciones.
+
+Ejecutando el modelo de esta manera sobre la totalidad de los trials del dataset HSEM se generó (fijación a fijación) el conjunto de mapas internos correspondientes al estado del proceso bayesiano en ese punto del scanpath. A partir de estos mapas se diseñaron, extrajeron y almacenaron las variables candidatas. El detalle del procedimiento y las variables específicas extraídas se desarrolla en la sección \ref{sec:extraccion_features}

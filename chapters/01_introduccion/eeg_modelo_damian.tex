@@ -13,13 +13,12 @@ consiste en obtener \textbf{fixation-related potentials} (FRPs). El procedimient
 alinea la señal continua de EEG con el inicio de cada fijación ocular y promedia 
 la señal resultante a lo largo de todos los eventos del mismo tipo para un 
 mismo sujeto. El promedio cancela las fluctuaciones aleatorias no relacionadas 
-con el evento de interés, dejando visible la respuesta neural sistemáticamente 
-asociada a cada fijación.
+con el evento de interés, dejando visible la respuesta neural asociada a cada fijación.
 
 Sin embargo, este enfoque presenta una limitación fundamental. Durante la búsqueda visual, las fijaciones oculares tienen 
 una duración típica de 200--300 ms, mientras que las respuestas neurales 
-evocadas por cada fijación se extienden entre 400 y 600 ms. Como consecuencia, 
-la respuesta a una fijación aún terminó cuando la siguiente ya comenzó, de modo que las señales neurales de fijaciones consecutivas se 
+evocadas por cada fijación se extienden entre 400 y 600 ms. En otras palabras, 
+la respuesta a una fijación aún no terminó cuando la siguiente ya comenzó, de modo que las señales neurales de fijaciones consecutivas se 
 \textbf{superponen} en el registro continuo de EEG. El promedio clásico no 
 puede separar estas contribuciones, por lo que los FRPs obtenidos no reflejan 
 la respuesta independiente a cada fijación sino una mezcla contaminada por 
@@ -43,3 +42,59 @@ lo que se denomina \textbf{Temporal Response Function (TRF)}. Este enfoque \text
     es decir, la Temporal Response Function (TRF). Adaptado de \citet{ehinger2019}.}
     \label{fig:deconvolucion}
 \end{figure}
+
+Este marco de deconvolución lineal fue aplicado sobre el dataset HSEM por \citep{care2025}, quienes desarrollaron un modelo de TRFs por regresión regularizada para estudiar los correlatos neurales de la búsqueda híbrida. Dicho modelo incorpora predictores definidos a nivel de fijación y sacada y logra recuperar componentes neurales ya documentados en la literatura. Este resultado valida al framework de TRFs como una herramienta apropiada para vincular variables de interés con la señal EEG registrada durante la tarea, y constituye el punto de partida metodológico sobre el cual se apoya la presente tesis.
+
+\subsubsection{Interpretación de las TRFs: regiones cerebrales y componentes de referencia}
+
+Las TRFs estimadas por el modelo producen patrones de actividad
+con una estructura espacial y temporal específica: actividad neuronal
+que ocurre a latencias determinadas y que se concentra en
+regiones particulares del cuero cabelludo. Para poder interpretar estos patrones más adelante, se introducen a continuación los conceptos básicos de neurociencia necesarios: la organización espacial de los electrodos EEG y los componentes neurales de referencia que se retomarán a lo largo de esta tesis.
+
+La señal EEG se registra simultáneamente en múltiples electrodos
+distribuidos sobre el cuero cabelludo. Esta distribución espacial permite localizar aproximadamente
+qué región cortical genera cada respuesta: los electrodos frontales (ubicados en la parte delantera 
+de la cabeza) reflejan procesos cognitivos de alto nivel como
+planificación, control atencional y memoria de trabajo;
+los electrodos parietales (ubicados en la parte 
+trasera) capturan procesos de atención espacial; los electrodos occipitales (ubicados 
+en la parte de atrás de la cabeza) capturan principalmente actividad 
+de la corteza visual primaria, reflejando el procesamiento visual 
+temprano ante cada fijación.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{chapters/02_materiales/images/cabecita_regiones.png}
+    \caption{Distribución de las regiones del cuero cabelludo según 
+su ubicación anatómica.}
+    \label{fig:regiones_corteza}
+\end{figure}
+
+
+La respuesta neural ante un evento puede caracterizarse a través de
+\textit{componentes}: patrones de activación de la señal EEG que
+ocurren a latencias específicas tras el onset del evento y que están
+bien establecidos en la literatura de neurociencia cognitiva. Por
+convención, los componentes se nombran según la polaridad de la
+activación (positiva (P) o negativa (N)) y su latencia aproximada
+en milisegundos. Por ejemplo, el P100 es una activación positiva
+que ocurre alrededor de los 100 ms; el N200, una activación negativa
+alrededor de los 200 ms.
+
+El \textbf{compontente P100} es un componente positivo temprano
+que ocurre entre los 80 y 130 ms tras la presentación de un
+estímulo visual, con distribución sobre electrodos occipitales
+laterales. Refleja el procesamiento visual temprano ante la llegada de nueva información visual. El P100 puede ser modulado por la atención: su amplitud aumenta cuando el estímulo aparece en una región del
+campo visual que el sujeto estaba atendiendo.
+
+El \textbf{componente P300} es un componente positivo tardío que ocurre entre los
+250 y 500 ms tras el onset de un estímulo, con pico típico
+alrededor de los 300 ms y distribución máxima sobre electrodos
+parietales. A diferencia del P100, su ocurrencia no depende de las características físicas del
+estímulo sino de la relevancia que ese estímulo tiene para
+la tarea en curso. En particular, el P300 se asocia a procesos
+de evaluación y categorización del estímulo.
+
+%\pendiente{En caso de aparecer nuevos componentes en el análisis de los resultados de TFCE (en sección resultados), serán agregados y explicados en esta}

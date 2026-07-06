@@ -13,6 +13,7 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{natbib}
+\usepackage{url}
 \subsubsectionfont{\bfseries}
 \raggedbottom
 \usepackage{tcolorbox}
@@ -28,7 +29,7 @@
 % Para deshabilitar todas las notas al entregar la tesis final, reemplazar por:
 % \usepackage[disable]{todonotes}
 \usepackage{microtype}
-% Formato para nombres de features del modelo
+% Formato para nombres de variables del modelo
 \newcommand{\feat}[1]{\textcolor[HTML]{A63D52}{\texttt{#1}}}
 % Cuadro de pendiente
 \newcommand{\pendiente}[1]{%
@@ -75,11 +76,12 @@
 %%%% ACA VA EL CONTENIDO DE LA TESIS
 
 \input{chapters/01_introduccion/01_introduccion}
-\input{chapters/02_materiales_metodos/02_materiales_metodos}
-\input{chapters/03_analisis_features/03_analisis_features}
-\input{chapters/04_resultados/04_resultados}
-\input{chapters/05_discusion/05_discusion}
-\input{chapters/06_conclusiones/06_conclusiones}
+\input{chapters/02_materiales/02_materiales}
+\input{chapters/03_metodos/03_metodos}
+\input{chapters/04_extraccion_analisis_variables/04_extraccion_analisis_variables}
+\input{chapters/05_resultados/05_resultados}
+\input{chapters/06_discusion/06_discusion}
+\input{chapters/07_conclusiones/07_conclusiones}
 
 %%%% BIBLIOGRAFIA
 \backmatter

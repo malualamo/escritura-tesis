@@ -3,84 +3,92 @@
 \contentsline {section}{\numberline {1.1}Búsqueda visual e híbrida}{1}{}%
 \contentsline {section}{\numberline {1.2}El modelo nnELM}{1}{}%
 \contentsline {section}{\numberline {1.3}EEG en búsqueda visual}{2}{}%
-\contentsline {section}{\numberline {1.4}Pregunta principal y objetivos}{3}{}%
-\contentsline {chapter}{\numberline {2.}Materiales y métodos}{5}{}%
-\contentsline {section}{\numberline {2.1}Dataset HSEM}{5}{}%
-\contentsline {subsubsection}{Dataset}{5}{}%
-\contentsline {subsubsection}{Participantes}{5}{}%
-\contentsline {subsubsection}{Estímulos y tarea}{5}{}%
-\contentsline {section}{\numberline {2.2}El modelo nnELM}{6}{}%
-\contentsline {subsubsection}{Representación Espacial}{6}{}%
-\contentsline {subsubsection}{Prior inicial}{6}{}%
-\contentsline {subsubsection}{Mapa de similitud con el target}{7}{}%
-\contentsline {subsubsection}{Mapa de visibilidad}{7}{}%
-\contentsline {subsubsection}{Evidencia visual}{7}{}%
-\contentsline {subsubsection}{Actualización del posterior}{8}{}%
-\contentsline {subsubsection}{Criterio de selección: minimización de entropía esperada}{8}{}%
-\contentsline {subsubsection}{Extensión a búsqueda híbrida}{8}{}%
-\contentsline {section}{\numberline {2.3}Extracción de features del nnELM}{8}{}%
-\contentsline {subsection}{\numberline {2.3.1}Notación}{9}{}%
-\contentsline {subsection}{\numberline {2.3.2}Procedimiento}{10}{}%
-\contentsline {subsection}{\numberline {2.3.3}Features extraídas}{11}{}%
-\contentsline {subsubsection}{Información bottom-up}{11}{}%
-\contentsline {subsubsection}{Similitud con el target}{11}{}%
-\contentsline {subsubsection}{Estado interno del proceso bayesiano}{12}{}%
-\contentsline {subsubsection}{Calidad de la decisión}{14}{}%
-\contentsline {subsubsection}{Competencia entre candidatos}{14}{}%
-\contentsline {section}{\numberline {2.4}Integración de los pipelines}{16}{}%
-\contentsline {subsubsection}{Algoritmos de detección de fijaciones}{16}{}%
-\contentsline {subsubsection}{Resolución espacial: celdas vs. píxeles}{17}{}%
-\contentsline {section}{\numberline {2.5}Modelo de TRFs por regresión regularizada}{17}{}%
-\contentsline {subsection}{\numberline {2.5.1}Temporal Response Functions (TRFs)}{18}{}%
-\contentsline {subsection}{\numberline {2.5.2}Construcción de matriz de diseño}{18}{}%
-\contentsline {subsection}{\numberline {2.5.3}Estimación ridge y selección del parámetro de regularización}{18}{}%
-\contentsline {subsubsection}{Selección de $\lambda $}{19}{}%
-\contentsline {subsubsection}{El modelo base: MD2}{19}{}%
-\contentsline {subsection}{\numberline {2.5.4}Interpretación de las TRFs: regiones cerebrales y componentes de referencia}{19}{}%
-\contentsline {section}{\numberline {2.6}Metodología de evaluación}{21}{}%
-\contentsline {subsection}{\numberline {2.6.1}Construcción incremental de modelos}{21}{}%
-\contentsline {subsection}{\numberline {2.6.2}$\Delta \mathrm {AIC}$ con grados de libertad efectivos de Ridge}{21}{}%
-\contentsline {subsection}{\numberline {2.6.3}Diagnóstico de multicolinealidad mediante VIF}{22}{}%
-\contentsline {subsubsection}{VIF en matriz de diseño de Modelo de TRFs}{22}{}%
-\contentsline {subsection}{\numberline {2.6.4}TFCE: Inferencia estadística espacio-temporal}{22}{}%
-\contentsline {subsection}{\numberline {2.6.5}Exploración de transformación de variables}{23}{}%
-\contentsline {chapter}{\numberline {3.}Análisis de Features}{25}{}%
-\contentsline {section}{\numberline {3.1}Análisis distribucional}{25}{}%
-\contentsline {subsection}{\numberline {3.1.1}Análisis global}{25}{}%
-\contentsline {subsubsection}{Información Bottom Up}{25}{}%
-\contentsline {subsubsection}{Similitud con el target}{25}{}%
-\contentsline {subsubsection}{Estado interno del proceso bayesiano}{26}{}%
-\contentsline {subsubsection}{Calidad de la decisión}{27}{}%
-\contentsline {subsubsection}{Competencia entre candidatos}{27}{}%
-\contentsline {subsubsection}{Análisis General}{28}{}%
-\contentsline {subsection}{\numberline {3.1.2}Mirada por sujeto}{29}{}%
-\contentsline {section}{\numberline {3.2}Coherencia con el proceso de búsqueda}{31}{}%
-\contentsline {subsubsection}{Información bottom-up}{32}{}%
-\contentsline {subsubsection}{Similitud con el target}{32}{}%
-\contentsline {subsubsection}{Estado interno del proceso bayesiano}{33}{}%
-\contentsline {subsubsection}{Calidad de la decisión}{34}{}%
-\contentsline {subsubsection}{Competencia entre candidatos}{34}{}%
-\contentsline {section}{\numberline {3.3}Diagnóstico de multicolinealidad de pares de features}{35}{}%
-\contentsline {section}{\numberline {3.4}Transformaciones de features}{37}{}%
-\contentsline {subsubsection}{Transformaciones a features Bottom-Up}{37}{}%
-\contentsline {subsubsection}{Transformaciones a features de Similitud con el target}{38}{}%
-\contentsline {subsubsection}{Transformaciones a features de Estado interno del proceso bayesiano}{38}{}%
-\contentsline {subsubsection}{Transformaciones a features de Calidad de la decisión}{39}{}%
-\contentsline {subsubsection}{Transformaciones a features de Competencia entre candidatos}{40}{}%
-\contentsline {chapter}{\numberline {4.}Resultados}{43}{}%
-\contentsline {section}{\numberline {4.1}Resultados modelo base MD2}{43}{}%
-\contentsline {section}{\numberline {4.2}Resultados con features en escala original}{44}{}%
-\contentsline {subsection}{\numberline {4.2.1}Diagnóstico de multicolinealidad (VIF)}{44}{}%
-\contentsline {subsection}{\numberline {4.2.2}Evaluación individual de features mediante $\Delta $AIC}{45}{}%
-\contentsline {subsection}{\numberline {4.2.3}Resultados TFCE}{46}{}%
-\contentsline {section}{\numberline {4.3}Resultados con features transformadas}{47}{}%
-\contentsline {subsection}{\numberline {4.3.1}Diagnóstico de multicolinealidad (VIF)}{47}{}%
-\contentsline {subsection}{\numberline {4.3.2}Evaluación individual de features mediante $\Delta $ AIC}{48}{}%
-\contentsline {subsection}{\numberline {4.3.3}Resultados TFCE}{49}{}%
-\contentsline {subsubsection}{Features con clusters significativos en ambas versiones}{50}{}%
-\contentsline {subsubsection}{Features con clusters significativos solo en la versión transformada}{52}{}%
-\contentsline {subsubsection}{Features sin clusters significativos en ninguna versión}{54}{}%
-\contentsline {section}{\numberline {4.4}Combinación de variables}{55}{}%
-\contentsline {section}{\numberline {4.5}Interpretación de resultados}{55}{}%
-\contentsline {chapter}{\numberline {5.}Discusión}{57}{}%
-\contentsline {chapter}{\numberline {6.}Conclusiones}{59}{}%
+\contentsline {subsubsection}{Interpretación de las TRFs: regiones cerebrales y componentes de referencia}{3}{}%
+\contentsline {section}{\numberline {1.4}Pregunta principal y objetivos}{4}{}%
+\contentsline {chapter}{\numberline {2.}Materiales}{7}{}%
+\contentsline {section}{\numberline {2.1}Dataset HSEM}{7}{}%
+\contentsline {subsubsection}{Dataset}{7}{}%
+\contentsline {subsubsection}{Participantes}{7}{}%
+\contentsline {subsubsection}{Estímulos y tarea}{7}{}%
+\contentsline {section}{\numberline {2.2}El modelo nnELM}{8}{}%
+\contentsline {subsubsection}{Representación Espacial}{8}{}%
+\contentsline {subsubsection}{Prior inicial}{8}{}%
+\contentsline {subsubsection}{Mapa de similitud con el target}{9}{}%
+\contentsline {subsubsection}{Mapa de visibilidad}{9}{}%
+\contentsline {subsubsection}{Evidencia visual}{9}{}%
+\contentsline {subsubsection}{Actualización del posterior}{10}{}%
+\contentsline {subsubsection}{Criterio de selección: minimización de entropía esperada}{10}{}%
+\contentsline {subsubsection}{Extensión a búsqueda híbrida}{10}{}%
+\contentsline {section}{\numberline {2.3}Modelo de TRFs por regresión regularizada}{10}{}%
+\contentsline {subsection}{\numberline {2.3.1}Temporal Response Functions (TRFs)}{11}{}%
+\contentsline {subsection}{\numberline {2.3.2}Construcción de matriz de diseño}{11}{}%
+\contentsline {subsection}{\numberline {2.3.3}Estimación ridge y selección del parámetro de regularización}{12}{}%
+\contentsline {subsubsection}{Selección de $\lambda $}{12}{}%
+\contentsline {chapter}{\numberline {3.}Métodos}{13}{}%
+\contentsline {section}{\numberline {3.1}Extracción de variables del nnELM}{14}{}%
+\contentsline {section}{\numberline {3.2}Metodología de evaluación}{14}{}%
+\contentsline {subsection}{\numberline {3.2.1}Modelo base: MD2}{14}{}%
+\contentsline {subsection}{\numberline {3.2.2}$\Delta \mathrm {AIC}$ con grados de libertad efectivos de Ridge}{15}{}%
+\contentsline {subsection}{\numberline {3.2.3}Diagnóstico de multicolinealidad mediante VIF}{15}{}%
+\contentsline {subsubsection}{VIF en matriz de diseño de Modelo de TRFs}{16}{}%
+\contentsline {subsection}{\numberline {3.2.4}TFCE: Inferencia estadística espacio-temporal}{16}{}%
+\contentsline {subsection}{\numberline {3.2.5}Exploración de transformación de variables}{16}{}%
+\contentsline {subsection}{\numberline {3.2.6}Construcción de modelos: evaluación individual y combinada}{16}{}%
+\contentsline {chapter}{\numberline {4.}Extracción y análisis de variables}{19}{}%
+\contentsline {section}{\numberline {4.1}Extracción de variables del nnELM}{19}{}%
+\contentsline {subsection}{\numberline {4.1.1}Notación}{19}{}%
+\contentsline {subsection}{\numberline {4.1.2}Procedimiento}{20}{}%
+\contentsline {subsection}{\numberline {4.1.3}Variables extraídas}{21}{}%
+\contentsline {subsubsection}{Información bottom-up}{21}{}%
+\contentsline {subsubsection}{Similitud con el target}{22}{}%
+\contentsline {subsubsection}{Estado interno del proceso bayesiano}{22}{}%
+\contentsline {subsubsection}{Calidad de la decisión}{24}{}%
+\contentsline {subsubsection}{Competencia entre candidatos}{25}{}%
+\contentsline {section}{\numberline {4.2}Integración de los pipelines}{27}{}%
+\contentsline {section}{\numberline {4.3}Análisis distribucional}{28}{}%
+\contentsline {subsection}{\numberline {4.3.1}Análisis global}{29}{}%
+\contentsline {subsubsection}{Información Bottom Up}{29}{}%
+\contentsline {subsubsection}{Similitud con el target}{29}{}%
+\contentsline {subsubsection}{Estado interno del proceso bayesiano}{29}{}%
+\contentsline {subsubsection}{Calidad de la decisión}{30}{}%
+\contentsline {subsubsection}{Competencia entre candidatos}{31}{}%
+\contentsline {subsubsection}{Análisis General}{31}{}%
+\contentsline {subsection}{\numberline {4.3.2}Mirada por sujeto}{32}{}%
+\contentsline {section}{\numberline {4.4}Coherencia con el proceso de búsqueda}{34}{}%
+\contentsline {subsubsection}{Información bottom-up}{34}{}%
+\contentsline {subsubsection}{Similitud con el target}{35}{}%
+\contentsline {subsubsection}{Estado interno del proceso bayesiano}{36}{}%
+\contentsline {subsubsection}{Calidad de la decisión}{37}{}%
+\contentsline {subsubsection}{Competencia entre candidatos}{37}{}%
+\contentsline {section}{\numberline {4.5}Diagnóstico de correlación cruzada}{38}{}%
+\contentsline {section}{\numberline {4.6}Transformaciones de variables}{40}{}%
+\contentsline {subsubsection}{Transformaciones a variables Bottom-Up}{40}{}%
+\contentsline {subsubsection}{Transformaciones a variables de Similitud con el target}{41}{}%
+\contentsline {subsubsection}{Transformaciones a variables de Estado interno del proceso bayesiano}{42}{}%
+\contentsline {subsubsection}{Transformaciones a variables de Calidad de la decisión}{43}{}%
+\contentsline {subsubsection}{Transformaciones a variables de Competencia entre candidatos}{44}{}%
+\contentsline {chapter}{\numberline {5.}Resultados}{45}{}%
+\contentsline {section}{\numberline {5.1}Resultados modelo base MD2}{45}{}%
+\contentsline {section}{\numberline {5.2}Experimento 1: Resultados con variables en escala original}{46}{}%
+\contentsline {subsection}{\numberline {5.2.1}Diagnóstico de multicolinealidad (VIF)}{46}{}%
+\contentsline {subsection}{\numberline {5.2.2}Evaluación individual de variables mediante $\Delta $AIC}{47}{}%
+\contentsline {subsection}{\numberline {5.2.3}Resultados TFCE}{48}{}%
+\contentsline {section}{\numberline {5.3}Experimento 2: Resultados con variables transformadas}{49}{}%
+\contentsline {subsection}{\numberline {5.3.1}Diagnóstico de multicolinealidad (VIF)}{49}{}%
+\contentsline {subsection}{\numberline {5.3.2}Evaluación individual de variables mediante $\Delta $ AIC}{50}{}%
+\contentsline {subsection}{\numberline {5.3.3}Resultados TFCE}{51}{}%
+\contentsline {subsubsection}{Variables con clusters significativos en ambas versiones}{52}{}%
+\contentsline {subsubsection}{Variables con clusters significativos solo en la versión transformada}{54}{}%
+\contentsline {subsubsection}{Variables sin clusters significativos en ninguna versión}{56}{}%
+\contentsline {section}{\numberline {5.4}Experimento 3: Modelos con mayor complejidad}{57}{}%
+\contentsline {subsection}{\numberline {5.4.1}Selección del subconjunto de variables}{57}{}%
+\contentsline {paragraph}{Paso 1: Selección de versión (original vs. transformada).}{57}{}%
+\contentsline {paragraph}{Paso 2: Filtro por significancia estadística.}{58}{}%
+\contentsline {paragraph}{Paso 3: Reducción por redundancia intra-categoría.}{58}{}%
+\contentsline {subsection}{\numberline {5.4.2}Multicolinealidad por VIF}{58}{}%
+\contentsline {subsection}{\numberline {5.4.3}Resultados}{58}{}%
+\contentsline {paragraph}{Experimento 3a.}{58}{}%
+\contentsline {paragraph}{Experimento 3b.}{59}{}%
+\contentsline {paragraph}{Experimento 3c.}{59}{}%
+\contentsline {chapter}{\numberline {6.}Discusión}{61}{}%
+\contentsline {chapter}{\numberline {7.}Conclusiones}{63}{}%
