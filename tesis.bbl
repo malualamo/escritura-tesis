@@ -5,11 +5,24 @@ Akaike, H. (1974).
 \newblock A new look at the statistical model identification.
 \newblock {\em IEEE Transactions on Automatic Control}, 19(6):716--723.
 
+\bibitem[Barbosa et~al., 2024]{barbosa2024investigating}
+Barbosa, A., Ruarte, G., Ries, A.~J., Kamienkowski, J.~E., and Ison, M.~J.
+  (2024).
+\newblock Investigating the effects of context, visual working memory, and
+  inhibitory control in hybrid visual search.
+\newblock {\em Frontiers in Human Neuroscience}, 18:1436564.
+
 \bibitem[Bujia et~al., 2022]{bujia2022}
 Bujia, G., Sclar, M., Vita, S., Solovey, G., and Kamienkowski, J.~E. (2022).
 \newblock Modeling human visual search in natural scenes: {A} combined
   {Bayesian} searcher and saliency map approach.
 \newblock {\em Frontiers in Systems Neuroscience}, 16:882315.
+
+\bibitem[Care et~al., 2023]{care2023active}
+Care, D., {da Fonseca}, M., Ison, M.~J., and Kamienkowski, J.~E. (2023).
+\newblock Active search signatures in a free-viewing task exploiting concurrent
+  eeg and eye movements recordings.
+\newblock {\em European Journal of Neuroscience}, 58(2):2563--2578.
 
 \bibitem[Care et~al., 2025]{care2025}
 Care, D., Gonz{\'a}lez, J.~E., Ison, M.~J., and Kamienkowski, J.~E. (2025).
@@ -23,16 +36,57 @@ Deng, J., Dong, W., Socher, R., Li, L.-J., Li, K., and Fei-Fei, L. (2009).
 \newblock In {\em 2009 IEEE Conference on Computer Vision and Pattern
   Recognition}, pages 248--255.
 
+\bibitem[Drew et~al., 2016]{drew2016searching}
+Drew, T., Boettcher, S. E.~F., and Wolfe, J.~M. (2016).
+\newblock Searching while loaded: Visual working memory does not interfere with
+  hybrid search efficiency but hybrid search uses working memory capacity.
+\newblock {\em Psychonomic Bulletin \& Review}, 23(1):201--212.
+
+\bibitem[Drew and Wolfe, 2014]{drew2014hybrid}
+Drew, T. and Wolfe, J.~M. (2014).
+\newblock Hybrid search in the temporal domain: Evidence for rapid, serial
+  logarithmic search through memory.
+\newblock {\em Attention, Perception, \& Psychophysics}, 76(2):296--303.
+
 \bibitem[Ehinger and Dimigen, 2019]{ehinger2019}
 Ehinger, B.~V. and Dimigen, O. (2019).
 \newblock Unfold: an integrated toolbox for overlap correction, non-linear
   modeling, and regression-based {EEG} analysis.
 \newblock {\em PeerJ}, 7:e7838.
 
+\bibitem[Hoerl and Kennard, 1970]{hoerl1970ridge}
+Hoerl, A.~E. and Kennard, R.~W. (1970).
+\newblock Ridge regression: Biased estimation for nonorthogonal problems.
+\newblock {\em Technometrics}, 12(1):55--67.
+
+\bibitem[Kamienkowski et~al., 2012]{kamienkowski2012fixation}
+Kamienkowski, J.~E., Ison, M.~J., {Quian Quiroga}, R., and Sigman, M. (2012).
+\newblock Fixation-related potentials in visual search: A combined eeg and eye
+  tracking study.
+\newblock {\em Journal of Vision}, 12(7):4.
+
+\bibitem[Kamienkowski et~al., 2018]{kamienkowski2018parsing}
+Kamienkowski, J.~E., Varatharajah, A., Sigman, M., and Ison, M.~J. (2018).
+\newblock Parsing a mental program: Fixation-related brain signatures of
+  unitary operations and routines in natural visual search.
+\newblock {\em NeuroImage}, 183:73--86.
+
+\bibitem[Kaunitz et~al., 2014]{kaunitz2014looking}
+Kaunitz, L.~N., Kamienkowski, J.~E., Varatharajah, A., Sigman, M., {Quian
+  Quiroga}, R., and Ison, M.~J. (2014).
+\newblock Looking for a face in the crowd: Fixation-related potentials in an
+  eye-movement visual search task.
+\newblock {\em NeuroImage}, 89:297--305.
+
 \bibitem[K{\"u}mmerer and Bethge, 2021]{kummerer2021}
 K{\"u}mmerer, M. and Bethge, M. (2021).
 \newblock State-of-the-art in human scanpath prediction.
 \newblock {\em arXiv preprint arXiv:2102.12239}.
+
+\bibitem[Kutner, 1984]{kutner1984applied}
+Kutner, M.~H. (1984).
+\newblock {\em Applied Linear Statistical Models}.
+\newblock McGraw-Hill Education, India.
 
 \bibitem[Lin et~al., 2014]{lin2014coco}
 Lin, T.-Y., Maire, M., Belongie, S., Hays, J., Perona, P., Ramanan, D.,
@@ -40,15 +94,66 @@ Lin, T.-Y., Maire, M., Belongie, S., Hays, J., Perona, P., Ramanan, D.,
 \newblock {Microsoft COCO}: Common objects in context.
 \newblock In {\em Computer Vision -- ECCV 2014}, pages 740--755.
 
+\bibitem[Luck, 2014]{luck2014introduction}
+Luck, S.~J. (2014).
+\newblock {\em An Introduction to the Event-Related Potential Technique}.
+\newblock MIT Press.
+
+\bibitem[Marquardt, 1970]{marquardt1970generalized}
+Marquardt, D.~W. (1970).
+\newblock Generalized inverses, ridge regression, biased linear estimation, and
+  nonlinear estimation.
+\newblock {\em Technometrics}, 12(3):591--612.
+
+\bibitem[Mensen and Khatami, 2013]{mensen2013advanced}
+Mensen, A. and Khatami, R. (2013).
+\newblock Advanced eeg analysis using threshold-free cluster-enhancement and
+  non-parametric statistics.
+\newblock {\em NeuroImage}, 67:111--118.
+
 \bibitem[Najemnik and Geisler, 2005]{najemnik2005}
 Najemnik, J. and Geisler, W.~S. (2005).
 \newblock Optimal eye movement strategies in visual search.
 \newblock {\em Nature}, 434(7031):387--391.
+
+\bibitem[Nunez and Srinivasan, 2007]{nunez2007eeg}
+Nunez, P.~L. and Srinivasan, R. (2007).
+\newblock Electroencephalogram.
+\newblock {\em Scholarpedia}, 2(2):1348.
 
 \bibitem[Ruarte et~al., 2025]{ruarte2025}
 Ruarte, G., Bujia, G., Care, D., Ison, M.~J., and Kamienkowski, J.~E. (2025).
 \newblock Integrating {Bayesian} and neural networks models for eye movement
   prediction in hybrid search.
 \newblock {\em Scientific Reports}, 15(1):16482.
+
+\bibitem[Taboga, 2021]{taboga2021vif}
+Taboga, M. (2021).
+\newblock Variance inflation factor.
+\newblock Lectures on Probability Theory and Mathematical Statistics. Kindle
+  Direct Publishing. Online appendix.
+  \url{https://www.statlect.com/glossary/variance-inflation-factor}.
+
+\bibitem[Travi et~al., 2022]{travi2022visions}
+Travi, F., Ruarte, G., Bujia, G., and Kamienkowski, J.~E. (2022).
+\newblock Visions: Visual search in natural scenes benchmark.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~35, pages 11987--12000.
+
+\bibitem[Wolfe, 2012]{wolfe2012saved}
+Wolfe, J.~M. (2012).
+\newblock Saved by a log: How do humans perform hybrid visual and memory
+  search?
+\newblock {\em Psychological Science}, 23(7):698--703.
+
+\bibitem[Wolfe et~al., 2019]{wolfe2019guidance}
+Wolfe, J.~M., Cain, M.~S., and Aizenman, A.~M. (2019).
+\newblock Guidance and selection history in hybrid foraging visual search.
+\newblock {\em Attention, Perception, \& Psychophysics}, 81(3):637--653.
+
+\bibitem[Wolfe and Horowitz, 2008]{wolfe2008visualsearch}
+Wolfe, J.~M. and Horowitz, T.~S. (2008).
+\newblock Visual search.
+\newblock {\em Scholarpedia}, 3(7):3325.
 
 \end{thebibliography}

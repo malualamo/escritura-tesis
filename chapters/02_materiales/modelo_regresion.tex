@@ -57,7 +57,7 @@ $t_5$ & 1 & 0 & 0 & 0 & 0 & 1 & 0.3 & 0.0 & 0.0 \\
 
 \subsection{Estimación ridge y selección del parámetro de regularización}
 
-Los coeficientes del modelo (las TRFs) se estiman mediante regresión Ridge (regularización L2).
+Los coeficientes del modelo (las TRFs) se estiman mediante regresión Ridge \citep{hoerl1970ridge} (regularización L2).
 
 \begin{equation}
 \hat{\mathbf{w}} = \arg\min_{\mathbf{w}} \left[ \sum_t \left( r(t) - \sum_{\tau} w(\tau) \cdot x(t-\tau) \right)^2 + \lambda \sum_{\tau} w(\tau)^2 \right]

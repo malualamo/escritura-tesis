@@ -1,0 +1,103 @@
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: tesis.aux
+The style file: apalike.bst
+Database file #1: bibliography/referencias.bib
+Repeated entry---line 319 of file bibliography/referencias.bib
+ : @article{travi2022visions
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 368 of file bibliography/referencias.bib
+ : @article{barbosa2024investigating
+ :                                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 491 of file bibliography/referencias.bib
+ : @article{marquardt1970generalized
+ :                                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 502 of file bibliography/referencias.bib
+ : @article{mensen2013advanced
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 510 of file bibliography/referencias.bib
+ : @article{kamienkowski2012fixation
+ :                                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 520 of file bibliography/referencias.bib
+ : @book{luck2014introduction
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 527 of file bibliography/referencias.bib
+ : @article{barbosa2024investigating
+ :                                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 536 of file bibliography/referencias.bib
+ : @article{drew2014hybrid
+ :                        ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 546 of file bibliography/referencias.bib
+ : @article{drew2016searching
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 556 of file bibliography/referencias.bib
+ : @article{wolfe2019guidance
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 566 of file bibliography/referencias.bib
+ : @article{kaunitz2014looking
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 575 of file bibliography/referencias.bib
+ : @article{kamienkowski2018parsing
+ :                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 584 of file bibliography/referencias.bib
+ : @article{care2023active
+ :                        ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 618 of file bibliography/referencias.bib
+ : @article{hoerl1970ridge
+ :                        ,
+I'm skipping whatever remains of this entry
+You've used 27 entries,
+            1935 wiz_defined-function locations,
+            631 strings with 8637 characters,
+and the built_in function-call counts, 11338 in all, are:
+= -- 1111
+> -- 490
+< -- 18
++ -- 170
+- -- 166
+* -- 987
+:= -- 1964
+add.period$ -- 81
+call.type$ -- 27
+change.case$ -- 216
+chr.to.int$ -- 27
+cite$ -- 27
+duplicate$ -- 411
+empty$ -- 773
+format.name$ -- 209
+if$ -- 2206
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 27
+newline$ -- 138
+num.names$ -- 81
+pop$ -- 177
+preamble$ -- 1
+purify$ -- 218
+quote$ -- 0
+skip$ -- 319
+stack$ -- 0
+substring$ -- 830
+swap$ -- 57
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 158
+warning$ -- 0
+while$ -- 94
+width$ -- 0
+write$ -- 350
+(There were 14 error messages)

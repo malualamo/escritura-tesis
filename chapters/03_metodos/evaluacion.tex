@@ -49,7 +49,8 @@ El $\Delta\mathrm{AIC}$ se calcula como la diferencia entre el AIC del modelo ba
 
 \subsection{Diagnóstico de multicolinealidad mediante VIF}
 
-Para el diagnóstico de multicolinealidad entre predictores, se utilizó el Factor de Inflación de la Varianza (VIF) definido para el predictor $k$ como:
+Para el diagnóstico de multicolinealidad entre predictores, se utilizó el Factor de Inflación de la Varianza (VIF) \citep{kutner1984applied, marquardt1970generalized}
+ definido para el predictor $k$ como:
 
 \begin{equation}
     \label{eq:vif}
@@ -90,7 +91,7 @@ problemática cuando más de la mitad de los sujetos superó el umbral de VIF $>
 
 \subsection{TFCE: Inferencia estadística espacio-temporal}
 
-Para realizar un análisis grupal entre los resultados de distintos participantes, se utiliza el método \textbf{TFCE (Threshold-Free Cluster Enhancement)}. Este método toma los coeficientes TRF de cada participante, electrodo y muestra temporal, e identifica clusters en el espacio de \texttt{electrodos $\times$ muestras temporales} donde los coeficientes son distintos de cero entre participantes (es decir, la señal es reproducible a nivel grupal). Para evaluar la significancia de cada cluster (llamémoslo cluster original), se realizan $2048$ permutaciones en las que se asigna al azar un signo a los coeficientes de cada participante, y se registra el tamaño del cluster más grande resultante. Si la proporción de permutaciones que produjeron un cluster de tamaño mayor o igual al cluster original es menor al $5\%$, se determina que el cluster es significativo, y por lo tanto lo es la variable. En los resultados se reporta qué ventana temporal y en qué electrodos se encontró significancia.
+Para realizar un análisis grupal entre los resultados de distintos participantes, se utiliza el método \textbf{TFCE (Threshold-Free Cluster Enhancement)} \citep{mensen2013advanced}. Este método toma los coeficientes TRF de cada participante, electrodo y muestra temporal, e identifica clusters en el espacio de \texttt{electrodos $\times$ muestras temporales} donde los coeficientes son distintos de cero entre participantes (es decir, la señal es reproducible a nivel grupal). Para evaluar la significancia de cada cluster (llamémoslo cluster original), se realizan $2048$ permutaciones en las que se asigna al azar un signo a los coeficientes de cada participante, y se registra el tamaño del cluster más grande resultante. Si la proporción de permutaciones que produjeron un cluster de tamaño mayor o igual al cluster original es menor al $5\%$, se determina que el cluster es significativo, y por lo tanto lo es la variable. En los resultados se reporta qué ventana temporal y en qué electrodos se encontró significancia.
 
 \subsection{Exploración de transformación de variables}
 

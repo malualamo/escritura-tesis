@@ -4,8 +4,10 @@
 %\vspace{1cm}
 \chapter*{\runtitulo}
 
-\noindent \pendiente{Abstract}
+\noindent
+
+La búsqueda visual híbrida (la tarea de localizar en una escena cualquiera de un conjunto de posibles objetivos mantenidos en memoria) puede describirse como un proceso de inferencia bayesiana en el que cada fijación ocular actualiza la creencia del observador sobre la ubicación del target. El modelo computacional nnELM (Neural Network Entropy Limit Minimization) \citep{ruarte2025} formaliza este proceso combinando redes neuronales profundas con un criterio de minimización de entropía esperada para seleccionar la siguiente fijación. Por otro lado, el framework de \textit{Temporal Response Functions} (TRFs) por regresión regularizada \citep{care2025} permite vincular predictores definidos a nivel de fijación con la señal de electroencefalografía (EEG) registrada de forma continua durante la tarea. Esta tesis se propuso articular ambas líneas de trabajo: diseñar y extraer, a partir de los mapas internos del modelo nnELM, variables que cuantifiquen distintos aspectos del proceso de búsqueda visual, y evaluar si dichas variables poseen correlatos en la actividad cerebral registrada sobre el dataset HSEM (\textit{Hybrid Search Eye Movements}), que incluye el registro simultáneo de movimientos oculares y EEG de 42 sujetos durante una tarea de búsqueda híbrida en escenas naturales. Se diseñaron y extrajeron 20 variables organizadas en cinco categorías conceptuales, se validó su coherencia con la dinámica esperada del proceso de búsqueda, y se evaluó su contribución a la predicción de la señal EEG mediante un esquema de construcción incremental de modelos, diagnosticado por VIF y evaluado mediante $\Delta$AIC y TFCE. Se hallaron correlatos neurales significativos en variables de cuatro de las cinco categorías definidas, en particular en variables relacionadas con la similitud visual con el target, el estado del proceso bayesiano y la calidad de la decisión del sujeto respecto de la estrategia óptima del modelo. Estos resultados aportan evidencia de que el framework de TRFs constituye una herramienta apropiada para vincular variables latentes de modelos computacionales bayesianos con la actividad neural durante tareas de búsqueda visual.
 
 \bigskip
 
-\noindent\textbf{Palabras claves:} Guerra, Rebelión, Wookie, Jedi, Fuerza, Imperio (no menos de 5).
+\noindent\textbf{Palabras clave:} búsqueda visual híbrida, inferencia bayesiana, electroencefalografía, movimientos oculares, nnELM, temporal response functions.

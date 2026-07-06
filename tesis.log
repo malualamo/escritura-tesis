@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.10)  6 JUL 2026 02:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.10)  6 JUL 2026 03:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -499,6 +499,10 @@ LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
 (babel)             Reported on input line 8.
+
+
+LaTeX Warning: Label `fig:transf_posterior_log' multiply defined.
+
 )
 \openout1 = `tesis.aux'.
 
@@ -705,9 +709,6 @@ LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [12]
 Cap\'{\i }tulo 3.
-
-LaTeX Warning: Reference `fig:esquema' on page 13 undefined on input line 4.
-
 <chapters/03_metodos/images/diagrama-metodologia.png, id=113, 1138.2525pt x 926.46124pt>
 File: chapters/03_metodos/images/diagrama-metodologia.png Graphic file (type png)
 <use chapters/03_metodos/images/diagrama-metodologia.png>
@@ -719,14 +720,11 @@ Package pdftex.def Info: chapters/03_metodos/images/diagrama-metodologia.png  us
 LaTeX Info: Redefining \. on input line 35.
 LaTeX Info: Redefining \% on input line 35.
  [14]
-
-Package natbib Warning: Citation `taboga2021vif' on page 15 undefined on input line 61.
-
-LaTeX Info: Redefining \. on input line 75.
-LaTeX Info: Redefining \% on input line 75.
-[15]
-LaTeX Info: Redefining \. on input line 106.
-LaTeX Info: Redefining \% on input line 106.
+LaTeX Info: Redefining \. on input line 76.
+LaTeX Info: Redefining \% on input line 76.
+ [15]
+LaTeX Info: Redefining \. on input line 107.
+LaTeX Info: Redefining \% on input line 107.
  [16])) (./chapters/04_extraccion_analisis_variables/04_extraccion_analisis_variables.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -1089,17 +1087,11 @@ Overfull \hbox (7.37837pt too wide) in paragraph at lines 62--86
 LaTeX Info: Redefining \. on input line 101.
 LaTeX Info: Redefining \% on input line 101.
 [58]
-
-LaTeX Warning: Reference `fig:resultados_combinados' on page 59 undefined on input line 111.
-
 <chapters/05_resultados/images/TFCE-final.png, id=325, 1474.308pt x 1040.08575pt>
 File: chapters/05_resultados/images/TFCE-final.png Graphic file (type png)
 <use chapters/05_resultados/images/TFCE-final.png>
 Package pdftex.def Info: chapters/05_resultados/images/TFCE-final.png  used on input line 115.
 (pdftex.def)             Requested size: 426.79135pt x 301.09341pt.
-
-LaTeX Warning: Reference `fig:aic_combinados' on page 59 undefined on input line 131.
-
 <chapters/05_resultados/images/AIC-final.png, id=326, 901.56825pt x 353.52075pt>
 File: chapters/05_resultados/images/AIC-final.png Graphic file (type png)
 <use chapters/05_resultados/images/AIC-final.png>
@@ -1125,14 +1117,16 @@ Cap\'{\i }tulo 7.
 ])
 LaTeX Info: Redefining \. on input line 87.
 LaTeX Info: Redefining \% on input line 87.
- [64] (./tesis.bbl)
-
-Package natbib Warning: There were undefined citations.
-
-[65
+ [64] (./tesis.bbl [65
 
 
-] (./tesis.aux
+])
+LaTeX Info: Redefining \. on input line 94.
+LaTeX Info: Redefining \% on input line 94.
+
+Overfull \vbox (1.31665pt too high) has occurred while \output is active []
+
+ [66] (./tesis.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
@@ -1142,25 +1136,22 @@ L3 programming layer <2026-01-19>
  ***********
 
 
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 22137 strings out of 467525
- 457171 string characters out of 5418982
- 867245 words of memory out of 5000000
- 50311 multiletter control sequences out of 15000+600000
- 651708 words of font info for 242 fonts, out of 8000000 for 9000
+ 22197 strings out of 467525
+ 458598 string characters out of 5418982
+ 868059 words of memory out of 5000000
+ 50365 multiletter control sequences out of 15000+600000
+ 652032 words of font info for 245 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,13n,108p,1304b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,13n,108p,2309b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on tesis.pdf (77 pages, 29873273 bytes).
+Output written on tesis.pdf (78 pages, 29883224 bytes).
 PDF statistics:
- 447 PDF objects out of 1000 (max. 8388607)
- 246 compressed objects within 3 object streams
+ 450 PDF objects out of 1000 (max. 8388607)
+ 248 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  53456 words of extra memory for PDF output out of 61914 (max. 10000000)
 

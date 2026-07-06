@@ -6,7 +6,13 @@
 \catcode `>\active 
 \@nameuse{es@quoting}
 \babel@aux{spanish}{}
+\citation{ruarte2025}
+\citation{care2025}
+\citation{ruarte2025}
+\citation{care2025}
+\citation{wolfe2012saved}
 \citation{bujia2022}
+\citation{travi2022visions}
 \citation{ruarte2025}
 \citation{najemnik2005}
 \citation{bujia2022}
@@ -21,6 +27,7 @@
 \citation{bujia2022}
 \citation{ruarte2025}
 \citation{bujia2022}
+\citation{kamienkowski2012fixation}
 \@writefile{toc}{\contentsline {section}{\numberline {1.3}EEG en búsqueda visual}{2}{}\protected@file@percent }
 \newlabel{sec:eeg_modelo_damian}{{1.3}{2}{}{section.1.3}{}}
 \citation{ehinger2019}
@@ -29,6 +36,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Esquema del método de deconvolución lineal aplicado al EEG continuo. La señal continua (azul) se modela como la suma ponderada de dos predictores temporalmente expandidos: uno para los eventos de estímulo (rojo) y otro para las fijaciones oculares (verde). Los parámetros estimados (izquierda) representan la respuesta neural independiente asociada a cada tipo de evento, es decir, la Temporal Response Function (TRF). Adaptado de \citet  {ehinger2019}.}}{3}{}\protected@file@percent }
 \newlabel{fig:deconvolucion}{{1.1}{3}{}{figure.1.1}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Interpretación de las TRFs: regiones cerebrales y componentes de referencia}{3}{}\protected@file@percent }
+\citation{luck2014introduction}
 \@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces Distribución de las regiones del cuero cabelludo según su ubicación anatómica.}}{4}{}\protected@file@percent }
 \newlabel{fig:regiones_corteza}{{1.2}{4}{}{figure.1.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.4}Pregunta principal y objetivos}{4}{}\protected@file@percent }
@@ -75,6 +83,7 @@
 \newlabel{fig:trf_pipeline}{{2.3}{11}{}{figure.2.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Temporal Response Functions (TRFs)}{11}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Construcción de matriz de diseño}{11}{}\protected@file@percent }
+\citation{hoerl1970ridge}
 \@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Ejemplo simplificado de la matriz de diseño $\mathbf  {M}$ para tres predictores y una ventana de 3 lags. Cada fila corresponde a una muestra temporal de la señal EEG continua. Las variables binarias toman valor 1 en el onset del evento y se desplazan diagonalmente con cada lag. La variable continua refleja el valor del predictor en ese retardo.}}{12}{}\protected@file@percent }
 \newlabel{tab:matriz_disenio}{{2.1}{12}{}{table.2.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Estimación ridge y selección del parámetro de regularización}{12}{}\protected@file@percent }
@@ -91,6 +100,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Metodología de evaluación}{14}{}\protected@file@percent }
 \newlabel{sec:evaluacion}{{3.2}{14}{}{section.3.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Modelo base: MD2}{14}{}\protected@file@percent }
+\citation{kutner1984applied,marquardt1970generalized}
 \citation{taboga2021vif}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}$\Delta \mathrm  {AIC}$ con grados de libertad efectivos de Ridge}{15}{}\protected@file@percent }
 \newlabel{eq:aic}{{3.1}{15}{}{equation.3.1}{}}
@@ -98,6 +108,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Diagnóstico de multicolinealidad mediante VIF}{15}{}\protected@file@percent }
 \newlabel{eq:vif}{{3.3}{15}{}{equation.3.3}{}}
 \newlabel{eq:vif_identidad}{{3.4}{15}{}{equation.3.4}{}}
+\citation{mensen2013advanced}
 \citation{care2025}
 \@writefile{toc}{\contentsline {subsubsection}{VIF en matriz de diseño de Modelo de TRFs}{16}{}\protected@file@percent }
 \newlabel{subsec:vif}{{3.2.3}{16}{}{equation.3.4}{}}
@@ -283,12 +294,39 @@
 \bibstyle{apalike}
 \bibdata{bibliography/referencias}
 \bibcite{akaike1974}{{1}{1974}{{Akaike}}{{}}}
-\bibcite{bujia2022}{{2}{2022}{{Bujia et~al.}}{{}}}
-\bibcite{care2025}{{3}{2025}{{Care et~al.}}{{}}}
-\bibcite{deng2009imagenet}{{4}{2009}{{Deng et~al.}}{{}}}
-\bibcite{ehinger2019}{{5}{2019}{{Ehinger and Dimigen}}{{}}}
-\bibcite{kummerer2021}{{6}{2021}{{K{\"u}mmerer and Bethge}}{{}}}
-\bibcite{lin2014coco}{{7}{2014}{{Lin et~al.}}{{}}}
-\bibcite{najemnik2005}{{8}{2005}{{Najemnik and Geisler}}{{}}}
-\bibcite{ruarte2025}{{9}{2025}{{Ruarte et~al.}}{{}}}
-\gdef \@abspage@last{77}
+\bibcite{barbosa2024investigating}{{2}{2024}{{Barbosa et~al.}}{{}}}
+\bibcite{bujia2022}{{3}{2022}{{Bujia et~al.}}{{}}}
+\bibcite{care2023active}{{4}{2023}{{Care et~al.}}{{}}}
+\bibcite{care2025}{{5}{2025}{{Care et~al.}}{{}}}
+\bibcite{deng2009imagenet}{{6}{2009}{{Deng et~al.}}{{}}}
+\bibcite{drew2016searching}{{7}{2016}{{Drew et~al.}}{{}}}
+\bibcite{drew2014hybrid}{{8}{2014}{{Drew and Wolfe}}{{}}}
+\bibcite{ehinger2019}{{9}{2019}{{Ehinger and Dimigen}}{{}}}
+\bibcite{hoerl1970ridge}{{10}{1970}{{Hoerl and Kennard}}{{}}}
+\bibcite{kamienkowski2012fixation}{{11}{2012}{{Kamienkowski et~al.}}{{}}}
+\bibcite{kamienkowski2018parsing}{{12}{2018}{{Kamienkowski et~al.}}{{}}}
+\bibcite{kaunitz2014looking}{{13}{2014}{{Kaunitz et~al.}}{{}}}
+\bibcite{kummerer2021}{{14}{2021}{{K{\"u}mmerer and Bethge}}{{}}}
+\bibcite{kutner1984applied}{{15}{1984}{{Kutner}}{{}}}
+\bibcite{lin2014coco}{{16}{2014}{{Lin et~al.}}{{}}}
+\bibcite{luck2014introduction}{{17}{2014}{{Luck}}{{}}}
+\bibcite{marquardt1970generalized}{{18}{1970}{{Marquardt}}{{}}}
+\bibcite{mensen2013advanced}{{19}{2013}{{Mensen and Khatami}}{{}}}
+\bibcite{najemnik2005}{{20}{2005}{{Najemnik and Geisler}}{{}}}
+\bibcite{nunez2007eeg}{{21}{2007}{{Nunez and Srinivasan}}{{}}}
+\bibcite{ruarte2025}{{22}{2025}{{Ruarte et~al.}}{{}}}
+\bibcite{taboga2021vif}{{23}{2021}{{Taboga}}{{}}}
+\bibcite{travi2022visions}{{24}{2022}{{Travi et~al.}}{{}}}
+\bibcite{wolfe2012saved}{{25}{2012}{{Wolfe}}{{}}}
+\bibcite{wolfe2019guidance}{{26}{2019}{{Wolfe et~al.}}{{}}}
+\bibcite{wolfe2008visualsearch}{{27}{2008}{{Wolfe and Horowitz}}{{}}}
+\citation{barbosa2024investigating}
+\citation{drew2014hybrid}
+\citation{drew2016searching}
+\citation{wolfe2019guidance}
+\citation{kaunitz2014looking}
+\citation{kamienkowski2018parsing}
+\citation{care2023active}
+\citation{wolfe2008visualsearch}
+\citation{nunez2007eeg}
+\gdef \@abspage@last{78}
